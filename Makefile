@@ -13,15 +13,11 @@ dev:
 		python -m SimpleHTTPServer $(DEV_PORT)
 
 .PHONY: deploy
-deploy:
+deploy: build
 	@if git status -s | grep -q .; then \
 		echo "Commit changes in main branch before deploying."; \
 		exit 1; \
 	fi
-
-	rm -rf $(DIST_DIR)
-	mkdir -p $(DIST_DIR)
-	cp -R $(SRC_DIR)/* $(DIST_DIR)
 
 	git checkout gh-pages
 	find . -type f -depth 1 -delete
@@ -29,10 +25,15 @@ deploy:
 	mv -v $(DIST_DIR)/* .
 	rm -rf $(DIST_DIR)
 	git add .
-	git commit -m "Deploy to Github pages"
+	git commit -m "Deploy to GitHub page"
 	git push
 
 	git checkout main
+
+.PHONY: build
+build: clean
+	mkdir -p $(DIST_DIR)
+	cp -R $(SRC_DIR)/* $(DIST_DIR)
 
 .PHONY: clean
 clean:
