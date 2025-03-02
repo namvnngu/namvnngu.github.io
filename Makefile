@@ -6,6 +6,18 @@ DIST_DIR := dist
 DEV_PORT := 8080
 GIT_STATUS = $(shell git status -s)
 
+# Canned recipes
+define build
+	@echo "Removing folder '$(DIST_DIR)'..."
+	@rm -rf $(DIST_DIR)
+	@echo "Removed folder '$(DIST_DIR)'..."
+
+	@echo "Building pages..."
+	@mkdir -p $(DIST_DIR)
+	@cp -R $(SRC_DIR)/* $(DIST_DIR)
+	@echo "Built pages!"
+endef
+
 .PHONY: dev
 dev:
 	@cd $(SRC_DIR) && \
@@ -14,10 +26,12 @@ dev:
 		python -m SimpleHTTPServer $(DEV_PORT)
 
 .PHONY: deploy
-deploy: build
+deploy:
 ifneq ($(GIT_STATUS),)
 	@echo "Commit changes in main branch before deploying."
 else
+	$(call build)
+
 	@git checkout gh-pages
 
 	@echo "Preparing files..."
@@ -40,14 +54,9 @@ endif
 endif
 
 .PHONY: build
-build: clean
-	@echo "Building pages..."
-	@mkdir -p $(DIST_DIR)
-	@cp -R $(SRC_DIR)/* $(DIST_DIR)
-	@echo "Built pages!"
+build:
+	$(call build)
 
 .PHONY: clean
 clean:
-	@echo "Cleaning up..."
-	@rm -rf $(DIST_DIR)
-	@echo "Cleaned up!"
+	rm -rf $(DIST_DIR)
