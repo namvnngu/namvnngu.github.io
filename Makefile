@@ -2,8 +2,9 @@
 SRC_DIR  := src
 DIST_DIR := dist
 
-# Dev
+# Utilities
 DEV_PORT := 8080
+GIT_STATUS = $(shell git status -s)
 
 .PHONY: dev
 dev:
@@ -14,27 +15,39 @@ dev:
 
 .PHONY: deploy
 deploy: build
-	@if git status -s | grep -q .; then \
-		echo "Commit changes in main branch before deploying."; \
-		exit 1; \
-	fi
+ifneq ($(GIT_STATUS),)
+	@echo "Commit changes in main branch before deploying."
+else
+	@git checkout gh-pages
 
-	git checkout gh-pages
-	find . -type f -depth 1 -delete
-	rm -rf writing/ projects/
-	mv -v $(DIST_DIR)/* .
-	rm -rf $(DIST_DIR)
-	git add .
-	git commit -m "Deploy to GitHub page"
-	git push
+	@echo "Preparing files..."
+	@find . -type f -depth 1 -delete
+	@rm -rf writing/ projects/
+	@mv -v $(DIST_DIR)/* .
+	@rm -rf $(DIST_DIR)
+	@echo "Prepared files!"
 
-	git checkout main
+ifeq ($(GIT_STATUS),)
+	@echo "Nothing to deploy to GitHub page."
+else
+	@git add .
+	@git commit -m "Deploy to GitHub page"
+	@git push
+	@echo "Check out deployment at https://github.com/namvnngu/namvnngu.github.io/deployments"
+endif
+
+	@git checkout main
+endif
 
 .PHONY: build
 build: clean
-	mkdir -p $(DIST_DIR)
-	cp -R $(SRC_DIR)/* $(DIST_DIR)
+	@echo "Building pages..."
+	@mkdir -p $(DIST_DIR)
+	@cp -R $(SRC_DIR)/* $(DIST_DIR)
+	@echo "Built pages!"
 
 .PHONY: clean
 clean:
-	rm -rf $(DIST_DIR)
+	@echo "Cleaning up..."
+	@rm -rf $(DIST_DIR)
+	@echo "Cleaned up!"
