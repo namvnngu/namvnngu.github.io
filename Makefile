@@ -14,8 +14,24 @@ dev:
 
 .PHONY: deploy
 deploy:
+	@if git status -s | grep -q .; then \
+		echo "Commit changes in main branch before deploying."; \
+		exit 1; \
+	fi
+
+	rm -rf $(DIST_DIR)
 	mkdir -p $(DIST_DIR)
-	find . -not -name $(DIST_DIR) -depth 1 -delete
+	cp -R $(SRC_DIR) $(DIST_DIR)
+
+	git checkout gh-pages
+	find . -type f -depth 1 -delete
+	rm -rf writing/ projects/
+	mv -v $(DIST_DIR)/* .
+	git add .
+	git commit -m "Deploy to Github pages"
+	git push
+
+	git checkout main
 
 .PHONY: clean
 clean:
