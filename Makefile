@@ -21,12 +21,13 @@ deploy:
 
 	rm -rf $(DIST_DIR)
 	mkdir -p $(DIST_DIR)
-	cp -R $(SRC_DIR) $(DIST_DIR)
+	cp -R $(SRC_DIR)/* $(DIST_DIR)
 
 	git checkout gh-pages
 	find . -type f -depth 1 -delete
 	rm -rf writing/ projects/
 	mv -v $(DIST_DIR)/* .
+	rm -rf $(DIST_DIR)
 	git add .
 	git commit -m "Deploy to Github pages"
 	git push
