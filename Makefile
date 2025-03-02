@@ -1,22 +1,20 @@
-# Directories
-SRC_DIR  := src
-DIST_DIR := dist
+# === FILES/DIRECTORIES ===
 
-# Utilities
+SRC_DIR      := src
+DIST_DIR     := dist
+WRITING_DIR  := writing
+PROJECTS_DIR := projects
+
+SRC_FILES  := $(shell find $(SRC_DIR) -type f)
+DIST_FILES := $(SRC_FILES:$(SRC_DIR)/%=$(DIST_DIR)/%)
+
+# === UTILITIES ===
+
 DEV_PORT := 8080
+
 GIT_STATUS = $(shell git status -s)
 
-# Canned recipes
-define build
-	@echo "Removing folder '$(DIST_DIR)'..."
-	@rm -rf $(DIST_DIR)
-	@echo "Removed folder '$(DIST_DIR)'..."
-
-	@echo "Building pages..."
-	@mkdir -p $(DIST_DIR)
-	@cp -R $(SRC_DIR)/* $(DIST_DIR)
-	@echo "Built pages!"
-endef
+# === TASKS ===
 
 .PHONY: dev
 dev:
@@ -26,20 +24,18 @@ dev:
 		python -m SimpleHTTPServer $(DEV_PORT)
 
 .PHONY: deploy
-deploy:
+deploy: $(DIST_FILES)
 ifneq ($(GIT_STATUS),)
 	@echo "Commit changes in main branch before deploying."
 else
-	$(call build)
-
 	@git checkout gh-pages
 
-	@echo "Preparing files..."
-	@find . -type f -depth 1 -delete
-	@rm -rf writing/ projects/
-	@mv -v $(DIST_DIR)/* .
-	@rm -rf $(DIST_DIR)
-	@echo "Prepared files!"
+	@echo "==> Preparing files..."
+	find . -type f -depth 1 -delete
+	rm -rf $(WRITING_DIR) $(PROJECTS_DIR)
+	mv -v $(DIST_DIR)/* .
+	rm -rf $(DIST_DIR)
+	@echo "==> Prepared files!"
 
 ifeq ($(GIT_STATUS),)
 	@echo "Nothing to deploy to GitHub page."
@@ -54,8 +50,14 @@ endif
 endif
 
 .PHONY: build
-build:
-	$(call build)
+build: prepare $(DIST_FILES)
+
+.PHONY: prepare
+prepare:
+	@mkdir -p $(DIST_DIR)/$(WRITING_DIR) $(DIST_DIR)/$(PROJECTS_DIR)
+
+$(DIST_DIR)/%: $(SRC_DIR)/%
+	cp $< $@
 
 .PHONY: clean
 clean:
