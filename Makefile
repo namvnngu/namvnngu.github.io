@@ -21,7 +21,9 @@ dev:
 	@cd $(SRC_DIR) && \
 		which python3 > /dev/null && \
 		python3 -m http.server $(DEV_PORT) || \
-		python -m SimpleHTTPServer $(DEV_PORT)
+		which python > /dev/null && \
+		python -m SimpleHTTPServer $(DEV_PORT) || \
+		npx serve && echo "Command not found: python3, python and npx"
 
 .PHONY: deploy
 deploy: build
