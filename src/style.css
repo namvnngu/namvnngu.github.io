@@ -50,6 +50,7 @@
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
 
   --radius-xs: 0.125rem;
   --radius-sm: 0.25rem;
@@ -70,6 +71,28 @@
 /* == GLOBAL == */
 
 body {
+}
+
+h1 {
+  font-size: var(--text-4xl);
+  line-height: var(--text-4xl--line-height);
+  font-weight: var(--font-weight-extrabold);
+}
+
+h2 {
+  font-size: var(--text-2xl);
+  line-height: var(--text-2xl--line-height);
+  font-weight: var(--font-weight-bold);
+}
+
+h3 {
+  font-size: var(--text-xl);
+  line-height: var(--text-xl--line-height);
+  font-weight: var(--font-weight-bold);
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 /* == COMPOSITION == */
@@ -202,6 +225,9 @@ body {
 .font-bold {
   font-weight: var(--font-weight-bold);
 }
+.font-extrabold {
+  font-weight: var(--font-weight-extrabold);
+}
 
 .rounded-xs {
   border-radius: var(--radius-xs);
@@ -217,6 +243,12 @@ body {
 }
 .rounded-xl {
   border-radius: var(--radius-xl);
+}
+.rounded-none {
+  border-radius: 0;
+}
+.rounded-full {
+  border-radius: calc(infinity * 1px);
 }
 
 /* == BLOCK == */
