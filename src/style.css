@@ -53,6 +53,7 @@
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
 
+  --font-weight-extralight: 200;
   --font-weight-light: 300;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
@@ -228,6 +229,9 @@ a:hover {
   font-family: var(--font-mono);
 }
 
+.font-extralight {
+  font-weight: var(--font-weight-extralight);
+}
 .font-light {
   font-weight: var(--font-weight-light);
 }
