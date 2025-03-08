@@ -53,13 +53,9 @@
   --text-4xl: 2.25rem;
   --text-4xl--line-height: calc(2.5 / 2.25);
 
-  --font-sans:
-    ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
-  --font-serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
-  --font-mono:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-serif: ui-serif, serif;
+  --font-mono: ui-monospace, monospace;
 
   --font-weight-extralight: 200;
   --font-weight-light: 300;
