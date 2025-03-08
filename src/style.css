@@ -53,9 +53,9 @@
   --text-4xl: 2.25rem;
   --text-4xl--line-height: calc(2.5 / 2.25);
 
-  --font-sans: ui-sans-serif, system-ui, sans-serif;
-  --font-serif: ui-serif, serif;
-  --font-mono: ui-monospace, monospace;
+  --font-sans: system-ui, sans-serif;
+  --font-serif: "Times New Roman", Times, serif;
+  --font-mono: monospace;
 
   --font-weight-extralight: 200;
   --font-weight-light: 300;
