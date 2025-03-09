@@ -162,6 +162,21 @@ body {
   padding: calc(var(--spacing) * 8) calc(var(--spacing) * 6);
 }
 
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.3;
+  background-image: radial-gradient(
+    var(--color-neutral-05) 0.5px,
+    transparent 0.5px
+  );
+  background-size: 20px 20px;
+  background-repeat: repeat;
+  background-position: 0 0;
+}
+
 h1 {
   font-size: var(--text-4xl);
   line-height: var(--text-4xl--line-height);
