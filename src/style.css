@@ -26,14 +26,6 @@
   --breakpoint-xl: 80rem;
   --breakpoint-2xl: 96rem;
 
-  --container-xs: 20rem;
-  --container-sm: 24rem;
-  --container-md: 28rem;
-  --container-lg: 32rem;
-  --container-xl: 36rem;
-  --container-2xl: 42rem;
-  --container-body: 48rem;
-
   --text-xxs: 0.5rem;
   --text-xxs--line-height: calc(0.75 / 0.5);
   --text-xs: 0.75rem;
@@ -157,9 +149,14 @@ body {
   font-family: var(--font-serif);
   color: var(--color-neutral-11);
   background-color: var(--color-neutral-00);
-  max-width: var(--container-body);
+  max-width: 48rem;
   margin: 0 auto;
-  padding: calc(var(--spacing) * 8) calc(var(--spacing) * 6);
+  padding: calc(var(--spacing) * 8)
+    clamp(var(--spacing) * 4, 5%, var(--spacing) * 6);
+}
+
+body > :not(:first-child) {
+  margin-top: calc(var(--spacing) * 12);
 }
 
 body::before {
@@ -201,8 +198,59 @@ a:hover {
 
 /* == COMPOSITION == */
 
+.space-x-4 > :not(:first-child) {
+  margin-left: calc(var(--spacing) * 4);
+}
+
+.grid-item-min-w-40 {
+  --grid-item-min-width: calc(var(--spacing) * 40);
+}
+.grid-item-min-w-70 {
+  --grid-item-min-width: calc(var(--spacing) * 70);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, var(--grid-item-min-width)), 1fr)
+  );
+}
+
 /* == UTILITY == */
 
-/* == BLOCK == */
+.mt-4 {
+  margin-top: calc(var(--spacing) * 4);
+}
+.mt-8 {
+  margin-top: calc(var(--spacing) * 8);
+}
 
-/* == EXCEPTION == */
+.mb-5 {
+  margin-bottom: calc(var(--spacing) * 5);
+}
+
+.gap-4 {
+  gap: calc(var(--spacing) * 4);
+}
+.gap-8 {
+  gap: calc(var(--spacing) * 8);
+}
+
+/* == BLOCK & EXCEPTION == */
+
+.card__description {
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  color: var(--color-neutral-07);
+}
+.card__chips > :not(:first-child) {
+  margin-left: calc(var(--spacing) * 1);
+}
+.card__chips > * {
+  font-size: var(--text-xs);
+  line-height: var(--text-xs--line-height);
+  color: var(--color-neutral-06);
+  border: 1px solid var(--color-neutral-04);
+  border-radius: var(--radius-sm);
+  padding: calc(var(--spacing) * 0.5) calc(var(--spacing) * 1);
+}
