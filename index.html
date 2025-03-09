@@ -46,7 +46,7 @@
   <body>
     <!--block-start: header-->
     <header>
-      <nav>
+      <nav class="[ space-x-4 ]">
         <a href="/">Home</a>
         <a href="/projects">Projects</a>
         <a href="/writing">Writing</a>
@@ -56,14 +56,60 @@
 
     <main>
       <h1>Nam Nguyen</h1>
-      <p>
+      <p class="[ mt-4 ]">
         Hi there! Welcome to my programming adventures! ٩( ᐛ )و. Building
         software and solving problems. Learning computer graphics and low-level
         programming.
       </p>
-      <h2>Projects</h2>
-      <h2>Writing</h2>
-      <h2>Connect</h2>
+      <div class="[ grid grid-item-min-w-70 gap-8 ] [ mt-8 ]">
+        <section>
+          <h2 class="[ mb-5 ]">Projects</h2>
+          <div class="[ grid grid-item-min-w-40 gap-4 ]">
+            <article class="[ card ]">
+              <h3>Project 1</h3>
+              <p class="[ card__description ]">Brief project description.</p>
+              <p class="[ card__chips ]">
+                <span>Typescript</span><span>React</span>
+              </p>
+            </article>
+            <article class="[ card ]">
+              <h3>Project 2</h3>
+              <p class="[ card__description ]">Brief project description.</p>
+              <p class="[ card__chips ]"><span>C</span><span>Raylib</span></p>
+            </article>
+            <article class="[ card ]">
+              <h3>All projects</h3>
+              <p class="[ card__description ]">My programming artifacts.</p>
+            </article>
+          </div>
+        </section>
+        <section>
+          <h2 class="[ mb-5 ]">Writing</h2>
+          <div class="[ writing ] [ grid grid-item-min-w-40 gap-4 ]">
+            <article class="[ card ]">
+              <h3>Writing 1</h3>
+              <p class="[ card__description ]">Brief writing description.</p>
+            </article>
+            <article class="[ card ]">
+              <h3>Writing 2</h3>
+              <p class="[ card__description ]">Brief writing description.</p>
+            </article>
+            <article class="[ card ]">
+              <h3>All writing</h3>
+              <p class="[ card__description ]">My thoughts on everything.</p>
+            </article>
+          </div>
+        </section>
+      </div>
+      <section class="[ mt-8 ]">
+        <h2 class="[ mb-5 ]">Connect</h2>
+        <p>
+          <a href="mailto:vnngu@outlook.com">vnngu@outlook.com</a>
+          <a href="https://github.com/namvnngu" target="_blank"
+            >github/namvnngu</a
+          >
+        </p>
+      </section>
     </main>
 
     <!--block-start: footer-->
