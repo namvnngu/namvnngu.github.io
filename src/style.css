@@ -189,7 +189,7 @@ h2 {
 h3 {
   font-size: var(--text-xl);
   line-height: var(--text-xl--line-height);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-semibold);
 }
 
 a:hover {
@@ -246,10 +246,13 @@ a:hover {
 
 /* == BLOCK & EXCEPTION == */
 
+.card__title {
+  color: var(--color-neutral-10);
+}
 .card__description {
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
-  color: var(--color-neutral-07);
+  color: var(--color-neutral-08);
 }
 .card__chips > :not(:first-child) {
   margin-left: calc(var(--spacing) * 1);
