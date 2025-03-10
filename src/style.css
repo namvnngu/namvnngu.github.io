@@ -271,42 +271,51 @@ h3 {
   margin-bottom: calc(var(--spacing) * 4);
 }
 
-a {
+a,
+a:visited {
   color: inherit;
-  transition-property: text-decoration-color;
+  transition-property:
+    text-decoration-color,
+    -webkit-text-decoration-color;
   transition-duration: var(--transition-duration-lg);
   text-decoration-line: underline;
   text-decoration-color: var(--color-mono-04);
+  -webkit-text-decoration-color: var(--color-mono-04);
   text-decoration-thickness: calc(var(--spacing) * 0.35);
   text-underline-offset: calc(var(--spacing) * 1);
-}
-a:hover,
-a:active {
-  text-decoration-color: var(--color-fg);
 }
 a[data-type="no-underline"] {
   text-decoration-line: none;
   transition: none;
 }
-
-.brief > :not(:first-child) {
-  margin-top: calc(var(--spacing) * 2);
+@media (hover: hover) {
+  a:hover {
+    text-decoration-color: var(--color-fg);
+    -webkit-text-decoration-color: var(--color-fg);
+  }
 }
-.brief .title {
+
+.brief > .title {
+  display: inline-block;
+  color: var(--color-mono-10);
+}
+.brief > .title > a {
   display: flex;
   align-items: center;
   gap: calc(var(--spacing) * 1);
-  color: var(--color-mono-10);
 }
-.brief .description {
+.brief > .description {
   font-size: var(--text-base);
   line-height: var(--text-base--line-height);
   color: var(--color-mono-08);
 }
-.brief .chips > :not(:first-child) {
+.brief > .chips {
+  margin-top: calc(var(--spacing) * 2);
+}
+.brief > .chips > :not(:first-child) {
   margin-left: calc(var(--spacing) * 1);
 }
-.brief .chips > * {
+.brief > .chips > * {
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
   color: var(--color-mono-08);
