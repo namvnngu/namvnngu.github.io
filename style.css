@@ -292,21 +292,23 @@ a[data-type="no-underline"] {
 .brief > :not(:first-child) {
   margin-top: calc(var(--spacing) * 2);
 }
-.brief .title {
+.brief > .title {
+  color: var(--color-mono-10);
+}
+.brief > .title > a {
   display: flex;
   align-items: center;
   gap: calc(var(--spacing) * 1);
-  color: var(--color-mono-10);
 }
-.brief .description {
+.brief > .description {
   font-size: var(--text-base);
   line-height: var(--text-base--line-height);
   color: var(--color-mono-08);
 }
-.brief .chips > :not(:first-child) {
+.brief > .chips > :not(:first-child) {
   margin-left: calc(var(--spacing) * 1);
 }
-.brief .chips > * {
+.brief > .chips > * {
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
   color: var(--color-mono-08);
