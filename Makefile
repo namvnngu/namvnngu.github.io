@@ -5,8 +5,11 @@ DIST_DIR     := dist
 IMAGES_DIR   := images
 WRITING_DIR  := writing
 PROJECTS_DIR := projects
+BLOCKS_DIR   := blocks
 
-SRC_FILES      := $(shell find $(SRC_DIR) -type f)
+SRC_FILES      := $(shell find $(SRC_DIR) \
+													-path $(SRC_DIR)/$(BLOCKS_DIR) -prune \
+													-o -type file -print)
 DIST_FILES     := $(SRC_FILES:$(SRC_DIR)/%=$(DIST_DIR)/%)
 DEPLOY_FILES   := $(SRC_FILES:$(SRC_DIR)/%=%)
 
