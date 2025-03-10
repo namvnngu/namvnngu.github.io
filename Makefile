@@ -18,12 +18,7 @@ DEV_PORT := 8080
 
 .PHONY: dev
 dev:
-	@cd $(SRC_DIR) && \
-		which python3 > /dev/null && \
-		python3 -m http.server $(DEV_PORT) || \
-		which python > /dev/null && \
-		python -m SimpleHTTPServer $(DEV_PORT) || \
-		npx serve && echo "Command not found: python3, python and npx"
+	@cd $(SRC_DIR) && npx serve && echo "Command not found: npx"
 
 .PHONY: deploy
 deploy: build
