@@ -297,6 +297,9 @@ a[data-type="no-underline"] {
   margin-top: calc(var(--spacing) * 2);
 }
 .brief .title {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 1);
   color: var(--color-mono-10);
 }
 .brief .description {
