@@ -177,7 +177,7 @@ body {
 }
 
 body > :not(:first-child) {
-  margin-top: calc(var(--spacing) * 12);
+  margin-top: calc(var(--spacing) * 20);
 }
 
 body::before {
@@ -235,26 +235,34 @@ h3 {
 
 /* == UTILITY == */
 
-.mt-4 {
-  margin-top: calc(var(--spacing) * 4);
+.mt-6 {
+  margin-top: calc(var(--spacing) * 6);
 }
-.mt-8 {
-  margin-top: calc(var(--spacing) * 8);
-}
-
-.mb-5 {
-  margin-bottom: calc(var(--spacing) * 5);
+.mt-10 {
+  margin-top: calc(var(--spacing) * 10);
 }
 
-.gap-4 {
-  gap: calc(var(--spacing) * 4);
-}
-.gap-8 {
-  gap: calc(var(--spacing) * 8);
+.mb-6 {
+  margin-bottom: calc(var(--spacing) * 6);
 }
 
+.gap-6 {
+  gap: calc(var(--spacing) * 6);
+}
+.gap-10 {
+  gap: calc(var(--spacing) * 10);
+}
+
+.text-mono-05 {
+  color: var(--color-mono-05);
+}
 .text-mono-06 {
   color: var(--color-mono-06);
+}
+
+.text-sm {
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
 }
 
 .line-clamp-2 {
@@ -274,7 +282,7 @@ a {
   text-decoration-line: underline;
   text-decoration-color: var(--color-mono-04);
   text-decoration-thickness: calc(var(--spacing) * 0.35);
-  text-underline-offset: calc(var(--spacing) * 0.65);
+  text-underline-offset: calc(var(--spacing) * 1);
 }
 a:hover,
 a:active {
@@ -285,24 +293,27 @@ a[data-type="no-underline"] {
   transition: none;
 }
 
+.brief > :not(:first-child) {
+  margin-top: calc(var(--spacing) * 2);
+}
 .brief .title {
   color: var(--color-mono-10);
 }
 .brief .description {
-  font-size: var(--text-sm);
-  line-height: var(--text-sm--line-height);
+  font-size: var(--text-base);
+  line-height: var(--text-base--line-height);
   color: var(--color-mono-08);
 }
 .brief .chips > :not(:first-child) {
   margin-left: calc(var(--spacing) * 1);
 }
 .brief .chips > * {
-  font-size: var(--text-xs);
-  line-height: var(--text-xs--line-height);
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
   color: var(--color-mono-08);
   border: 1px solid var(--color-mono-04);
   border-radius: var(--radius-sm);
-  padding: calc(var(--spacing) * 0.5) calc(var(--spacing) * 1);
+  padding: calc(var(--spacing) * 1) calc(var(--spacing) * 1.5);
 }
 
 .icon-arrow-up-right {
