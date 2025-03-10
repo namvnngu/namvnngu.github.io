@@ -236,6 +236,10 @@ a:hover {
   gap: calc(var(--spacing) * 8);
 }
 
+.text-neutral-06 {
+  color: var(--color-neutral-06);
+}
+
 .line-clamp-2 {
   overflow: hidden;
   display: -webkit-box;
@@ -260,7 +264,7 @@ a:hover {
 .card__chips > * {
   font-size: var(--text-xs);
   line-height: var(--text-xs--line-height);
-  color: var(--color-neutral-06);
+  color: var(--color-neutral-08);
   border: 1px solid var(--color-neutral-04);
   border-radius: var(--radius-sm);
   padding: calc(var(--spacing) * 0.5) calc(var(--spacing) * 1);
