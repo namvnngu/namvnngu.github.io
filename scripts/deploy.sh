@@ -3,31 +3,26 @@
 if [[ -n "$(git status -s)" ]]; then
   echo "Commit changes in main branch before deploying."
 else
-  echo "Switching to branch 'gh-pages'..."
-  git checkout -q gh-pages
-  echo "Switched to branch 'gh-pages'!"
+  echo "==> Switch to branch 'gh-pages'"
+  git checkout gh-pages
 
-  echo "Preparing files..."
-  rsync -a dist/ ./ --exclude blocks
+  echo "==> Prepare files"
+  rsync -a dist/* ./ --exclude blocks
   rm -rf dist/
-  echo "Prepared files!"
 
   if [[ -z "$(git status -s)" ]]; then
     echo "Nothing to deploy to GitHub page"
   else
-    echo "Committing changes..."
+    echo "==> Commit changes"
     git add .
-    git commit -q -m "Deploy to GitHub page"
-    echo "Committed changes!"
+    git commit -m "Deploy to GitHub page"
 
-    echo "Triggering deployment..."
-    git push -q
-    echo "Triggered deployment!"
+    echo "==> Trigger deployment"
+    git push
 
-    echo "Check out deployment at https://github.com/namvnngu/namvnngu.github.io/deployments"
+    echo "==> Check out deployment at https://github.com/namvnngu/namvnngu.github.io/deployments"
   fi
 
-  echo "Switching to branch 'main'..."
-  git checkout -q main
-  echo "Switched to branch 'main'!"
+  echo "==> Switch to branch 'main'"
+  git checkout main
 fi
