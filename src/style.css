@@ -288,11 +288,9 @@ a[data-type="no-underline"] {
   text-decoration-line: none;
   transition: none;
 }
-@media (hover: hover) {
-  a:hover {
-    text-decoration-color: var(--color-fg);
-    -webkit-text-decoration-color: var(--color-fg);
-  }
+a:hover, a:active {
+  text-decoration-color: var(--color-fg);
+  -webkit-text-decoration-color: var(--color-fg);
 }
 
 .brief > .title {
