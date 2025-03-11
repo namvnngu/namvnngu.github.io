@@ -278,8 +278,8 @@ a {
     -webkit-text-decoration-color;
   transition-duration: var(--transition-duration-lg);
   text-decoration-line: underline;
-  text-decoration-color: var(--color-mono-04);
-  -webkit-text-decoration-color: var(--color-mono-04);
+  text-decoration-color: var(--color-mono-04) !important;
+  -webkit-text-decoration-color: var(--color-mono-04) !important;
   text-decoration-thickness: calc(var(--spacing) * 0.35);
   text-underline-offset: calc(var(--spacing) * 1);
 }
@@ -289,8 +289,8 @@ a[data-type="no-underline"] {
 }
 a:hover,
 a:active {
-  text-decoration-color: var(--color-fg);
-  -webkit-text-decoration-color: var(--color-fg);
+  text-decoration-color: var(--color-fg) !important;
+  -webkit-text-decoration-color: var(--color-fg) !important;
 }
 
 .brief > .title {
