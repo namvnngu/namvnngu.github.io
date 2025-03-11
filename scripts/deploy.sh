@@ -14,6 +14,7 @@ else
     echo -e "\n==> Nothing to deploy to GitHub page"
   else
     echo -e "\n==> Commit changes"
+    git status -s
     git add .
     git commit -m "Deploy to GitHub page"
 
