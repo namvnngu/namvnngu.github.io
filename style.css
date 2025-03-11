@@ -91,32 +91,72 @@
     - https://youtu.be/eWmDW4zEXt4
 */
 
-/* Reset links to optimize for opt-in styling instead of opt-out */
-a {
-  color: inherit;
-  -webkit-text-decoration: inherit;
-  text-decoration: inherit;
+/* Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-a {
-  color: inherit;
-  transition-property:
-    text-decoration-color,
-    -webkit-text-decoration-color;
-  transition-duration: var(--transition-duration-lg);
-  text-decoration-line: underline;
-  text-decoration-color: var(--color-mono-04);
-  -webkit-text-decoration-color: var(--color-mono-04);
-  text-decoration-thickness: calc(var(--spacing) * 0.35);
-  text-underline-offset: calc(var(--spacing) * 1);
+
+/* Remove default margin */
+* {
+  margin: 0;
 }
-a[data-type="no-underline"] {
-  text-decoration-line: none;
-  transition: none;
+
+html {
+  /* Prevent unwanted layout shifting caused by scrollbar */
+  scrollbar-gutter: stable;
 }
-a:hover,
-a:active {
-  text-decoration-color: var(--color-fg);
-  -webkit-text-decoration-color: var(--color-fg);
+
+body {
+  /* Add accessible line-height */
+  line-height: 1.5;
+  /* Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* Improve line wrapping */
+p,
+li,
+figcaption {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
 }
 
 /* == GLOBAL == */
@@ -229,6 +269,28 @@ h3 {
   line-height: var(--text-xl--line-height);
   font-weight: var(--font-weight-semibold);
   margin-bottom: calc(var(--spacing) * 4);
+}
+
+a {
+  color: inherit;
+  transition-property:
+    text-decoration-color,
+    -webkit-text-decoration-color;
+  transition-duration: var(--transition-duration-lg);
+  text-decoration-line: underline;
+  text-decoration-color: var(--color-mono-04);
+  -webkit-text-decoration-color: var(--color-mono-04);
+  text-decoration-thickness: calc(var(--spacing) * 0.35);
+  text-underline-offset: calc(var(--spacing) * 1);
+}
+a[data-type="no-underline"] {
+  text-decoration-line: none;
+  transition: none;
+}
+a:hover,
+a:active {
+  text-decoration-color: var(--color-fg);
+  -webkit-text-decoration-color: var(--color-fg);
 }
 
 .brief > .title {
