@@ -13,9 +13,6 @@ if [[ ! -f "$block_path" ]]; then
   exit 1
 fi
 
-targets=$(find $SRC_PATH -path $BLOCKS_PATH -prune \
-  -o -type file -name '*.html' -print)
-
 for target in "$SRC_PATH"/*.html "$SRC_PATH"/**/*.html
 do
   if [[ "$target" == "$BLOCKS_PATH"* ]]; then
