@@ -45,5 +45,5 @@ do
     -e "$((start_line_number + 1)),$((end_line_number - 1))d" \
     -e "${start_line_number}r $block_path" \
     "$target"
-      echo "$target: '$block' updated"
-    done
+  echo "$target: '$block' updated"
+done
