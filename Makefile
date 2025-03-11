@@ -36,6 +36,7 @@ __prebuild:
             $(DIST_PATH)/$(PROJECTS_DIR)
 $(DIST_PATH)/$(BLOCKS_DIR)/%: $(SRC_PATH)/$(BLOCKS_DIR)/%
 	cp $< $@
+	@./scripts/block.sh $<
 $(DIST_PATH)/%: $(SRC_PATH)/%
 	cp $< $@
 

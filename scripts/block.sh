@@ -1,13 +1,49 @@
 #!/usr/bin/env bash
 
-start_line=$(sed -n '/block-start: footer/=' new.html)
-end_line=$(sed -n '/block-end: footer/=' new.html)
+SRC_PATH=./src
+BLOCKS_PATH=./src/blocks
 
-if [[ -n "$start_line" && -n "$end_line" ]]; then
-  sed -i "" \
-      -e "$((start_line + 1)),$((end_line - 1))d" \
-      -e "${start_line}r src/blocks/header.html" \
-      new.html > out.html
-else
-  echo "Pattern not found in new.html"
+block=$1
+block=$(basename "$block")
+block=${block%.*}
+block_path="$BLOCKS_PATH/$block.html"
+
+if [[ ! -f "$block_path" ]]; then
+  echo "$block_path: file not found"
+  exit 1
 fi
+
+targets=$(find $SRC_PATH -path $BLOCKS_PATH -prune \
+  -o -type file -name '*.html' -print)
+
+for target in "$SRC_PATH"/*.html "$SRC_PATH"/**/*.html
+do
+  if [[ "$target" == "$BLOCKS_PATH"* ]]; then
+    continue
+  fi
+
+  start_line_number=$(sed -n "/block-start: $block/=" $target)
+  end_line_number=$(sed -n "/block-end: $block/=" $target)
+
+  if [[ -z "$start_line_number" || -z "$end_line_number" ]]; then
+    echo "$target: '$block' block not found"
+    continue
+  fi
+
+  if [[ "$start_line_number" == "$end_line_number" ]]; then
+    echo "$target: '$block' block start and block end on the same line $start_line_number"
+    continue
+  fi
+
+  if [[ "$((start_line_number + 1))" == "$end_line_number" ]]; then
+    sed -i "" -e "${start_line_number}r $block_path" "$target"
+    echo "$target: '$block' updated"
+    continue
+  fi
+
+  sed -i "" \
+    -e "$((start_line_number + 1)),$((end_line_number - 1))d" \
+    -e "${start_line_number}r $block_path" \
+    "$target"
+      echo "$target: '$block' updated"
+    done
