@@ -35,11 +35,11 @@ __prebuild:
             $(DIST_PATH)/$(WRITING_DIR) \
             $(DIST_PATH)/$(PROJECTS_DIR)
 $(DIST_PATH)/$(BLOCKS_DIR)/%: $(SRC_PATH)/$(BLOCKS_DIR)/%
-	@echo "==> Update $< block in pages"
+	@echo "\n==> Update $< block in pages"
 	cp $< $@
 	@./scripts/block.sh $<
 $(DIST_PATH)/%: $(SRC_PATH)/%
-	@echo "==> Build $<"
+	@echo "\n==> Build $<"
 	cp $< $@
 
 .PHONY: clean
