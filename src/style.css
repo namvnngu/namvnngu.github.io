@@ -168,6 +168,8 @@ h6 {
 
 body {
   font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--text-base--line-height);
   color: var(--color-fg);
   background-color: var(--color-bg);
   max-width: 48rem;
@@ -235,6 +237,10 @@ body::before {
 .text-sm {
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
+}
+.text-lg {
+  font-size: var(--text-lg);
+  line-height: var(--text-lg--line-height);
 }
 
 .line-clamp-3 {
@@ -317,8 +323,6 @@ a[href^="http"]::after {
   align-items: center;
 }
 .brief > .description {
-  font-size: var(--text-base);
-  line-height: var(--text-base--line-height);
   color: var(--color-mono-08);
 }
 .brief > .chips {
