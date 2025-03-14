@@ -19,8 +19,8 @@ do
     continue
   fi
 
-  start_line_number=$(sed -n "/block-start: $block/=" $target)
-  end_line_number=$(sed -n "/block-end: $block/=" $target)
+  start_line_number=$(sed -n "/<!--block-start: $block-->/=" $target)
+  end_line_number=$(sed -n "/<!--block-end: $block-->/=" $target)
 
   if [[ -z "$start_line_number" || -z "$end_line_number" ]]; then
     echo "$target: '$block' block not found"
