@@ -233,6 +233,11 @@ a {
     text-decoration-color: var(--color-fg);
   }
 }
+a[data-line="none"] {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  transition: none;
+}
 a[href^="http"]::after {
   --anchor-icon-color: var(--color-mono-06);
   --anchor-icon-size: 0.75em;
