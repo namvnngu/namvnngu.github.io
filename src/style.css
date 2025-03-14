@@ -70,10 +70,6 @@
   --transition-duration-sm: 150ms;
   --transition-duration-md: 250ms;
   --transition-duration-lg: 350ms;
-
-  --animation-duration-sm: 1s;
-  --animation-duration-md: 2s;
-  --animation-duration-lg: 3s;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -255,22 +251,6 @@ body::before {
   text-overflow: ellipsis;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-}
-
-.animation-rise-up {
-  animation-name: rise-up;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-out;
-  animation-duration: var(--animation-duration-sm);
-}
-@keyframes rise-up {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 100px, 0);
-  }
-  50% {
-    opacity: 0.25;
-  }
 }
 
 /* == BLOCK & EXCEPTION == */
