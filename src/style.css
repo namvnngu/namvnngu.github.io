@@ -219,6 +219,9 @@ body::before {
 
 /* == UTILITY == */
 
+.-mt-4 {
+  margin-top: calc(var(--spacing) * -4);
+}
 .mt-10 {
   margin-top: calc(var(--spacing) * 10);
 }
@@ -232,6 +235,9 @@ body::before {
 
 .text-mono-05 {
   color: var(--color-mono-05);
+}
+.text-mono-07 {
+  color: var(--color-mono-07);
 }
 
 .text-sm {
