@@ -286,10 +286,11 @@ a {
   text-decoration-thickness: calc(var(--spacing) * 0.35);
   text-underline-offset: calc(var(--spacing) * 1);
 }
-a:hover,
-a:active {
-  text-decoration-color: var(--color-fg);
-  -webkit-text-decoration-color: var(--color-fg);
+@media (hover: hover) {
+  a:hover {
+    text-decoration-color: var(--color-fg);
+    -webkit-text-decoration-color: var(--color-fg);
+  }
 }
 a[data-type="no-underline"] {
   text-decoration-line: none;
