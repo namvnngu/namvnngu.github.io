@@ -275,21 +275,21 @@ h3 {
 }
 
 a {
-  color: currentColor;
-  transition-property:
-    text-decoration-color,
-    -webkit-text-decoration-color;
-  transition-duration: var(--transition-duration-lg);
+  color: inherit;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
   text-decoration-line: underline;
   text-decoration-color: var(--color-mono-04);
-  -webkit-text-decoration-color: var(--color-mono-04);
   text-decoration-thickness: calc(var(--spacing) * 0.35);
   text-underline-offset: calc(var(--spacing) * 1);
 }
 @media (hover: hover) {
+  a {
+    transition-property: text-decoration-color;
+    transition-duration: var(--transition-duration-lg);
+  }
   a:hover {
     text-decoration-color: var(--color-fg);
-    -webkit-text-decoration-color: var(--color-fg);
   }
 }
 a[data-type="no-underline"] {
