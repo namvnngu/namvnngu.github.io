@@ -376,3 +376,28 @@ a[href^="http"]::after {
 .writing h3:hover a::after {
   opacity: 1;
 }
+
+.self-drawing {
+  --self-drawing-duration: 5s;
+
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+.self-drawing path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation-name: self-drawing;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: var(--self-drawing-duration);
+}
+@keyframes self-drawing {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
