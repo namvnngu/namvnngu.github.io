@@ -208,8 +208,8 @@ h2 {
 }
 
 h3 {
-  font-size: var(--text-xl);
-  line-height: var(--text-xl--line-height);
+  font-size: var(--text-lg);
+  line-height: var(--text-lg--line-height);
   font-weight: var(--font-weight-semibold);
   margin-bottom: calc(var(--spacing) * 4);
 }
