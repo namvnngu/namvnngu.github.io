@@ -243,7 +243,6 @@ a {
 a[data-line="none"] {
   -webkit-text-decoration: none;
   text-decoration: none;
-  transition: none;
 }
 a[href^="http"]::after {
   --anchor-icon-color: var(--color-mono-06);
@@ -362,10 +361,6 @@ a[href^="http"]::after {
 
 .writing p {
   margin-bottom: calc(var(--spacing) * 6);
-}
-.writing h2 a,
-.writing h3 a {
-  text-decoration: none;
 }
 .writing h2 a::after,
 .writing h3 a::after {
