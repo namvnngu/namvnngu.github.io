@@ -23,13 +23,30 @@
   <meta property="og:url" content="https://namvnngu.github.io/writing" />
   <link rel="canonical" href="https://namvnngu.github.io/writing" />
   <style>
-    ul {
+    .list {
       list-style-type: none;
       padding-left: 0;
     }
 
-    time {
-      display: block
+    .list-item {
+      cursor: pointer;
+    }
+
+    .list-item__title {
+      text-decoration-line: underline;
+      text-decoration-color: var(--color-mono-04);
+    }
+
+    @media (hover: hover) {
+      .list-item__title {
+        transition-property: text-decoration-color;
+        transition-duration: var(--transition-duration-lg);
+        transition-timing-function: ease;
+      }
+
+      .list-item:hover .list-item__title {
+        text-decoration-color: var(--color-fg);
+      }
     }
   </style>
 </head>
@@ -47,32 +64,40 @@
 
   <main>
     <h1>Writing</h1>
-    <p class="[ -mt-4 text-mono-07 ]">My thoughts on my interests.</p>
+    <p class="[ -mt-4 color-mono-07 ]">My thoughts on my interests.</p>
 
     <section>
       <h2>2025</h2>
-      <ul>
-        <li>
-          <a data-line="none">Today is the greatest day. Love yourself today than yesterday.</a>
-          <time datetime="2025-03-01">March 01, 2025</time>
+      <ul class="[ list ] [ flow-y-3 ]">
+        <li class="[ list-item ] [ text-lg ]">
+          <a data-line="none">
+            <div class="[ list-item__title ]">Today is the greatest day. Love yourself today than yesterday.</div>
+            <time class="[ color-mono-06 text-sm ]" datetime="2025-03-01">March 01, 2025</time>
+          </a>
         </li>
-        <li>
-          <a data-line="none">Do you have a happy life?</a>
-          <time datetime="2025-02-01">February 01, 2025</time>
+        <li class="[ list-item ] [ text-lg ]">
+          <a data-line="none">
+            <div class="[ list-item__title ]">Do you have a happy life?</div>
+            <time class="[ color-mono-06 text-sm ]" datetime="2025-02-01">February 01, 2025</time>
+          </a>
         </li>
       </ul>
     </section>
 
     <section>
       <h2>2024</h2>
-      <ul>
-        <li>
-          <a data-line="none">Today is the greatest day</a>
-          <time datetime="2024-03-01">March 01, 2024</time>
+      <ul class="[ list ] [ flow-y-3 ]">
+        <li class="[ list-item ] [ text-lg ]">
+          <a data-line="none">
+            <div class="[ list-item__title ]">Today is the greatest day. Love yourself today than yesterday.</div>
+            <time class="[ color-mono-06 text-sm ]" datetime="2024-03-01">March 01, 2024</time>
+          </a>
         </li>
-        <li>
-          <a data-line="none">Do you have a happy life?</a>
-          <time datetime="2024-02-01">February 01, 2024</time>
+        <li class="[ list-item ] [ text-lg ]">
+          <a data-line="none">
+            <div class="[ list-item__title ]">Do you have a happy life?</div>
+            <time class="[ color-mono-06 text-sm ]" datetime="2024-02-01">February 01, 2024</time>
+          </a>
         </li>
       </ul>
     </section>
