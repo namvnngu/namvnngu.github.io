@@ -201,6 +201,7 @@ h1 {
   font-size: var(--text-4xl);
   line-height: var(--text-4xl--line-height);
   font-weight: var(--font-weight-extrabold);
+  margin-top: calc(var(--spacing) * 8);
   margin-bottom: calc(var(--spacing) * 8);
 }
 
@@ -208,6 +209,7 @@ h2 {
   font-size: var(--text-2xl);
   line-height: var(--text-2xl--line-height);
   font-weight: var(--font-weight-bold);
+  margin-top: calc(var(--spacing) * 6);
   margin-bottom: calc(var(--spacing) * 6);
 }
 
@@ -215,6 +217,7 @@ h3 {
   font-size: var(--text-lg);
   line-height: var(--text-lg--line-height);
   font-weight: var(--font-weight-semibold);
+  margin-top: calc(var(--spacing) * 4);
   margin-bottom: calc(var(--spacing) * 4);
 }
 
@@ -318,6 +321,9 @@ a[href^="http"]::after {
 .-mt-4 {
   margin-top: calc(var(--spacing) * -4);
 }
+.mt-0 {
+  margin-top: 0;
+}
 .mt-2 {
   margin-top: calc(var(--spacing) * 2);
 }
@@ -355,11 +361,4 @@ a[href^="http"]::after {
   border-color: var(--color-mono-04);
   border-radius: var(--radius-sm);
   padding: calc(var(--spacing) * 1) calc(var(--spacing) * 1.5);
-}
-
-.writing h2 {
-  margin-top: calc(var(--spacing) * 6);
-}
-.writing h3 {
-  margin-top: calc(var(--spacing) * 6);
 }
