@@ -29,7 +29,7 @@
 <body>
   <!--block-start: header-->
   <header>
-    <nav class="[ space-x-4 ]">
+    <nav class="[ flow-x-4 ]">
       <a href="/">Home</a>
       <a href="/projects">Projects</a>
       <a href="/writing">Writing</a>
@@ -43,32 +43,38 @@
       Hi there. Welcome to my adventures. Building software and solving problems. Sharing my thoughts on my interests.
     </p>
 
-    <div class="[ grid grid-item-min-w-70 gap-10 ] [ mt-10 ]">
+    <div class="[ grid grid-item-min-w-70 gap-10 ]">
       <section>
         <h2>Projects</h2>
         <div class="[ grid grid-item-min-w-40 gap-6 ]">
           <article class="[ brief ]">
-            <h3 class="[ title ]">
-              <a href="https://github.com/namvnngu" target="_blank">Project 1</a>
+            <h3 class="[ brief__title ]">
+              <a class="[ brief__link ]" href="https://github.com/namvnngu" target="_blank">Project 1</a>
             </h3>
-            <p class="[ description ] [ line-clamp-3 ]">
+            <p class="[ brief__description ] [ line-clamp-3 ]">
               Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
               a galley of type and scrambled it to make a type specimen book.
             </p>
-            <p class="[ chips ]"><span>TypeScript</span><span>React</span></p>
+            <p class="[ brief__chips ] [ flow-x-1 ]">
+              <span class="[ brief__chip ]">TypeScript</span>
+              <span class="[ brief__chip ]">React</span>
+            </p>
           </article>
           <article class="[ brief ]">
-            <h3 class="[ title ]">
-              <a href="https://github.com/namvnngu" target="_blank">Project 2</a>
+            <h3 class="[ brief__title ]">
+              <a class="[ brief__link ]" href="https://github.com/namvnngu" target="_blank">Project 2</a>
             </h3>
-            <p class="[ description ] [ line-clamp-3 ]">
+            <p class="[ brief__description ] [ line-clamp-3 ]">
               Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
             </p>
-            <p class="[ chips ]"><span>C</span><span>Raylib</span></p>
+            <p class="[ brief__chips ] [ flow-x-1 ]">
+              <span class="[ brief__chip ]">C</span>
+              <span class="[ brief__chip ]">Raylib</span>
+            </p>
           </article>
           <article class="[ brief ]">
-            <h3 class="[ title ]"><a href="/projects">All projects</a></h3>
-            <p class="[ description ]">My programming artifacts.</p>
+            <h3 class="[ brief__title ]"><a class="[ brief__link ]" href="/projects">All projects</a></h3>
+            <p class="[ brief__description ]">My programming artifacts.</p>
           </article>
         </div>
       </section>
@@ -77,30 +83,30 @@
         <h2>Writing</h2>
         <div class="[ writing ] [ grid grid-item-min-w-40 gap-6 ]">
           <article class="[ brief ]">
-            <h3 class="[ title ]"><a href="/writing">Writing 1</a></h3>
-            <p class="[ description ] [ line-clamp-3 ]">
+            <h3 class="[ brief__title ]"><a class="[ brief__link ]" href="/writing">Writing 1</a></h3>
+            <p class="[ brief__description ] [ line-clamp-3 ]">
               Lorem Ipsum has been the industry's standard dummy text ever
               since the 1500s.
             </p>
           </article>
           <article class="[ brief ]">
-            <h3 class="[ title ]"><a href="/writing">Writing 2</a></h3>
-            <p class="[ description ] [ line-clamp-3 ]">
+            <h3 class="[ brief__title ]"><a class="[ brief__link ]" href="/writing">Writing 2</a></h3>
+            <p class="[ brief__description ] [ line-clamp-3 ]">
               Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
               a galley of type and scrambled it to make a type specimen book.
             </p>
           </article>
           <article class="[ brief ]">
-            <h3 class="[ title ]"><a href="/writing">All writing</a></h3>
-            <p class="[ description ]">My thoughts on my interests.</p>
+            <h3 class="[ brief__title ]"><a class="[ brief__link ]" href="/writing">All writing</a></h3>
+            <p class="[ brief__description ]">My thoughts on my interests.</p>
           </article>
         </div>
       </section>
     </div>
 
-    <section class="[ mt-10 ]">
+    <section>
       <h2>Connect</h2>
-      <p class="[ space-x-4 ]">
+      <p class="[ flow-x-4 ]">
         <a href="mailto:vnngu@outlook.com">vnngu@outlook.com</a>
         <a href="https://github.com/namvnngu" target="_blank">github/namvnngu</a>
       </p>
@@ -108,7 +114,7 @@
   </main>
 
   <!--block-start: footer-->
-  <footer class="[ text-sm text-mono-05 ]">
+  <footer class="[ text-sm color-mono-05 ]">
     Always remember to love yourself. ٩( ᐛ )و
   </footer>
   <!--block-end: footer-->
