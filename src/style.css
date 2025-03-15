@@ -320,6 +320,34 @@ footer {
   -webkit-box-orient: vertical;
 }
 
+.self-drawing {
+  --self-drawing-stroke-color: var(--color-fg);
+  --self-drawing-duration: 4s;
+  --self-drawing-direction: normal;
+  --self-drawing-iteration-count: 1;
+  --self-drawing-fill-mode: forwards;
+  --self-drawing-timing-function: linear;
+}
+.self-drawing path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  stroke: var(--self-drawing-stroke-color);
+  animation-name: self-drawing;
+  animation-duration: var(--self-drawing-duration);
+  animation-direction: var(--self-drawing-direction);
+  animation-iteration-count: var(--self-drawing-iteration-count);
+  animation-fill-mode: var(--self-drawing-fill-mode);
+  animation-timing-function: var(--self-drawing-timing-function);
+}
+@keyframes self-drawing {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 /* == BLOCK & EXCEPTION == */
 
 .navbar {
@@ -372,27 +400,7 @@ footer {
   opacity: 1;
 }
 
-.self-drawing {
-  --self-drawing-duration: 5s;
-
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-}
-.self-drawing path {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  animation-name: self-drawing;
-  animation-direction: alternate;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-duration: var(--self-drawing-duration);
-}
-@keyframes self-drawing {
-  from {
-    stroke-dashoffset: 1;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
+.navbar__logo {
+  display: inline-block;
+  vertical-align: middle;
 }
