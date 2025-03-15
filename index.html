@@ -24,12 +24,23 @@
     content="Hi there. Welcome to my adventures. Building software and solving problems. Sharing my thoughts on my interests." />
   <meta property="og:url" content="https://namvnngu.github.io" />
   <link rel="canonical" href="https://namvnngu.github.io" />
+
+  <style>
+    .brief-lists {
+      --grid-column-min-width: calc(var(--spacing) * 70);
+      --grid-gap: calc(var(--spacing) * 10);
+    }
+
+    .connect {
+      --flow-x-space: calc(var(--spacing) * 4);
+    }
+  </style>
 </head>
 
 <body>
   <!--block-start: header-->
   <header>
-    <nav class="[ flow-x-4 ]">
+    <nav class="[ navbar ] [ flow-x ]">
       <a href="/">Home</a>
       <a href="/projects">Projects</a>
       <a href="/writing">Writing</a>
@@ -43,10 +54,10 @@
       Hi there. Welcome to my adventures. Building software and solving problems. Sharing my thoughts on my interests.
     </p>
 
-    <div class="[ grid grid-item-min-w-70 gap-10 ]">
+    <div class="[ brief-lists ] [ grid ]">
       <section>
         <h2 class="[ mt-0 ]">Projects</h2>
-        <div class="[ grid grid-item-min-w-40 gap-6 ]">
+        <div class="[ brief-list ] [ grid ]">
           <article class="[ brief ]">
             <h3 class="[ brief__title ] [ mt-0 ]">
               <a class="[ brief__link ]" href="https://github.com/namvnngu" target="_blank">Project 1</a>
@@ -55,7 +66,7 @@
               Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
               a galley of type and scrambled it to make a type specimen book.
             </p>
-            <p class="[ brief__chips ] [ flow-x-1 ] [ mt-2 ]">
+            <p class="[ brief__chips ] [ flow-x ] [ mt-2 ]">
               <span class="[ brief__chip ]">TypeScript</span>
               <span class="[ brief__chip ]">React</span>
             </p>
@@ -67,7 +78,7 @@
             <p class="[ brief__description ] [ line-clamp-3 ]">
               Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
             </p>
-            <p class="[ brief__chips ] [ flow-x-1 ] [ mt-2 ]">
+            <p class="[ brief__chips ] [ flow-x ] [ mt-2 ]">
               <span class="[ brief__chip ]">C</span>
               <span class="[ brief__chip ]">Raylib</span>
             </p>
@@ -83,7 +94,7 @@
 
       <section>
         <h2 class="[ mt-0 ]">Writing</h2>
-        <div class="[ grid grid-item-min-w-40 gap-6 ]">
+        <div class="[ brief-list ] [ grid ]">
           <article class="[ brief ]">
             <h3 class="[ brief__title ] [ mt-0 ]">
               <a class="[ brief__link ]" href="/writing/2025-03-01-do-you-a-happy-life">Writing 1</a>
@@ -114,7 +125,7 @@
 
     <section>
       <h2 class="[ mt-0 ]">Connect</h2>
-      <p class="[ flow-x-4 ]">
+      <p class="[ connect ] [ flow-x ]">
         <a href="mailto:vnngu@outlook.com">vnngu@outlook.com</a>
         <a href="https://github.com/namvnngu" target="_blank">github/namvnngu</a>
       </p>
@@ -122,7 +133,7 @@
   </main>
 
   <!--block-start: footer-->
-  <footer class="[ text-sm color-mono-08 ]">
+  <footer>
     Always remember to love yourself. ٩( ᐛ )و
   </footer>
   <!--block-end: footer-->
