@@ -24,12 +24,15 @@
   <link rel="canonical" href="https://namvnngu.github.io/writing" />
   <style>
     .list {
+      --flow-y-space: calc(var(--spacing) * 3);
       list-style-type: none;
       padding-left: 0;
     }
 
     .list-item {
       cursor: pointer;
+      font-size: var(--text-lg);
+      line-height: var(--text-lg--line-height);
     }
 
     .list-item__title {
@@ -48,13 +51,19 @@
         text-decoration-color: var(--color-fg);
       }
     }
+
+    .list-item__time {
+      color: var(--color-mono-06);
+      font-size: var(--text-sm);
+      line-height: var(--text-sm--line-height);
+    }
   </style>
 </head>
 
 <body>
   <!--block-start: header-->
   <header>
-    <nav class="[ flow-x-4 ]">
+    <nav class="[ navbar ] [ flow-x ]">
       <a href="/">Home</a>
       <a href="/projects">Projects</a>
       <a href="/writing">Writing</a>
@@ -68,17 +77,17 @@
 
     <section>
       <h2 class="[ mt-0 ]">2025</h2>
-      <ul class="[ list ] [ flow-y-3 ]">
-        <li class="[ list-item ] [ text-lg ]">
+      <ul class="[ list ] [ flow-y ]">
+        <li class="[ list-item ]">
           <a href="/writing/2025-03-01-do-you-a-happy-life" data-line="none">
             <p class="[ list-item__title ]">Today is the greatest day. Love yourself today than yesterday.</p>
-            <time class="[ list-item__time ] [ color-mono-06 text-sm ]" datetime="2025-03-01">March 01, 2025</time>
+            <time class="[ list-item__time ]" datetime="2025-03-01">March 01, 2025</time>
           </a>
         </li>
-        <li class="[ list-item ] [ text-lg ]">
+        <li class="[ list-item ]">
           <a href="/writing/2025-03-01-do-you-a-happy-life" data-line="none">
             <p class="[ list-item__title ]">Do you have a happy life?</p>
-            <time class="[ list-item__time ] [ color-mono-06 text-sm ]" datetime="2025-02-01">February 01, 2025</time>
+            <time class="[ list-item__time ]" datetime="2025-02-01">February 01, 2025</time>
           </a>
         </li>
       </ul>
@@ -86,17 +95,17 @@
 
     <section>
       <h2 class="[ mt-0 ]">2024</h2>
-      <ul class="[ list ] [ flow-y-3 ]">
-        <li class="[ list-item ] [ text-lg ]">
+      <ul class="[ list ] [ flow-y ]">
+        <li class="[ list-item ]">
           <a href="/writing/2025-03-01-do-you-a-happy-life" data-line="none">
             <p class="[ list-item__title ]">Today is the greatest day. Love yourself today than yesterday.</p>
-            <time class="[ list-item__time ] [ color-mono-06 text-sm ]" datetime="2024-03-01">March 01, 2024</time>
+            <time class="[ list-item__time ]" datetime="2024-03-01">March 01, 2024</time>
           </a>
         </li>
-        <li class="[ list-item ] [ text-lg ]">
+        <li class="[ list-item ]">
           <a href="/writing/2025-03-01-do-you-a-happy-life" data-line="none">
             <p class="[ list-item__title ]">Do you have a happy life?</p>
-            <time class="[ list-item__time ] [ color-mono-06 text-sm ]" datetime="2024-02-01">February 01, 2024</time>
+            <time class="[ list-item__time ]" datetime="2024-02-01">February 01, 2024</time>
           </a>
         </li>
       </ul>
@@ -104,7 +113,7 @@
   </main>
 
   <!--block-start: footer-->
-  <footer class="[ text-sm color-mono-08 ]">
+  <footer>
     Always remember to love yourself. ٩( ᐛ )و
   </footer>
   <!--block-end: footer-->

@@ -228,7 +228,7 @@ a {
   text-decoration-line: underline;
   text-decoration-color: var(--color-mono-04);
   text-decoration-thickness: calc(var(--spacing) * 0.35);
-  text-underline-offset: calc(var(--spacing) * 1);
+  text-underline-offset: var(--spacing);
 }
 @media (hover: hover) {
   a {
@@ -263,49 +263,40 @@ a[href^="http"]::after {
   background-size: 100% 100%;
 }
 
+footer {
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  color: var(--color-mono-08);
+}
+
 /* == COMPOSITION == */
 
-.flow-x-1 > :not(:first-child) {
-  margin-left: calc(var(--spacing) * 1);
-}
-.flow-x-4 > :not(:first-child) {
-  margin-left: calc(var(--spacing) * 4);
+.flow-x > :not(:first-child) {
+  margin-left: var(--flow-x-space);
 }
 
-.flow-y-3 > :not(:first-child) {
-  margin-top: calc(var(--spacing) * 3);
+.flow-y > :not(:first-child) {
+  margin-top: var(--flow-y-space);
 }
 
-.grid-item-min-w-40 {
-  --grid-item-min-width: calc(var(--spacing) * 40);
-}
-.grid-item-min-w-70 {
-  --grid-item-min-width: calc(var(--spacing) * 70);
-}
 .grid {
+  --grid-column-min-width: 15ch;
+  --grid-gap: 1rem;
+
   display: grid;
+  gap: var(--grid-gap);
   grid-template-columns: repeat(
     auto-fit,
-    minmax(min(100%, var(--grid-item-min-width)), 1fr)
+    minmax(min(100%, var(--grid-column-min-width)), 1fr)
   );
 }
 
 /* == UTILITY == */
 
-.color-mono-06 {
-  color: var(--color-mono-06);
-}
 .color-mono-07 {
   color: var(--color-mono-07);
 }
-.color-mono-08 {
-  color: var(--color-mono-08);
-}
 
-.text-sm {
-  font-size: var(--text-sm);
-  line-height: var(--text-sm--line-height);
-}
 .text-lg {
   font-size: var(--text-lg);
   line-height: var(--text-lg--line-height);
@@ -321,13 +312,6 @@ a[href^="http"]::after {
   margin-top: calc(var(--spacing) * 2);
 }
 
-.gap-6 {
-  gap: calc(var(--spacing) * 6);
-}
-.gap-10 {
-  gap: calc(var(--spacing) * 10);
-}
-
 .line-clamp-3 {
   overflow: hidden;
   display: -webkit-box;
@@ -338,6 +322,14 @@ a[href^="http"]::after {
 
 /* == BLOCK & EXCEPTION == */
 
+.navbar {
+  --flow-x-space: calc(var(--spacing) * 4);
+}
+
+.brief-list {
+  --grid-column-min-width: calc(var(--spacing) * 40);
+  --grid-gap: calc(var(--spacing) * 6);
+}
 .brief__title {
   display: inline-block;
   color: var(--color-mono-10);
@@ -349,6 +341,9 @@ a[href^="http"]::after {
 .brief__description {
   color: var(--color-mono-08);
 }
+.brief__chips {
+  --flow-x-space: var(--spacing);
+}
 .brief__chip {
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
@@ -357,7 +352,7 @@ a[href^="http"]::after {
   border-style: solid;
   border-color: var(--color-mono-04);
   border-radius: var(--radius-sm);
-  padding: calc(var(--spacing) * 1) calc(var(--spacing) * 1.5);
+  padding: var(--spacing) calc(var(--spacing) * 1.5);
 }
 
 .writing p {
@@ -366,11 +361,11 @@ a[href^="http"]::after {
 .writing h2 a::after,
 .writing h3 a::after {
   content: " #";
-  color: var(--color-mono-05);
   opacity: 0;
+  color: var(--color-mono-05);
   transition-property: opacity;
-  transition-duration: var(--transition-duration-lg);
   transition-timing-function: ease;
+  transition-duration: var(--transition-duration-lg);
 }
 .writing h2:hover a::after,
 .writing h3:hover a::after {
