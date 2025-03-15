@@ -175,7 +175,7 @@ body {
 }
 
 body > :not(:first-child) {
-  margin-top: calc(var(--spacing) * 20);
+  margin-top: calc(var(--spacing) * 16);
 }
 
 body::before {
@@ -193,10 +193,15 @@ body::before {
   background-position: 0 0;
 }
 
+main > :nth-child(n + 3) {
+  margin-top: calc(var(--spacing) * 10);
+}
+
 h1 {
   font-size: var(--text-4xl);
   line-height: var(--text-4xl--line-height);
   font-weight: var(--font-weight-extrabold);
+  margin-top: calc(var(--spacing) * 8);
   margin-bottom: calc(var(--spacing) * 8);
 }
 
@@ -204,13 +209,15 @@ h2 {
   font-size: var(--text-2xl);
   line-height: var(--text-2xl--line-height);
   font-weight: var(--font-weight-bold);
+  margin-top: calc(var(--spacing) * 6);
   margin-bottom: calc(var(--spacing) * 6);
 }
 
 h3 {
-  font-size: var(--text-xl);
-  line-height: var(--text-xl--line-height);
+  font-size: var(--text-lg);
+  line-height: var(--text-lg--line-height);
   font-weight: var(--font-weight-semibold);
+  margin-top: calc(var(--spacing) * 4);
   margin-bottom: calc(var(--spacing) * 4);
 }
 
@@ -259,8 +266,15 @@ a[href^="http"]::after {
 
 /* == COMPOSITION == */
 
-.space-x-4 > :not(:first-child) {
+.flow-x-1 > :not(:first-child) {
+  margin-left: calc(var(--spacing) * 1);
+}
+.flow-x-4 > :not(:first-child) {
   margin-left: calc(var(--spacing) * 4);
+}
+
+.flow-y-3 > :not(:first-child) {
+  margin-top: calc(var(--spacing) * 3);
 }
 
 .grid-item-min-w-40 {
@@ -279,25 +293,17 @@ a[href^="http"]::after {
 
 /* == UTILITY == */
 
-.-mt-4 {
-  margin-top: calc(var(--spacing) * -4);
+.color-mono-06 {
+  color: var(--color-mono-06);
 }
-.mt-10 {
-  margin-top: calc(var(--spacing) * 10);
-}
-
-.gap-6 {
-  gap: calc(var(--spacing) * 6);
-}
-.gap-10 {
-  gap: calc(var(--spacing) * 10);
-}
-
-.text-mono-05 {
-  color: var(--color-mono-05);
-}
-.text-mono-07 {
+.color-mono-07 {
   color: var(--color-mono-07);
+}
+.color-mono-08 {
+  color: var(--color-mono-08);
+}
+.color-mono-10 {
+  color: var(--color-mono-10);
 }
 
 .text-sm {
@@ -307,6 +313,23 @@ a[href^="http"]::after {
 .text-lg {
   font-size: var(--text-lg);
   line-height: var(--text-lg--line-height);
+}
+
+.-mt-4 {
+  margin-top: calc(var(--spacing) * -4);
+}
+.mt-0 {
+  margin-top: 0;
+}
+.mt-2 {
+  margin-top: calc(var(--spacing) * 2);
+}
+
+.gap-6 {
+  gap: calc(var(--spacing) * 6);
+}
+.gap-10 {
+  gap: calc(var(--spacing) * 10);
 }
 
 .line-clamp-3 {
@@ -319,28 +342,41 @@ a[href^="http"]::after {
 
 /* == BLOCK & EXCEPTION == */
 
-.brief > .title {
+.brief__title {
   display: inline-block;
-  color: var(--color-mono-10);
 }
-.brief > .title > a {
+.brief__link {
   display: flex;
   align-items: center;
 }
-.brief > .description {
-  color: var(--color-mono-08);
-}
-.brief > .chips {
-  margin-top: calc(var(--spacing) * 2);
-}
-.brief > .chips > :not(:first-child) {
-  margin-left: calc(var(--spacing) * 1);
-}
-.brief > .chips > * {
+.brief__chip {
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
   color: var(--color-mono-08);
-  border: 1px solid var(--color-mono-04);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--color-mono-04);
   border-radius: var(--radius-sm);
   padding: calc(var(--spacing) * 1) calc(var(--spacing) * 1.5);
+}
+
+.writing p {
+  margin-bottom: calc(var(--spacing) * 6);
+}
+.writing h2 a,
+.writing h3 a {
+  text-decoration: none;
+}
+.writing h2 a::after,
+.writing h3 a::after {
+  content: " #";
+  color: var(--color-mono-05);
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: var(--transition-duration-lg);
+  transition-timing-function: ease;
+}
+.writing h2:hover a::after,
+.writing h3:hover a::after {
+  opacity: 1;
 }
