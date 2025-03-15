@@ -356,3 +356,10 @@ a[href^="http"]::after {
   border-radius: var(--radius-sm);
   padding: calc(var(--spacing) * 1) calc(var(--spacing) * 1.5);
 }
+
+.writing h2 {
+  margin-top: calc(var(--spacing) * 6);
+}
+.writing h3 {
+  margin-top: calc(var(--spacing) * 6);
+}

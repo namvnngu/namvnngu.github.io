@@ -13,7 +13,7 @@ if [[ ! -f "$block_path" ]]; then
   exit 1
 fi
 
-for target in "$SRC_PATH"/*.html "$SRC_PATH"/**/*.html
+for target in "$SRC_PATH"/*.html "$SRC_PATH"/**/*.html "$SRC_PATH"/**/**/*.html
 do
   if [[ "$target" == "$BLOCKS_PATH"* ]]; then
     continue
