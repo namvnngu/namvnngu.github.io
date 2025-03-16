@@ -1,55 +1,64 @@
 /* Reference from Pandoc's code highlighting */
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 .codeblock *,
 .codeblock *::before,
 .codeblock *::after {
   box-sizing: content-box;
 }
+
 .codeblock {
+  --codeblock-line-number-width: calc(var(--spacing) * 5);
+  --codeblock-code-translate-x: calc(var(--spacing) * -2);
+  --codeblock-line-number-translate-x: calc(var(--spacing) * -6);
+
   overflow: auto;
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
   background-color: var(--color-bg);
 }
+
 .codeblock > pre {
-  position: relative;
-  white-space: pre;
-  margin-left: calc(var(--spacing) * 8);
-  padding-left: calc(var(--spacing) * 3);
   border-left-width: 1px;
   border-left-style: solid;
   border-left-color: var(--color-mono-05);
+  margin-left: var(--codeblock-line-number-width);
 }
+
 .codeblock > pre > code {
+  white-space: pre;
   counter-reset: source-line 0;
 }
+
 .codeblock > pre > code > span {
   display: inline-block;
   color: inherit;
   text-decoration: inherit;
-  position: relative;
-  left: calc(var(--spacing) * -16);
+  transform: translate3d(var(--codeblock-code-translate-x), 0, 0);
   counter-increment: source-line;
 }
+
 .codeblock > pre > code > span > a:first-child::before {
-  text-decoration: underline;
   content: counter(source-line);
-  position: relative;
-  left: calc(var(--spacing) * -4);
-  text-align: right;
-  vertical-align: baseline;
-  border: none;
   display: inline-block;
+  border: none;
+  text-align: right;
+  text-decoration: underline;
+  vertical-align: baseline;
+  color: var(--color-mono-05);
+  width: var(--codeblock-line-number-width);
+  transform: translate3d(var(--codeblock-line-number-translate-x), 0, 0);
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  padding: 0 4px;
-  width: 4em;
-  color: var(--color-mono-05);
 }
+
 .codeblock code span    { color: var(--light, #1f1c1b) var(--dark, #cfcfc2); } /* Normal */
 .codeblock code span.al { color: var(--light, #bf0303) var(--dark, #95da4c); background-color: var(--light, #f7e6e6) var(--dark, #4d1f24); font-weight: var(--font-weight-bold); } /* Alert */
 .codeblock code span.an { color: var(--light, #ca60ca) var(--dark, #3f8058); } /* Annotation */
