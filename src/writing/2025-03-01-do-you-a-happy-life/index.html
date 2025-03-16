@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <!--block-start: static-head-->
+  <!--block-start: head-common-->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="Nam Nguyen" />
@@ -10,11 +10,14 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Nam Nguyen" />
   <meta property="og:image" content="https://namvnngu.github.io/images/favicon-light.svg">
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/styles/common.css" />
   <link rel="icon" href="/images/favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme:no-preference)" />
   <link rel="icon" href="/images/favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme:dark)" />
   <link rel="icon" href="/images/favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme:light)" />
-  <!--block-end: static-head-->
+  <!--block-end: head-common-->
+  <!--block-start: style-code-->
+  <link rel="stylesheet" href="/styles/code.css" />
+  <!--block-end: style-code-->
 
   <title>Do you have a happy life?</title>
   <meta property="og:title" content="Nam Nguyen" />
@@ -53,12 +56,12 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.</p>
 
-<div class="codeblock"><pre><code><span id="cb1-1"><a href="#cb1-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<div class="codeblock" id="cb1"><pre><code><span id="cb1-1"><a href="#cb1-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">void</span><span class="op">)</span> <span class="op">{</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a>  printf<span class="op">(</span><span class="st">&quot;Hello world!&quot;</span><span class="op">);</span></span>
 <span id="cb1-5"><a href="#cb1-5"></a><span class="op">}</span></span></code></pre></div>
-<div class="codeblock"><pre><code><span id="cb2-1"><a href="#cb2-1"></a><span class="co">-- | Inefficient quicksort in haskell.</span></span>
+<div class="codeblock" id="cb2"><pre><code><span id="cb2-1"><a href="#cb2-1"></a><span class="co">-- | Inefficient quicksort in haskell.</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="ot">qsort ::</span> (<span class="dt">Enum</span> a) <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> [a]</span>
 <span id="cb2-3"><a href="#cb2-3"></a>qsort []     <span class="ot">=</span> []</span>
 <span id="cb2-4"><a href="#cb2-4"></a>qsort (x<span class="op">:</span>xs) <span class="ot">=</span> qsort (<span class="fu">filter</span> (<span class="op">&lt;</span> x) xs) <span class="op">++</span> [x] <span class="op">++</span></span>

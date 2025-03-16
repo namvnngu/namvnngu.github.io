@@ -23,7 +23,6 @@ do
   end_line_number=$(sed -n "/<!--block-end: $block-->/=" $target)
 
   if [[ -z "$start_line_number" || -z "$end_line_number" ]]; then
-    echo "$target: '$block' block not found"
     continue
   fi
 

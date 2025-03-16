@@ -1,3 +1,5 @@
+/* Reference from Pandoc's code highlighting */
+
 .codeblock *,
 .codeblock *::before,
 .codeblock *::after {
