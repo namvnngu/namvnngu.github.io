@@ -353,6 +353,10 @@ footer {
 .navbar {
   --flow-x-space: calc(var(--spacing) * 4);
 }
+.navbar__logo {
+  display: inline-block;
+  vertical-align: middle;
+}
 
 .brief-list {
   --grid-column-min-width: calc(var(--spacing) * 40);
@@ -398,9 +402,4 @@ footer {
 .writing h2:hover a::after,
 .writing h3:hover a::after {
   opacity: 1;
-}
-
-.navbar__logo {
-  display: inline-block;
-  vertical-align: middle;
 }
