@@ -1,7 +1,9 @@
 # === FILES/DIRECTORIES ===
 
-SRC_PATH     := src
-DIST_PATH    := dist
+SRC_PATH       := src
+DIST_PATH      := dist
+TEMPLATES_PATH := templates
+GENERATED_PATH := generated
 
 BLOCKS_DIR   := blocks
 IMAGES_DIR   := images
@@ -38,6 +40,17 @@ $(DIST_PATH)/%: $(SRC_PATH)/%
 	@mkdir -p $$(dirname $@)
 	cp $< $@
 
+.PHONY: code
+code:
+	@echo "==> Generating $(GENERATED_PATH)/code.html..."
+	@mkdir -p $(GENERATED_PATH)
+	@pandoc $(TEMPLATES_PATH)/code.md \
+		--standalone \
+		--wrap=preserve \
+		--highlight-style=kate \
+		--output=$(GENERATED_PATH)/code.html
+	@echo "==> Generated $(GENERATED_PATH)/code.html!"
+
 .PHONY: clean
 clean:
-	rm -rf $(DIST_PATH)
+	rm -rf $(DIST_PATH) $(GENERATED_PATH)
