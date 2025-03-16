@@ -13,7 +13,8 @@ html {
 .codeblock {
   --codeblock-line-number-width: calc(var(--spacing) * 5);
   --codeblock-code-translate-x: calc(var(--spacing) * -2);
-  --codeblock-line-number-translate-x: calc(var(--spacing) * -6);
+  --codeblock-line-number-translate-x: calc(var(--spacing) * -5);
+  --codeblock-highlight-line-color: var(--light, #ffff00) var(--dark, #31340b);
 
   overflow: auto;
   font-size: var(--text-sm);
@@ -58,6 +59,11 @@ html {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.codeblock :target,
+.codeblock :target a::before {
+  background-color: var(--codeblock-highlight-line-color);
 }
 
 .codeblock code span    { color: var(--light, #1f1c1b) var(--dark, #cfcfc2); } /* Normal */
