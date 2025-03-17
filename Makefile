@@ -14,6 +14,8 @@ SRC_FILES    := $(shell find $(SRC_PATH) -type file)
 DIST_FILES   := $(SRC_FILES:$(SRC_PATH)/%=$(DIST_PATH)/%)
 DEPLOY_FILES := $(SRC_FILES:$(SRC_PATH)/%=%)
 
+DRAFT ?= writing
+
 # === UTILITIES ===
 
 DEV_PORT := 8080
@@ -40,16 +42,16 @@ $(DIST_PATH)/%: $(SRC_PATH)/%
 	@mkdir -p $$(dirname $@)
 	cp $< $@
 
-.PHONY: writing
-writing:
-	@echo "Generating $(GENERATED_PATH)/writing.html..."
+.PHONY: gen
+gen:
+	@echo "Generating $(GENERATED_PATH)/$(DRAFT).html..."
 	@mkdir -p $(GENERATED_PATH)
-	@pandoc $(DRAFTS_PATH)/writing.md \
+	@pandoc $(DRAFTS_PATH)/$(DRAFT).md \
 		--standalone \
 		--wrap=preserve \
 		--highlight-style=kate \
-		--output=$(GENERATED_PATH)/writing.html
-	@echo "Generated $(GENERATED_PATH)/writing.html!"
+		--output=$(GENERATED_PATH)/$(DRAFT).html
+	@echo "Generated $(GENERATED_PATH)/$(DRAFT).html!"
 
 .PHONY: clean
 clean:
