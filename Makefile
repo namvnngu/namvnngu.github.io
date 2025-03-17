@@ -2,7 +2,7 @@
 
 SRC_PATH       := src
 DIST_PATH      := dist
-TEMPLATES_PATH := templates
+DRAFTS_PATH    := drafts
 GENERATED_PATH := generated
 
 BLOCKS_DIR   := blocks
@@ -40,16 +40,16 @@ $(DIST_PATH)/%: $(SRC_PATH)/%
 	@mkdir -p $$(dirname $@)
 	cp $< $@
 
-.PHONY: code
-code:
-	@echo "==> Generating $(GENERATED_PATH)/code.html..."
+.PHONY: writing
+writing:
+	@echo "Generating $(GENERATED_PATH)/writing.html..."
 	@mkdir -p $(GENERATED_PATH)
-	@pandoc $(TEMPLATES_PATH)/code.md \
+	@pandoc $(DRAFTS_PATH)/writing.md \
 		--standalone \
 		--wrap=preserve \
 		--highlight-style=kate \
-		--output=$(GENERATED_PATH)/code.html
-	@echo "==> Generated $(GENERATED_PATH)/code.html!"
+		--output=$(GENERATED_PATH)/writing.html
+	@echo "Generated $(GENERATED_PATH)/writing.html!"
 
 .PHONY: clean
 clean:
