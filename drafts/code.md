@@ -1,9 +1,9 @@
 ---
 title: Code with syntax highlighting
-lang: en-US
+lang: en
 ...
 
-``` c {.numberLines}
+``` c {.number-lines}
 #include <stdio.h>
 
 int main(void) {
@@ -11,7 +11,7 @@ int main(void) {
 }
 ```
 
-``` haskell {.numberLines}
+``` haskell {.number-lines}
 -- | Inefficient quicksort in haskell.
 qsort :: (Enum a) => [a] -> [a]
 qsort []     = []

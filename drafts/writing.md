@@ -1,20 +1,14 @@
 ---
-title: Code with syntax highlighting
-lang: en-US
+title: How did I build this website?
+lang: en
 ...
 
-``` c {.numberLines}
-#include <stdio.h>
+## Motivation
 
-int main(void) {
-  printf("Hello world!");
-}
-```
+## Tech
 
-``` haskell {.numberLines}
--- | Inefficient quicksort in haskell.
-qsort :: (Enum a) => [a] -> [a]
-qsort []     = []
-qsort (x:xs) = qsort (filter (< x) xs) ++ [x] ++
-               qsort (filter (>= x) xs)
-```
+## Tools
+
+## Interesting Points During Development
+
+## Workflows After Completion
