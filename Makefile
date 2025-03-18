@@ -47,6 +47,7 @@ gen:
 	@echo "Generating $(GENERATED_PATH)/$(DRAFT).html..."
 	@mkdir -p $(GENERATED_PATH)
 	@pandoc $(DRAFTS_PATH)/$(DRAFT).md \
+		--toc \
 		--standalone \
 		--wrap=preserve \
 		--highlight-style=kate \
