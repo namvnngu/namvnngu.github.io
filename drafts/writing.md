@@ -5,7 +5,7 @@ lang: en
 
 ## Motivation
 
-In the past, I built several portfolios primarily to showcase my small projects
+In the past, I built several portfolios to mainly showcase my small projects
 when I was learning programming and job hunting. These portfolios were unnecessarily
 complex, built with [React.js](https://react.dev) or [Next.js](https://nextjs.org).
 The most recent one can be found [here](https://vnngu.vercel.app/). After landing
