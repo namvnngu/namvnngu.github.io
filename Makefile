@@ -15,6 +15,7 @@ DIST_FILES   := $(SRC_FILES:$(SRC_PATH)/%=$(DIST_PATH)/%)
 DEPLOY_FILES := $(SRC_FILES:$(SRC_PATH)/%=%)
 
 DRAFT ?= writing
+BLOCK ?=
 
 # === UTILITIES ===
 
@@ -41,6 +42,10 @@ $(DIST_PATH)/%: $(SRC_PATH)/%
 	@echo "\n==> Build $<"
 	@mkdir -p $$(dirname $@)
 	cp $< $@
+
+.PHONY: block
+block:
+	@./scripts/block.sh $(BLOCK)
 
 .PHONY: gen
 gen:
