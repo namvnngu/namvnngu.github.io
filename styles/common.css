@@ -311,6 +311,10 @@ footer {
   margin-top: calc(var(--spacing) * 2);
 }
 
+.top-0 {
+  top: 0;
+}
+
 .line-clamp-3 {
   overflow: hidden;
   display: -webkit-box;
@@ -345,6 +349,16 @@ footer {
   to {
     stroke-dashoffset: 0;
   }
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 /* == BLOCK & EXCEPTION == */
