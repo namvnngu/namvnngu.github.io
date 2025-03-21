@@ -21,6 +21,8 @@ and writing.
 
 The source code of my website can be found [here](https://github.com/namvnngu/namvnngu.github.io).
 
+&#8593; [Back to TOC](#TOC)
+
 ## Tech stack
 
 Here are the major technologies I have used to build my website:
@@ -38,6 +40,8 @@ deploying, and cleanup.
 - [Pandoc](https://pandoc.org) converts Markdown to HTML.
 - [GitHub Pages](https://pages.github.com) hosts the website.
 
+&#8593; [Back to TOC](#TOC)
+
 ## Styling
 
 CUBE CSS
@@ -48,12 +52,22 @@ Code syntax highlighting
 
 Copy, adjust and improve to be what I prefer.
 
+&#8593; [Back to TOC](#TOC)
+
 ## Content
+
+&#8593; [Back to TOC](#TOC)
 
 ### How is page content managed?
 
 Repated block
 
+&#8593; [Back to TOC](#TOC)
+
 ### How is piece of writing like this created?
 
+&#8593; [Back to TOC](#TOC)
+
 ## Interesting points during development
+
+&#8593; [Back to TOC](#TOC)

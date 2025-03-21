@@ -46,8 +46,18 @@
   <!--block-end: header-->
 
   <main class="[ writing ]">
-    <h1 class="[ mt-0 ]">Do you have a happy life?</h1>
+    <h1>Do you have a happy life?</h1>
     <p class="[ -mt-4 color-mono-07 ]">Created on March 01, 2025. Last updated on March 15, 2025.</p>
+
+    <ul id="TOC" role="doc-toc">
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#body">Body</a></li>
+        <ul>
+          <li><a href="#sub-body" id="toc-how-is-page-content-managed">SubBody</a></li>
+        </ul>
+      </li>
+      <li><a href="#conclusion">Conclusion</a></li>
+    </ul>
 
     <article>
       <h2 id="introduction">
@@ -55,7 +65,6 @@
       </h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.</p>
-
 <div class="codeblock" id="cb1"><pre><code><span id="cb1-1"><a href="#cb1-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">void</span><span class="op">)</span> <span class="op">{</span></span>
@@ -66,6 +75,9 @@
 <span id="cb2-3"><a href="#cb2-3"></a>qsort []     <span class="ot">=</span> []</span>
 <span id="cb2-4"><a href="#cb2-4"></a>qsort (x<span class="op">:</span>xs) <span class="ot">=</span> qsort (<span class="fu">filter</span> (<span class="op">&lt;</span> x) xs) <span class="op">++</span> [x] <span class="op">++</span></span>
 <span id="cb2-5"><a href="#cb2-5"></a>               qsort (<span class="fu">filter</span> (<span class="op">&gt;=</span> x) xs)</span></code></pre></div>
+      <!--block-start: back-toc-->
+      <p>&#8593; <a href="#TOC">Back to TOC</a></p>
+      <!--block-end: back-toc-->
 
       <h2 id="body">
         <a href="#body" data-line="none">Body</a>
@@ -106,6 +118,9 @@
         the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful
         of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is
         therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+      <!--block-start: back-toc-->
+      <p>&#8593; <a href="#TOC">Back to TOC</a></p>
+      <!--block-end: back-toc-->
 
       <h3 id="sub-body">
         <a href="#sub-body" data-line="none">SubBody</a>
@@ -139,7 +154,9 @@
         text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this
         the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful
         of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is
-        therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+      <!--block-start: back-toc-->
+      <p>&#8593; <a href="#TOC">Back to TOC</a></p>
+      <!--block-end: back-toc-->
 
       <h2 id="conclusion">
         <a href="#conclusion" data-line="none">Conclusion</a>
@@ -152,9 +169,16 @@
         text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this
         the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful
         of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is
-        therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+      <!--block-start: back-toc-->
+      <p>&#8593; <a href="#TOC">Back to TOC</a></p>
+      <!--block-end: back-toc-->
     </article>
+
+    <!--block-start: back-writing-->
+    <p><a class="[ color-mono-07 ]" href="/writing">$ cd ~/writing</a></p>
+    <!--block-end: back-writing-->
   </main>
+
   <!--block-start: footer-->
   <footer>
     Always remember to love yourself. ٩( ᐛ )و
