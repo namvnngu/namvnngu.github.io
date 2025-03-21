@@ -5,29 +5,38 @@ lang: en
 
 ## Motivation
 
-In the past, I built several portfolios to mainly showcase my small projects
+In the past, I built some portfolios to mainly showcase my small projects
 when I was learning programming and job hunting. These portfolios were unnecessarily
 complex, built with [React.js](https://react.dev) or [Next.js](https://nextjs.org).
 The most recent one can be found [here](https://vnngu.vercel.app/). After landing
-my first programming job, I neglected the portfolio, neither updating it nor writing
-any blog posts. At the beginning of 2025, I decided to make a "fresh start" by
-rebuilding my website with a simpler UI and without any JavaScript front-end frameworks/libraries.
+my first programming job, I neglected the portfolio, neither updating it nor
+writing any blog posts. At the beginning of 2025, I decided to make a "fresh start"
+by rebuilding my website with a simpler UI and without any JavaScript front-end
+frameworks/libraries.
 
 As I have grown in my programming career, I have become more interested in
 understanding how technologies work under the hood and sharing my thoughts on
-topics that intrigue me. This new website will become a space for both exploration and writing.
-
-## Tech stack
+topics that intrigue me. This new website will become a space for both exploration
+and writing.
 
 The source code of my website can be found [here](https://github.com/namvnngu/namvnngu.github.io).
 
-A list of the major technologies I have used for my website:
+## Tech stack
 
-- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
-- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-- [GNU Bash](https://www.gnu.org/software/bash)
-- [GNU Make](https://www.gnu.org/software/make)
-- [Pandoc](https://pandoc.org)
+Here are the major technologies I have used to build my website:
+
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) defines the website's
+structure and content.
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) specifies the website's
+styling.
+- [GNU Bash](https://www.gnu.org/software/bash) is used for writing build and
+deployment scripts.
+- [GNU Make](https://www.gnu.org/software/make) defines custom commands and
+automates repetitive tasks such as running a development server, building,
+deploying, and cleanup.
+- [GNU sed](https://www.gnu.org/software/sed) updates repeated HTML blocks.
+- [Pandoc](https://pandoc.org) converts Markdown to HTML.
+- [GitHub Pages](https://pages.github.com) hosts the website.
 
 ## Styling
 
