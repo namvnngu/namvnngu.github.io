@@ -44,11 +44,28 @@ deploying the website, and cleaning up.
 
 ## Styling
 
-CUBE CSS
+### CSS methodology
 
-https://cube.fyi/
+There are many CSS methodologies to architect, manage and maintain a website's
+styling, such as BEM, OOCSS, SMACSS, Atomic CSS, ITCSS or CUBE CSS. Eventually,
+I chose [CUBE CSS](https://cube.fyi). CUBE stands for Composition Utility Block
+Exception, and obviously, CSS stands for Cascading Style Sheets. I knew this
+methodology thanks to [Kevin Powell](https://www.youtube.com/@KevinPowell) via
+his video called [A look at the CUBE CSS methodology in action](https://youtu.be/NanhQvnvbR8).
 
-Code syntax highlighting
+The reason why I chose CUBE CSS is because its website mentions that _"CUBE CSS
+is a CSS methodology that's orientated towards simplicity, pragmatism and
+consistency."_, and _"This differs somewhat to other popular methodologies like
+BEM, which are very good in their own right, but also run against the grain of
+CSS."_, which made me want to explore and experiment it.
+
+It turns out that working with CUBE CSS has been a fun experience, even though
+I initially had a hard time to understand what Block is and when Block should
+be used.
+
+### CSS Reset
+
+### Code syntax highlighting
 
 Copy, adjust and improve to be what I prefer.
 
