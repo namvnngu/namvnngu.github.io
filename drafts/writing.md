@@ -21,7 +21,7 @@ and writing.
 
 The source code of my website can be found [here](https://github.com/namvnngu/namvnngu.github.io).
 
-&#8593; [Back to TOC](#TOC)
+[&#8593; Back to top](#TOC)
 
 ## Tech stack
 
@@ -40,7 +40,7 @@ deploying the website, and cleaning up.
 - [Pandoc](https://pandoc.org) converts Markdown to HTML.
 - [GitHub Pages](https://pages.github.com) hosts the website.
 
-&#8593; [Back to TOC](#TOC)
+[&#8593; Back to top](#TOC)
 
 ## Styling
 
@@ -52,22 +52,22 @@ Code syntax highlighting
 
 Copy, adjust and improve to be what I prefer.
 
-&#8593; [Back to TOC](#TOC)
+[&#8593; Back to top](#TOC)
 
 ## Content
 
-&#8593; [Back to TOC](#TOC)
+[&#8593; Back to top](#TOC)
 
 ### How is page content managed?
 
 Repeated HTML block
 
-&#8593; [Back to TOC](#TOC)
+[&#8593; Back to top](#TOC)
 
 ### How is piece of writing like this created?
 
-&#8593; [Back to TOC](#TOC)
+[&#8593; Back to top](#TOC)
 
 ## Interesting points during development
 
-&#8593; [Back to TOC](#TOC)
+[&#8593; Back to top](#TOC)
