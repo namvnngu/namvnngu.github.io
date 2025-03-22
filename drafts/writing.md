@@ -59,9 +59,9 @@ consistency."_, and _"This differs somewhat to other popular methodologies like
 BEM, which are very good in their own right, but also run against the grain of
 CSS."_, which made me want to explore and experiment it.
 
-It turns out that working with CUBE CSS has been a fun experience, even though
-I initially had a hard time to understand what Block is and when Block should
-be used.
+It turns out that using  CUBE CSS has been a fun experience, even though I
+initially had a hard time to understand what Block is and when Block should be
+used.
 
 ### CSS Reset
 

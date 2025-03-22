@@ -81,11 +81,7 @@
 
 /* == RESET == */
 
-/*
-  References:
-    - https://www.joshwcomeau.com/css/custom-css-reset
-    - https://youtu.be/eWmDW4zEXt4
-*/
+/* References: https://www.joshwcomeau.com/css/custom-css-reset */
 
 /* Use a more-intuitive box-sizing model */
 *,
@@ -142,9 +138,7 @@ h6 {
 }
 
 /* Improve line wrapping */
-p,
-li,
-figcaption {
+p {
   text-wrap: pretty;
 }
 h1,
