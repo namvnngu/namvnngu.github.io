@@ -117,7 +117,7 @@ app.listen(port, () => {
 
 I have been using HTML directly to create and update pages. However, there is
 a slight exception when creating a writing page, which will be explained in
-more detail in the below section [How is piece of writing like this created?](#how-is-piece-of-writing-like-this-created).
+more detail in the below section [How is a writing like this created?](#how-is-a-writing-like-this-created).
 
 Writing pages in HTML directly introduces one issue. Some areas in all pages
 are identical such as navigation bar and footer. If the number of pages grows
@@ -196,7 +196,7 @@ block tag**.
 5. Run `scripts/block.sh` with the block name. The script can be found
 [here](https://github.com/namvnngu/namvnngu.github.io/blob/main/scripts/block.sh).
 
-```bash {.numberLines}
+``` bash {.numberLines}
 ./scripts/block header
 ```
 
@@ -241,11 +241,33 @@ block tag**.
 ```
 
 7. Whenever `src/blocks/header.html` is updated, simply run the script in the
-step 6 to update the header block across all pages.
+step 5 to update the header block across all pages.
 
 [&#8593; Back to top](#TOC)
 
-### How is piece of writing like this created?
+### How is a writing like this created?
+
+A writing is created through the following steps:
+
+1. Create a Markdown file, e.g. `writing.md`.
+2. Compose content in `writing.md`.
+3. Run the following Pandoc command to convert Markdown to HTML, i.e.
+`writing.md` to `writing.html`.
+
+``` bash {.numberLines}
+pandoc writing.md \
+       --toc \
+       --standalone \
+       --wrap=preserve \
+       --highlight-style=kate \
+       --output=writing.html
+```
+
+4. Copy content line by line from `writing.htm`l to the actual HTML page,
+making adjustments to align with my website’s styling.
+
+As you can see, writing pages are first written in Markdown and then converted
+to HTML, which is the only exception to not using HTML directly.
 
 [&#8593; Back to top](#TOC)
 
