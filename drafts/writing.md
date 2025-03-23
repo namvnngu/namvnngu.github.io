@@ -44,6 +44,8 @@ deploying the website, and cleaning up.
 
 ## Styling
 
+I have been using only pure CSS to style my website.
+
 ### CSS methodology
 
 There are many CSS methodologies to architect, manage and maintain a website's
@@ -83,7 +85,7 @@ For example:
 
 - C
 
-``` c {.number-lines}
+``` c {.numberLines}
 #include <stdio.h>
 
 int main(void) {
@@ -93,7 +95,7 @@ int main(void) {
 
 - JavaScript
 
-``` javascript {.number-lines}
+``` javascript {.numberLines}
 const express = require('express')
 const app = express()
 const port = 3000
@@ -111,11 +113,135 @@ app.listen(port, () => {
 
 ## Content
 
-[&#8593; Back to top](#TOC)
-
 ### How is page content managed?
 
-Repeated HTML blocks
+I have been using HTML directly to create and update pages. However, there is
+a slight exception when creating a writing page, which will be explained in
+more detail in the below section [How is piece of writing like this created?](#how-is-piece-of-writing-like-this-created).
+
+Writing pages in HTML directly introduces one issue. Some areas in all pages
+are identical such as navigation bar and footer. If the number of pages grows
+into the hundreds (due to the number of writing pages), keeping these areas
+consistent and updated in all pages becomes a daunting and time-consuming task.
+Therefore, I created **Block** to solve this issue thanks to [GNU sed](https://www.gnu.org/software/sed).
+A block is similar to a component in popular front-end frameworks/libraries
+such as React.js. It is a reusable group of HTML elements.
+
+Block declaration syntax:
+
+``` html {.numberLines}
+<!--block-start: block-name-->
+<!--block-end: block-name-->
+```
+
+Let's see Block in action with the example below.
+
+1. Create files as the following tree.
+
+``` {.numberLines}
+scripts/
+└── block.sh
+src/
+├── blocks/
+│   └── header.html
+├── home.html
+├── index.html
+└── projects.html
+```
+
+2. Define **header block** in `src/blocks/header.html`. Note that while the
+indentation is expected to be formatted properly when the header block is
+placed in HTML page files, it does not matter since HTML ignores indentation.
+
+``` html {.numberLines}
+    <header>
+      <nav>
+        <a href="/home.html">Home</a>
+        <a href="/projects.html">Projects</a>
+      </nav>
+    </header>
+```
+
+3. Define Home page in `src/home.html` with **header start and end block tag**.
+
+``` html {.numberLines}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <title>Home</title>
+  </head>
+  <body>
+    <!--block-start: header-->
+    <!--block-end: header-->
+  </body>
+</html>
+```
+
+4. Define Projects page in `src/projects.html` with **header start and end
+block tag**.
+
+``` html {.numberLines}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <title>Projects</title>
+  </head>
+  <body>
+    <!--block-start: header-->
+    <!--block-end: header-->
+  </body>
+</html>
+```
+
+5. Run `scripts/block.sh` with the block name. The script can be found
+[here](https://github.com/namvnngu/namvnngu.github.io/blob/main/scripts/block.sh).
+
+```bash {.numberLines}
+./scripts/block header
+```
+
+6. As a result, `src/home.html` and `src/projects.html` are updated as follows.
+
+``` html {.numberLines}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <title>Home</title>
+  </head>
+  <body>
+    <!--block-start: header-->
+    <header>
+      <nav>
+        <a href="/home.html">Home</a>
+        <a href="/projects.html">Projects</a>
+      </nav>
+    </header>
+    <!--block-end: header-->
+  </body>
+</html>
+```
+
+``` html {.numberLines}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <title>Projects</title>
+  </head>
+  <body>
+    <!--block-start: header-->
+    <header>
+      <nav>
+        <a href="/home.html">Home</a>
+        <a href="/projects.html">Projects</a>
+      </nav>
+    </header>
+    <!--block-end: header-->
+  </body>
+</html>
+```
+
+7. Whenever `src/blocks/header.html` is updated, simply run the script in the
+step 6 to update the header block across all pages.
 
 [&#8593; Back to top](#TOC)
 
