@@ -23,14 +23,14 @@ html {
   padding: calc(var(--spacing) * 2);
   border-width: 1px;
   border-style: solid;
-  border-color: var(--color-mono-05);
+  border-color: var(--color-mono-04);
   border-radius: var(--radius-sm);
 }
 
 .codeblock > pre {
   border-left-width: 1px;
   border-left-style: solid;
-  border-left-color: var(--color-mono-05);
+  border-left-color: var(--color-mono-04);
   margin-left: var(--codeblock-line-number-width);
 }
 
