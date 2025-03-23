@@ -16,8 +16,8 @@ frameworks/libraries.
 
 As I have grown in my programming career, I have become more interested in
 understanding how technologies work under the hood and sharing my thoughts on
-topics that intrigue me. This new website will become a space for both exploration
-and writing.
+topics that intrigue me. This new website will become a space for exploration,
+experiment and writing.
 
 The source code of my website can be found [here](https://github.com/namvnngu/namvnngu.github.io).
 
@@ -117,9 +117,9 @@ Writing pages in HTML directly introduces one issue. Some areas in all pages
 are identical such as navigation bar and footer. If the number of pages grows
 into the hundreds (due to the number of writing pages), keeping these areas
 consistent and updated in all pages becomes a daunting and time-consuming task.
-Therefore, I created **Block** to solve this issue thanks to [GNU sed](https://www.gnu.org/software/sed).
-A block is similar to a component in popular front-end frameworks/libraries
-such as React.js. It is a reusable group of HTML elements.
+Therefore, I created **Block** built on top of [GNU sed](https://www.gnu.org/software/sed)
+to solve this issue. A block is similar to a component in popular front-end
+frameworks/libraries. It is a reusable group of HTML elements.
 
 Block declaration syntax:
 
