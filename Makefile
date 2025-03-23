@@ -3,7 +3,6 @@
 SRC_PATH       := src
 DIST_PATH      := dist
 DRAFTS_PATH    := drafts
-GENERATED_PATH := generated
 
 BLOCKS_DIR   := blocks
 IMAGES_DIR   := images
@@ -49,16 +48,15 @@ block:
 
 .PHONY: gen
 gen:
-	@echo "Generating $(GENERATED_PATH)/$(DRAFT).html..."
-	@mkdir -p $(GENERATED_PATH)
+	@echo "Generating $(DRAFTS_PATH)/$(DRAFT).html..."
 	@pandoc $(DRAFTS_PATH)/$(DRAFT).md \
 		--toc \
 		--standalone \
 		--wrap=preserve \
 		--highlight-style=kate \
-		--output=$(GENERATED_PATH)/$(DRAFT).html
-	@echo "Generated $(GENERATED_PATH)/$(DRAFT).html!"
+		--output=$(DRAFTS_PATH)/$(DRAFT).html
+	@echo "Generated $(DRAFTS_PATH)/$(DRAFT).html!"
 
 .PHONY: clean
 clean:
-	rm -rf $(DIST_PATH) $(GENERATED_PATH)
+	rm -rf $(DIST_PATH)
