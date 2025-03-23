@@ -267,10 +267,23 @@ pandoc writing.md \
 making adjustments to align with my website’s styling.
 
 As you can see, writing pages are first written in Markdown and then converted
-to HTML, which is the only exception to not using HTML directly.
+to HTML, which is the only exception to not using HTML directly to create pages.
 
 [&#8593; Back to top](#TOC)
 
 ## Interesting points during development
+
+- [GNU sed](https://www.gnu.org/software/sed) is similar to Vim, but
+non-interactive. It can perform basic text editing operations like a minimal
+interactive text editor.
+- The more I work with Bash, the more I realize that it is extremely powerful.
+- Pandoc is extremely powerful. I highly recommend checking out [Pandoc website](https://pandoc.org).
+to behold its "God ability in file conversion". By the way, it is written in
+[Haskell](https://www.haskell.org).
+- Living without JavaScript is happy.
+- Writing pure CSS is fun.
+- Writing pure HTML is fun.
+
+Nam Nguyen
 
 [&#8593; Back to top](#TOC)
