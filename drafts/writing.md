@@ -21,8 +21,6 @@ and writing.
 
 The source code of my website can be found [here](https://github.com/namvnngu/namvnngu.github.io).
 
-[&#8593; Back to top](#TOC)
-
 ## Tech stack
 
 Here are the major technologies I have used to build my website:
@@ -39,8 +37,6 @@ deploying the website, and cleaning up.
 - [GNU sed](https://www.gnu.org/software/sed) updates repeated HTML blocks.
 - [Pandoc](https://pandoc.org) converts Markdown to HTML.
 - [GitHub Pages](https://pages.github.com) hosts the website.
-
-[&#8593; Back to top](#TOC)
 
 ## Styling
 
@@ -108,8 +104,6 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
 ```
-
-[&#8593; Back to top](#TOC)
 
 ## Content
 
@@ -243,8 +237,6 @@ block tag**.
 7. Whenever `src/blocks/header.html` is updated, simply run the script in the
 step 5 to update the header block across all pages.
 
-[&#8593; Back to top](#TOC)
-
 ### How is a writing like this created?
 
 A writing is created through the following steps:
@@ -269,15 +261,13 @@ making adjustments to align with my website’s styling.
 As you can see, writing pages are first written in Markdown and then converted
 to HTML, which is the only exception to not using HTML directly to create pages.
 
-[&#8593; Back to top](#TOC)
-
 ## Interesting points during development
 
 - [GNU sed](https://www.gnu.org/software/sed) is similar to Vim, but
 non-interactive. It can perform basic text editing operations like a minimal
 interactive text editor.
 - The more I work with Bash, the more I realize that it is extremely powerful.
-- Pandoc is extremely powerful. I highly recommend checking out [Pandoc website](https://pandoc.org).
+- Pandoc is extremely powerful. I highly recommend checking out [Pandoc website](https://pandoc.org)
 to behold its "God ability in file conversion". By the way, it is written in
 [Haskell](https://www.haskell.org).
 - Living without JavaScript is happy.
@@ -285,5 +275,3 @@ to behold its "God ability in file conversion". By the way, it is written in
 - Writing pure HTML is fun.
 
 Nam Nguyen
-
-[&#8593; Back to top](#TOC)
