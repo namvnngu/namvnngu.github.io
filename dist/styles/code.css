@@ -1,0 +1,103 @@
+/* Reference from Pandoc's code syntax highlighting */
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+.codeblock *,
+.codeblock *::before,
+.codeblock *::after {
+  box-sizing: content-box;
+}
+
+.codeblock {
+  --codeblock-line-number-width: calc(var(--spacing) * 5);
+  --codeblock-code-translate-x: calc(var(--spacing) * -2);
+  --codeblock-line-number-translate-x: calc(var(--spacing) * -5.5);
+  --codeblock-highlight-line-color: var(--light, #ffff00) var(--dark, #31340b);
+
+  overflow: auto;
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  background-color: var(--color-bg);
+  padding: calc(var(--spacing) * 2);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--color-mono-04);
+  border-radius: var(--radius-sm);
+}
+
+.codeblock > pre {
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-left-color: var(--color-mono-04);
+  margin-left: var(--codeblock-line-number-width);
+}
+
+.codeblock > pre > code {
+  white-space: pre;
+  counter-reset: source-line 0;
+}
+
+.codeblock > pre > code > span {
+  display: inline-block;
+  color: inherit;
+  text-decoration: inherit;
+  transform: translate3d(var(--codeblock-code-translate-x), 0, 0);
+  counter-increment: source-line;
+}
+
+.codeblock > pre > code > span > a:first-child::before {
+  content: counter(source-line);
+  display: inline-block;
+  border: none;
+  text-align: right;
+  text-decoration: underline;
+  vertical-align: baseline;
+  color: var(--color-mono-05);
+  width: var(--codeblock-line-number-width);
+  transform: translate3d(var(--codeblock-line-number-translate-x), 0, 0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.codeblock :target,
+.codeblock :target a::before {
+  background-color: var(--codeblock-highlight-line-color);
+}
+
+.codeblock code span    { color: var(--light, #1f1c1b) var(--dark, #cfcfc2); } /* Normal */
+.codeblock code span.al { color: var(--light, #bf0303) var(--dark, #95da4c); background-color: var(--light, #f7e6e6) var(--dark, #4d1f24); font-weight: var(--font-weight-bold); } /* Alert */
+.codeblock code span.an { color: var(--light, #ca60ca) var(--dark, #3f8058); } /* Annotation */
+.codeblock code span.at { color: var(--light, #0057ae) var(--dark, #2980b9); } /* Attribute */
+.codeblock code span.bn { color: var(--light, #b08000) var(--dark, #f67400); } /* BaseN */
+.codeblock code span.bu { color: var(--light, #644a9b) var(--dark, #7f8c8d); font-weight: var(--font-weight-bold); } /* BuiltIn */
+.codeblock code span.cf { color: var(--light, #1f1c1b) var(--dark, #fdbc4b); font-weight: var(--font-weight-bold); } /* ControlFlow */
+.codeblock code span.ch { color: var(--light, #924c9d) var(--dark, #3daee9); } /* Char */
+.codeblock code span.cn { color: var(--light, #aa5500) var(--dark, #27aeae); font-weight: var(--font-weight-bold); } /* Constant */
+.codeblock code span.co { color: var(--light, #898887) var(--dark, #7a7c7d); } /* Comment */
+.codeblock code span.cv { color: var(--light, #0095ff) var(--dark, #7f8c8d); } /* CommentVar */
+.codeblock code span.do { color: var(--light, #607880) var(--dark, #a43340); } /* Documentation */
+.codeblock code span.dt { color: var(--light, #0057ae) var(--dark, #2980b9); } /* DataType */
+.codeblock code span.dv { color: var(--light, #b08000) var(--dark, #f67400); } /* DecVal */
+.codeblock code span.er { color: var(--light, #bf0303) var(--dark, #da4453); text-decoration: underline; } /* Error */
+.codeblock code span.ex { color: var(--light, #0095ff) var(--dark, #0099ff); font-weight: var(--font-weight-bold); } /* Extension */
+.codeblock code span.fl { color: var(--light, #b08000) var(--dark, #f67400); } /* Float */
+.codeblock code span.fu { color: var(--light, #644a9b) var(--dark, #8e44ad); } /* Function */
+.codeblock code span.im { color: var(--light, #ff5500) var(--dark, #27ae60); } /* Import */
+.codeblock code span.in { color: var(--light, #b08000) var(--dark, #c45b00); } /* Information */
+.codeblock code span.kw { color: var(--light, #1f1c1b) var(--dark, #cfcfc2); font-weight: var(--font-weight-bold); } /* Keyword */
+.codeblock code span.op { color: var(--light, #1f1c1b) var(--dark, #cfcfc2); } /* Operator */
+.codeblock code span.ot { color: var(--light, #006e28) var(--dark, #27ae60); } /* Other */
+.codeblock code span.pp { color: var(--light, #006e28) var(--dark, #27ae60); } /* Preprocessor */
+.codeblock code span.re { color: var(--light, #0057ae) var(--dark, #2980b9); background-color: var(--light, #e0e9f8) var(--dark, #153042); } /* RegionMarker */
+.codeblock code span.sc { color: var(--light, #3daee9) var(--dark, #3daee9); } /* SpecialChar */
+.codeblock code span.ss { color: var(--light, #ff5500) var(--dark, #da4453); } /* SpecialString */
+.codeblock code span.st { color: var(--light, #bf0303) var(--dark, #f44f4f); } /* String */
+.codeblock code span.va { color: var(--light, #0057ae) var(--dark, #27aeae); } /* Variable */
+.codeblock code span.vs { color: var(--light, #bf0303) var(--dark, #da4453); } /* VerbatimString */
+.codeblock code span.wa { color: var(--light, #bf0303) var(--dark, #da4453); } /* Warning */
