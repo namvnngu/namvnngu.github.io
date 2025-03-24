@@ -15,50 +15,17 @@
   <link rel="icon" href="/images/favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme:light)" />
   <!--block-end: head-common-->
 
-  <title>Writing | Nam Nguyen</title>
+  <!--block-start: style-code-->
+  <link rel="stylesheet" href="/styles/code.css" />
+  <!--block-end: style-code-->
+
+  <title>How Did I Build My Website?</title>
   <meta property="og:title" content="Nam Nguyen" />
-  <meta name="description" content="My thoughts on my interests." />
-  <meta property="og:description" content="My thoughts on my interests." />
-  <meta property="og:image" content="https://namvnngu.github.io/images/og-writing.png">
-  <meta property="og:url" content="https://namvnngu.github.io/writing" />
-  <link rel="canonical" href="https://namvnngu.github.io/writing" />
-
-  <style>
-    .list {
-      --flow-y-space: calc(var(--spacing) * 3);
-      list-style-type: none;
-      padding-left: 0;
-    }
-
-    .list-item {
-      cursor: pointer;
-      font-size: var(--text-lg);
-      line-height: var(--text-lg--line-height);
-    }
-
-    .list-item__title {
-      text-decoration-line: underline;
-      text-decoration-color: var(--color-mono-04);
-    }
-
-    @media (hover: hover) {
-      .list-item__title {
-        transition-property: text-decoration-color;
-        transition-duration: var(--transition-duration-lg);
-        transition-timing-function: ease;
-      }
-
-      .list-item:hover .list-item__title {
-        text-decoration-color: var(--color-fg);
-      }
-    }
-
-    .list-item__time {
-      color: var(--color-mono-06);
-      font-size: var(--text-sm);
-      line-height: var(--text-sm--line-height);
-    }
-  </style>
+  <meta name="description" content="Writing my website in pure HTML and CSS is a fun experience." />
+  <meta property="og:description" content="Writing my website in pure HTML and CSS is a fun experience." />
+  <meta property="og:image" content="https://namvnngu.github.io/images/og-writing-2025-03-25-how-did-i-build-my-website.png">
+  <meta property="og:url" content="https://namvnngu.github.io/writing/2025-03-25-how-did-i-build-my-website" />
+  <link rel="canonical" href="https://namvnngu.github.io/writing/2025-03-25-how-did-i-build-my-website" />
 </head>
 
 <body>
@@ -80,22 +47,19 @@
   </header>
   <!--block-end: header-->
 
-  <main>
-    <h1>Writing</h1>
-    <p class="[ -mt-4 color-mono-07 ]">My thoughts on my interests.</p>
+  <main class="[ writing ]">
+    <h1>How Did I Build My Website?</h1>
+    <p class="[ -mt-4 color-mono-07 ]">Created on March 25, 2025.</p>
 
-    <section>
-      <h2>2025</h2>
+    <ul id="toc" role="doc-top">
+    </ul>
 
-      <ul class="[ list ] [ flow-y ]">
-        <li class="[ list-item ]">
-          <a href="/writing/2025-03-25-how-did-i-build-my-website" data-line="none">
-            <p class="[ list-item__title ]">How Did I Build My Website?</p>
-            <time class="[ list-item__time ]" datetime="2025-03-01">March 25, 2025</time>
-          </a>
-        </li>
-      </ul>
-    </section>
+    <article>
+    </article>
+
+    <!--block-start: back-to-writing-->
+    <p><a class="[ color-mono-07 ]" href="/writing">$ cd ~/writing</a></p>
+    <!--block-end: back-to-writing-->
   </main>
 
   <!--block-start: footer-->

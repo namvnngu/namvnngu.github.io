@@ -64,6 +64,9 @@ It turns out that using  CUBE CSS has been a fun experience, even though I
 initially had a hard time to understand what Block is and when Block should be
 used.
 
+I am not entirely confident that I am applying CUBE CSS correctly, but at least
+I find it fun to work with.
+
 ### CSS Reset
 
 I referenced Josh Comeau's [CSS Reset](https://www.joshwcomeau.com/css/custom-css-reset).
