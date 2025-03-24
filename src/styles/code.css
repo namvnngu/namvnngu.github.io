@@ -11,9 +11,9 @@ html {
 }
 
 .codeblock {
-  --codeblock-line-number-width: calc(var(--spacing) * 5);
-  --codeblock-code-translate-x: calc(var(--spacing) * -2);
-  --codeblock-line-number-translate-x: calc(var(--spacing) * -5.5);
+  --codeblock-line-number-width: calc(var(--spacing) * 6);
+  --codeblock-code-translate-x: calc(var(--spacing) * -3);
+  --codeblock-line-number-translate-x: calc(var(--spacing) * -5);
   --codeblock-highlight-line-color: var(--light, #ffff00) var(--dark, #31340b);
 
   overflow: auto;

@@ -261,12 +261,12 @@
 <h2 id="motivation">Motivation</h2>
 <p>In the past, I built some portfolios to mainly showcase my small projects
 when I was learning programming and job hunting. These portfolios were unnecessarily
-complex, built with <a href="https://react.dev">React.js</a> or <a href="https://nextjs.org">Next.js</a>.
-The most recent one can be found <a href="https://vnngu.vercel.app/">here</a>. After landing
+complex, as they were built with <a href="https://react.dev">React.js</a> or <a href="https://nextjs.org">Next.js</a>.
+The most recent one can be found <a href="https://vnngu.vercel.app">here</a>. After landing
 my first programming job, I neglected the portfolio, neither updating it nor
 writing any blog posts. At the beginning of 2025, I decided to make a “fresh start”
 by rebuilding my website with a simpler UI and without any JavaScript front-end
-frameworks/libraries.</p>
+frameworks or libraries.</p>
 <p>As I have grown in my programming career, I have become more interested in
 understanding how technologies work under the hood and sharing my thoughts on
 topics that intrigue me. This new website will become a space for exploration,
@@ -316,8 +316,8 @@ His CSS reset is solid, simple, and sufficient in most cases. If you get a
 chance, I highly recommend checking it out. He explains it in great detail.</p>
 <h3 id="code-syntax-highlighting">Code syntax highlighting</h3>
 <p>I copied Pandoc’s <a href="https://pandoc.org/try/?params=%7B%22text%22%3A%22---%5Cntitle%3A+Code+with+syntax+highlighting%5Cnlang%3A+en-US%5Cn...%5Cn%5CnHere%27s+some+code+with+syntax+highlighting%3A%5Cn%5Cn%60%60%60+haskell%5Cn--+%7C+Inefficient+quicksort+in+haskell.%5Cnqsort+%3A%3A+%28Enum+a%29+%3D%3E+%5Ba%5D+-%3E+%5Ba%5D%5Cnqsort+%5B%5D+++++%3D+%5B%5D%5Cnqsort+%28x%3Axs%29+%3D+qsort+%28filter+%28%3C+x%29+xs%29+%2B%2B+%5Bx%5D+%2B%2B%5Cn+++++++++++++++qsort+%28filter+%28%3E%3D+x%29+xs%29+%5Cn%60%60%60%5Cn%5CnTry+changing+the+highlighting+style+to+see+what+effect+this+has.%5Cn%5CnHere%27s+some+python%2C+with+numbered+lines%3A%5Cn%5Cn%60%60%60+python+%7B.numberLines%7D%5Cnclass+FSM%28object%29%3A%5Cn%5Cn%5C%22%5C%22%5C%22This+is+a+Finite+State+Machine+%28FSM%29.%5Cn%5C%22%5C%22%5C%22%5Cn%5Cndef+__init__%28self%2C+initial_state%2C+memory%3DNone%29%3A%5Cn%5Cn++++%5C%22%5C%22%5C%22This+creates+the+FSM.+You+set+the+initial+state+here.+The+%5C%22memory%5C%22%5Cn++++attribute+is+any+object+that+you+want+to+pass+along+to+the+action%5Cn++++functions.+It+is+not+used+by+the+FSM.+For+parsing+you+would+typically%5Cn++++pass+a+list+to+be+used+as+a+stack.+%5C%22%5C%22%5C%22%5Cn%5Cn++++%23+Map+%28input_symbol%2C+current_state%29+--%3E+%28action%2C+next_state%29.%5Cn++++self.state_transitions+%3D+%7B%7D%5Cn++++%23+Map+%28current_state%29+--%3E+%28action%2C+next_state%29.%5Cn++++self.state_transitions_any+%3D+%7B%7D%5Cn++++self.default_transition+%3D+None%5Cn++++...%5Cn%60%60%60%5Cn%22%2C%22to%22%3A%22html%22%2C%22from%22%3A%22markdown%22%2C%22standalone%22%3Atrue%2C%22embed-resources%22%3Afalse%2C%22table-of-contents%22%3Afalse%2C%22number-sections%22%3Afalse%2C%22citeproc%22%3Afalse%2C%22html-math-method%22%3A%22plain%22%2C%22wrap%22%3A%22preserve%22%2C%22highlight-style%22%3A%22kate%22%2C%22files%22%3A%7B%7D%2C%22template%22%3Anull%7D">code syntax highlighting style</a>,
-then adjusted and improved it to align with my preferences. My improved version
-of code syntax highlighting in CSS can be found <a href="https://github.com/namvnngu/namvnngu.github.io/blob/main/src/styles/code.css">here</a>.
+then adjusted it to align with my preferences. My tweaked version of code
+syntax highlighting in CSS can be found <a href="https://github.com/namvnngu/namvnngu.github.io/blob/main/src/styles/code.css">here</a>.
 It supports both light and dark mode.</p>
 <p>For example:</p>
 <ul>
@@ -351,13 +351,13 @@ more detail in the below section <a href="#how-is-a-writing-like-this-created">H
 are identical such as navigation bar and footer. If the number of pages grows
 into the hundreds (due to the number of writing pages), keeping these areas
 consistent and updated in all pages becomes a daunting and time-consuming task.
-Therefore, I created <strong>Block</strong> built on top of <a href="https://www.gnu.org/software/sed">GNU sed</a>
+Therefore, I created <code>Block</code> built on top of <a href="https://www.gnu.org/software/sed">GNU sed</a>
 to solve this issue. A block is similar to a component in popular front-end
 frameworks/libraries. It is a reusable group of HTML elements.</p>
-<p>Block declaration syntax:</p>
+<p><code>Block</code> declaration syntax:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource html numberLines"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">&lt;!--block-start: block-name--&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co">&lt;!--block-end: block-name--&gt;</span></span></code></pre></div>
-<p>Let’s see Block in action with the example below.</p>
+<p>Let’s see <code>Block</code> in action with the example below.</p>
 <ol type="1">
 <li>Create files as the following tree.</li>
 </ol>
@@ -370,9 +370,10 @@ frameworks/libraries. It is a reusable group of HTML elements.</p>
 <span id="cb4-7"><a href="#cb4-7"></a>├── index.html</span>
 <span id="cb4-8"><a href="#cb4-8"></a>└── projects.html</span></code></pre></div>
 <ol start="2" type="1">
-<li>Define <strong>header block</strong> in <code>src/blocks/header.html</code>. Note that while the
-indentation is expected to be formatted properly when the header block is
-placed in HTML page files, it does not matter since HTML ignores indentation.</li>
+<li>Define the <code>header</code> block in <code>src/blocks/header.html</code>. Note that while the
+indentation is expected to be formatted properly when the <code>header</code> block is
+placed in HTML page files, indentation does not matter in my case as I do not
+preserve it.</li>
 </ol>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource html numberLines"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1"></a>    <span class="dt">&lt;</span><span class="kw">header</span><span class="dt">&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>      <span class="dt">&lt;</span><span class="kw">nav</span><span class="dt">&gt;</span></span>
@@ -381,7 +382,7 @@ placed in HTML page files, it does not matter since HTML ignores indentation.</l
 <span id="cb5-5"><a href="#cb5-5"></a>      <span class="dt">&lt;/</span><span class="kw">nav</span><span class="dt">&gt;</span></span>
 <span id="cb5-6"><a href="#cb5-6"></a>    <span class="dt">&lt;/</span><span class="kw">header</span><span class="dt">&gt;</span></span></code></pre></div>
 <ol start="3" type="1">
-<li>Define Home page in <code>src/home.html</code> with <strong>header start and end block tag</strong>.</li>
+<li>Define the Home page in <code>src/home.html</code> with <code>header</code>’s <strong>start and end block tag</strong>.</li>
 </ol>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource html numberLines"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="dt">&gt;</span></span>
@@ -394,8 +395,8 @@ placed in HTML page files, it does not matter since HTML ignores indentation.</l
 <span id="cb6-9"><a href="#cb6-9"></a>  <span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
 <span id="cb6-10"><a href="#cb6-10"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
 <ol start="4" type="1">
-<li>Define Projects page in <code>src/projects.html</code> with <strong>header start and end
-block tag</strong>.</li>
+<li>Define the Projects page in <code>src/projects.html</code> with <code>header</code>’s <strong>start and
+end block tag</strong>.</li>
 </ol>
 <div class="sourceCode" id="cb7"><pre class="sourceCode numberSource html numberLines"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="dt">&gt;</span></span>
@@ -408,10 +409,10 @@ block tag</strong>.</li>
 <span id="cb7-9"><a href="#cb7-9"></a>  <span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
 <span id="cb7-10"><a href="#cb7-10"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
 <ol start="5" type="1">
-<li>Run <code>scripts/block.sh</code> with the block name. The script can be found
+<li>Run <code>scripts/block.sh</code> with the block name (i.e. <code>header</code>). The script can be found
 <a href="https://github.com/namvnngu/namvnngu.github.io/blob/main/scripts/block.sh">here</a>.</li>
 </ol>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">./scripts/block</span> header</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">./scripts/block.sh</span> header</span></code></pre></div>
 <ol start="6" type="1">
 <li>As a result, <code>src/home.html</code> and <code>src/projects.html</code> are updated as follows.</li>
 </ol>
@@ -449,7 +450,7 @@ block tag</strong>.</li>
 <span id="cb10-16"><a href="#cb10-16"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
 <ol start="7" type="1">
 <li>Whenever <code>src/blocks/header.html</code> is updated, simply run the script in the
-step 5 to update the header block across all pages.</li>
+step 5 to update the <code>header</code> block across all pages.</li>
 </ol>
 <h3 id="how-is-a-writing-like-this-created">How is a writing like this created?</h3>
 <p>A writing is created through the following steps:</p>
@@ -466,7 +467,7 @@ step 5 to update the header block across all pages.</li>
 <span id="cb11-5"><a href="#cb11-5"></a>       <span class="at">--highlight-style</span><span class="op">=</span>kate <span class="dt">\</span></span>
 <span id="cb11-6"><a href="#cb11-6"></a>       <span class="at">--output</span><span class="op">=</span>writing.html</span></code></pre></div>
 <ol start="4" type="1">
-<li>Copy content line by line from <code>writing.htm</code>l to the actual HTML page,
+<li>Copy content line by line from <code>writing.html</code> to the actual HTML page,
 making adjustments to align with my website’s styling.</li>
 </ol>
 <p>As you can see, writing pages are first written in Markdown and then converted
@@ -474,13 +475,13 @@ to HTML. This is the only exception to not using HTML directly to create pages,
 which is mentioned in the section <a href="#how-is-page-content-managed">How is page content managed?</a>.</p>
 <h2 id="interesting-points-during-development">Interesting points during development</h2>
 <ul>
-<li><a href="https://www.gnu.org/software/sed">GNU sed</a> is similar to Vim, but
-non-interactive. It can perform basic text editing operations of a minimal
-interactive text editor.</li>
+<li><a href="https://www.gnu.org/software/sed">GNU sed</a> is basically similar to Vim, but
+non-interactive. It can perform basic text editing operations of an interactive
+text editor.</li>
 <li>The more I work with Bash, the more I realize that it is extremely powerful.</li>
 <li>Pandoc is extremely powerful. I highly recommend checking out <a href="https://pandoc.org">Pandoc website</a>
-to behold its “God ability in file conversion”. By the way, it is written in
-<a href="https://www.haskell.org">Haskell</a>.</li>
+to behold its “God ability in file format conversion”. By the way, it is
+written in <a href="https://www.haskell.org">Haskell</a>.</li>
 <li>Living without JavaScript is happy.</li>
 <li>Writing pure CSS is fun.</li>
 <li>Writing pure HTML is fun.</li>
