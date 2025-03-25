@@ -396,27 +396,15 @@ footer {
   padding: var(--spacing) calc(var(--spacing) * 1.5);
 }
 
-.writing p,
-.writing ul,
-.writing ol,
-.writing .codeblock {
-  margin-bottom: calc(var(--spacing) * 4);
-}
-.writing ul,
-.writing ol {
-  padding-left: calc(var(--spacing) * 6);
-}
-.writing ul.toc {
-  padding-left: 0;
-}
-.writing ul.toc li {
-  list-style: none;
-}
 .writing h2 {
   margin-top: calc(var(--spacing) * 6);
 }
 .writing h3 {
   margin-top: calc(var(--spacing) * 4);
+}
+.writing h2 a,
+.writing h3 a {
+  text-decoration: none;
 }
 .writing h2 a::after,
 .writing h3 a::after {
@@ -437,4 +425,26 @@ footer {
   padding: 0.2em 0.4em;
   background-color: var(--color-mono-03);
   border-radius: var(--radius-sm);
+}
+.writing p,
+.writing ul,
+.writing ol,
+.writing .codeblock {
+  margin-bottom: calc(var(--spacing) * 4);
+}
+.writing ul ul,
+.writing ol ol,
+.writing ul ol,
+.writing ol ul {
+  margin-bottom: 0;
+}
+.writing ul,
+.writing ol {
+  padding-left: calc(var(--spacing) * 6);
+}
+.writing ul.toc {
+  padding-left: 0;
+}
+.writing ul.toc li {
+  list-style: none;
 }
