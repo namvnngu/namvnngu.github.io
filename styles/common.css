@@ -448,3 +448,8 @@ footer {
 .writing ul.toc li {
   list-style: none;
 }
+@media (hover: hover) {
+  .writing ul.toc a:not(:hover) {
+    text-decoration-color: transparent;
+  }
+}
