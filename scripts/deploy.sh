@@ -7,8 +7,8 @@ else
   git checkout gh-pages
 
   echo -e "\n==> Prepare files"
-  rsync -avh dist/* ./ --delete --exclude blocks
-  rm -rf dist/
+  rsync -avh tmp/* ./ --delete --exclude blocks
+  rm -rf tmp/
 
   if [[ -z "$(git status -s)" ]]; then
     echo -e "\n==> Nothing to deploy to GitHub page"

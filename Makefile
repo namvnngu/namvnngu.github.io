@@ -1,7 +1,7 @@
 # === FILES/DIRECTORIES ===
 
 SRC_PATH    := src
-DIST_PATH   := dist
+TMP_PATH    := tmp
 DRAFTS_PATH := drafts
 
 BLOCKS_DIR   := blocks
@@ -11,8 +11,7 @@ WRITING_DIR  := writing
 PROJECTS_DIR := projects
 
 SRC_FILES    := $(shell find $(SRC_PATH) -type file)
-DIST_FILES   := $(SRC_FILES:$(SRC_PATH)/%=$(DIST_PATH)/%)
-DEPLOY_FILES := $(SRC_FILES:$(SRC_PATH)/%=%)
+TMP_FILES    := $(SRC_FILES:$(SRC_PATH)/%=$(TMP_PATH)/%)
 
 DRAFT ?= writing
 BLOCK ?=
@@ -28,23 +27,22 @@ dev:
 	@cd $(SRC_PATH) && npx serve && echo "Command not found: npx"
 
 .PHONY: deploy
-deploy: build
+deploy: cptmp
 	@./scripts/deploy.sh
 
-.PHONY: build
-build: $(DIST_FILES)
+.PHONY: cptmp
+cptmp: blocks $(TMP_FILES)
+$(TMP_PATH)/%: $(SRC_PATH)/%
+	@echo "\n==> Copy $< to $@"
+	@mkdir -p $$(dirname $@)
+	cp $< $@
 
-define copy
-	echo "\n==> Copy $(1) to $(2)"
-	mkdir -p $$(dirname $(2))
-	cp $(1) $(2)
-endef
-$(DIST_PATH)/$(BLOCKS_DIR)/%: $(SRC_PATH)/$(BLOCKS_DIR)/%
-	@$(call copy,$<,$@)
-	@echo "\n==> Update $< block in pages"
-	./scripts/block.sh $<
-$(DIST_PATH)/%: $(SRC_PATH)/%
-	@$(call copy,$<,$@)
+.PHONY: blocks
+blocks:
+	@find $(SRC_PATH)/$(BLOCKS_DIR) -type file \
+		-exec "echo" ";" \
+		-exec "echo" "==> Update {} block in all pages" ";" \
+		-exec "./scripts/block.sh" "{}" ";"
 
 .PHONY: block
 block:
@@ -63,4 +61,4 @@ gen:
 
 .PHONY: clean
 clean:
-	rm -rf $(DIST_PATH)
+	rm -rf $(TMP_PATH)
