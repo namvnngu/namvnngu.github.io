@@ -1,11 +1,12 @@
 # === FILES/DIRECTORIES ===
 
-SRC_PATH       := src
-DIST_PATH      := dist
-DRAFTS_PATH    := drafts
+SRC_PATH    := src
+DIST_PATH   := dist
+DRAFTS_PATH := drafts
 
 BLOCKS_DIR   := blocks
 IMAGES_DIR   := images
+STYLES_DIR   := styles
 WRITING_DIR  := writing
 PROJECTS_DIR := projects
 
@@ -32,15 +33,18 @@ deploy: build
 
 .PHONY: build
 build: $(DIST_FILES)
+
+define copy
+	echo "\n==> Copy $(1) to $(2)"
+	mkdir -p $$(dirname $(2))
+	cp $(1) $(2)
+endef
 $(DIST_PATH)/$(BLOCKS_DIR)/%: $(SRC_PATH)/$(BLOCKS_DIR)/%
+	@$(call copy,$<,$@)
 	@echo "\n==> Update $< block in pages"
-	@mkdir -p $$(dirname $@)
-	cp $< $@
-	@./scripts/block.sh $<
+	./scripts/block.sh $<
 $(DIST_PATH)/%: $(SRC_PATH)/%
-	@echo "\n==> Build $<"
-	@mkdir -p $$(dirname $@)
-	cp $< $@
+	@$(call copy,$<,$@)
 
 .PHONY: block
 block:
