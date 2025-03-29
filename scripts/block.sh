@@ -13,15 +13,23 @@ if [[ ! -f "$block_path" ]]; then
   exit 1
 fi
 
-for target in "$SRC_PATH"/*.html "$SRC_PATH"/**/*.html "$SRC_PATH"/**/**/*.html
+for target in "$SRC_PATH"/*.html "$SRC_PATH"/**/*.html "$SRC_PATH"/**/**/*.html;
 do
   if [[ "$target" == "$BLOCKS_PATH"* ]]; then
     continue
   fi
 
   start_line_numbers=($(sed -n "/<!--block-start: $block-->/=" $target | tr ' ' '\n'))
+  end_line_numbers=($(sed -n "/<!--block-end: $block-->/=" $target | tr ' ' '\n'))
 
-  for index in "${!start_line_numbers[@]}"
+  if [[ "${#start_line_numbers}" -ne "${#end_line_numbers}" ]]; then
+    echo "$target: '$block' the number of start block tags is not the same as the one of end block tags"
+    exit 1
+  fi
+
+  indices=($(echo ${!start_line_numbers[@]} | tr ' ' '\n'))
+
+  for index in "${indices[@]}";
   do
     start_line_numbers=($(sed -n "/<!--block-start: $block-->/=" $target | tr ' ' '\n'))
     end_line_numbers=($(sed -n "/<!--block-end: $block-->/=" $target | tr ' ' '\n'))
