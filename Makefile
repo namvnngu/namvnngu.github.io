@@ -10,9 +10,6 @@ STYLES_DIR   := styles
 WRITING_DIR  := writing
 PROJECTS_DIR := projects
 
-SRC_FILES    := $(shell find $(SRC_PATH) -type file)
-TMP_FILES    := $(SRC_FILES:$(SRC_PATH)/%=$(TMP_PATH)/%)
-
 DRAFT ?= writing
 BLOCK ?=
 
@@ -27,15 +24,13 @@ dev:
 	@cd $(SRC_PATH) && npx serve && echo "Command not found: npx"
 
 .PHONY: deploy
-deploy: cptmp
+deploy: tmp
 	@./scripts/deploy.sh
 
-.PHONY: cptmp
-cptmp: blocks $(TMP_FILES)
-$(TMP_PATH)/%: $(SRC_PATH)/%
-	@echo "\n==> Copy $< to $@"
-	@mkdir -p $$(dirname $@)
-	cp $< $@
+.PHONY: tmp
+tmp: blocks
+	@echo "\n==> Copy files in $(SRC_PATH) to $(TMP_PATH)"
+	@rsync -avh $(SRC_PATH)/* $(TMP_PATH) --delete --exclude $(BLOCKS_DIR)
 
 .PHONY: blocks
 blocks:
