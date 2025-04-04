@@ -22,6 +22,10 @@ html {
   padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 2);
 }
 
+.codeblock-tabs > label:not(:only-child) {
+  cursor: pointer;
+}
+
 .codeblock-tabs > label:first-child {
   border-top-left-radius: var(--codeblock-tab-border-radius);
 }
