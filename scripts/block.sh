@@ -22,7 +22,7 @@ do
   start_line_numbers=($(sed -n "/<!--block-start: $block-->/=" $target | tr ' ' '\n'))
   end_line_numbers=($(sed -n "/<!--block-end: $block-->/=" $target | tr ' ' '\n'))
 
-  if [[ "${#start_line_numbers}" -ne "${#end_line_numbers}" ]]; then
+  if [[ "${#start_line_numbers[@]}" -ne "${#end_line_numbers[@]}" ]]; then
     echo "$target: '$block' the number of start block tags is not the same as the one of end block tags"
     exit 1
   fi
@@ -34,7 +34,7 @@ do
     start_line_numbers=($(sed -n "/<!--block-start: $block-->/=" $target | tr ' ' '\n'))
     end_line_numbers=($(sed -n "/<!--block-end: $block-->/=" $target | tr ' ' '\n'))
 
-    if [[ "${#start_line_numbers}" -ne "${#end_line_numbers}" ]]; then
+    if [[ "${#start_line_numbers[@]}" -ne "${#end_line_numbers[@]}" ]]; then
       echo "$target: '$block' the number of start block tags is not the same as the one of end block tags"
       continue
     fi
