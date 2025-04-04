@@ -50,8 +50,8 @@ There are many CSS methodologies to architect, manage and maintain a website's
 styling, such as BEM, OOCSS, SMACSS, Atomic CSS, ITCSS or CUBE CSS. Eventually,
 I chose [CUBE CSS](https://cube.fyi). CUBE stands for Composition Utility Block
 Exception, and obviously, CSS stands for Cascading Style Sheets. I knew this
-methodology thanks to [Kevin Powell](https://www.youtube.com/@KevinPowell)'s
-amazing video called [A look at the CUBE CSS methodology in action](https://youtu.be/NanhQvnvbR8).
+methodology thanks to Kevin Powell amazing video called
+[A look at the CUBE CSS methodology in action](https://youtu.be/NanhQvnvbR8).
 
 The reason why I chose CUBE CSS is because its website mentions:
 
