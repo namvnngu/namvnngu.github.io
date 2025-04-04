@@ -3,6 +3,8 @@ title: How Did I Build My Website?
 lang: en
 ...
 
+Created on March 25, 2025. Last updated on April 05, 2025.
+
 ## Motivation
 
 In the past, I built some portfolios to mainly showcase my small projects
@@ -82,8 +84,7 @@ It supports both light and dark mode.
 
 For example:
 
-- C
-
+main.c
 ``` c {.numberLines}
 #include <stdio.h>
 
@@ -92,8 +93,7 @@ int main(void) {
 }
 ```
 
-- JavaScript
-
+main.js
 ``` javascript {.numberLines}
 const express = require('express')
 const app = express()
@@ -146,11 +146,11 @@ src/
 └── projects.html
 ```
 
-2. Define the `header` block in `src/blocks/header.html`. Note that while the
-indentation is expected to be formatted properly when the `header` block is
-placed in HTML page files, indentation does not matter in my case as I do not
-preserve it.
+2. Define the `header` block. Note that while the indentation is expected to
+be formatted properly when the `header` block is placed in HTML page files,
+indentation does not matter in my case as I do not preserve it.
 
+src/blocks/header.html
 ``` html {.numberLines}
     <header>
       <nav>
@@ -160,8 +160,9 @@ preserve it.
     </header>
 ```
 
-3. Define the Home page in `src/home.html` with `header`'s **start and end block tag**.
+3. Define the Home page with `header`'s **start and end block tag**.
 
+src/home.html
 ``` html {.numberLines}
 <!DOCTYPE html>
 <html lang="en">
@@ -175,9 +176,9 @@ preserve it.
 </html>
 ```
 
-4. Define the Projects page in `src/projects.html` with `header`'s **start and
-end block tag**.
+4. Define the Projects page with `header`'s **start and end block tag**.
 
+src/projects.html
 ``` html {.numberLines}
 <!DOCTYPE html>
 <html lang="en">
@@ -198,8 +199,9 @@ be found in [scripts/block.sh](https://github.com/namvnngu/namvnngu.github.io/bl
 ./scripts/block.sh header
 ```
 
-6. As a result, `src/home.html` and `src/projects.html` are updated as follows.
+6. As a result, the Home page and the Projects page are updated as follows.
 
+src/home.html
 ``` html {.numberLines}
 <!DOCTYPE html>
 <html lang="en">
@@ -219,6 +221,7 @@ be found in [scripts/block.sh](https://github.com/namvnngu/namvnngu.github.io/bl
 </html>
 ```
 
+src/projects.html
 ``` html {.numberLines}
 <!DOCTYPE html>
 <html lang="en">

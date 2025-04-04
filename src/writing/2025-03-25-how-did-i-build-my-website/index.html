@@ -50,7 +50,7 @@
 
   <main class="[ writing ]">
     <h1>How Did I Build My Website?</h1>
-    <p class="[ -mt-4 color-mono-07 ]">Created on March 25, 2025.</p>
+    <p class="[ -mt-4 color-mono-07 ]">Created on March 25, 2025. Last updated on April 05, 2025.</p>
 
     <ul id="toc" class="[ toc ]">
       <li><a href="#motivation" id="toc-motivation">Motivation</a></li>
@@ -183,17 +183,15 @@
           href="https://github.com/namvnngu/namvnngu.github.io/blob/main/src/styles/code.css" target="_blank">styles/code.css</a>.
         It supports both light and dark mode.</p>
       <p>For example:</p>
-      <ul>
-        <li>C</li>
-      </ul>
+
+<div class="codeblock-tabs"><label>main.c</label></div>
 <div class="codeblock" id="cb1"><pre><code><span id="cb1-1"><a href="#cb1-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">void</span><span class="op">)</span> <span class="op">{</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a>  printf<span class="op">(</span><span class="st">&quot;Hello world!&quot;</span><span class="op">);</span></span>
 <span id="cb1-5"><a href="#cb1-5"></a><span class="op">}</span></span></code></pre></div>
-      <ul>
-        <li>JavaScript</li>
-      </ul>
+
+<div class="codeblock-tabs"><label>main.js</label></div>
 <div class="codeblock" id="cb2"><pre><code><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">const</span> express <span class="op">=</span> <span class="pp">require</span>(<span class="st">&#39;express&#39;</span>)</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="kw">const</span> app <span class="op">=</span> <span class="fu">express</span>()</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="kw">const</span> port <span class="op">=</span> <span class="dv">3000</span></span>
@@ -244,11 +242,12 @@
 <span id="cb4-7"><a href="#cb4-7"></a>├── index.html</span>
 <span id="cb4-8"><a href="#cb4-8"></a>└── projects.html</span></code></pre></div>
       <ol start="2" type="1">
-        <li>Define the <code>header</code> block in <code>src/blocks/header.html</code>. Note that while the
+        <li>Define the <code>header</code> block. Note that while the
           indentation is expected to be formatted properly when the <code>header</code> block is
           placed in HTML page files, indentation does not matter in my case as I do not
           preserve it.</li>
       </ol>
+<div class="codeblock-tabs"><label>src/blocks/header.html</label></div>
 <div class="codeblock" id="cb5"><pre><code><span id="cb5-1"><a href="#cb5-1"></a>    <span class="dt">&lt;</span><span class="kw">header</span><span class="dt">&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>      <span class="dt">&lt;</span><span class="kw">nav</span><span class="dt">&gt;</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a>        <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/home.html&quot;</span><span class="dt">&gt;</span>Home<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
@@ -256,9 +255,10 @@
 <span id="cb5-5"><a href="#cb5-5"></a>      <span class="dt">&lt;/</span><span class="kw">nav</span><span class="dt">&gt;</span></span>
 <span id="cb5-6"><a href="#cb5-6"></a>    <span class="dt">&lt;/</span><span class="kw">header</span><span class="dt">&gt;</span></span></code></pre></div>
       <ol start="3" type="1">
-        <li>Define the Home page in <code>src/home.html</code> with <code>header</code>’s <strong>start and end block
+        <li>Define the Home page with <code>header</code>’s <strong>start and end block
             tag</strong>.</li>
       </ol>
+<div class="codeblock-tabs"><label>src/home.html</label></div>
 <div class="codeblock" id="cb6"><pre><code><span id="cb6-1"><a href="#cb6-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="dt">&gt;</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a>  <span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
@@ -270,9 +270,10 @@
 <span id="cb6-9"><a href="#cb6-9"></a>  <span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
 <span id="cb6-10"><a href="#cb6-10"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
       <ol start="4" type="1">
-        <li>Define the Projects page in <code>src/projects.html</code> with <code>header</code>’s <strong>start and
+        <li>Define the Projects page with <code>header</code>’s <strong>start and
             end block tag</strong>.</li>
       </ol>
+<div class="codeblock-tabs"><label>src/projects.html</label></div>
 <div class="codeblock" id="cb7"><pre><code><span id="cb7-1"><a href="#cb7-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="dt">&gt;</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
@@ -290,8 +291,9 @@
       </ol>
 <div class="codeblock" id="cb8"><pre><code><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">./scripts/block.sh</span> header</span></code></pre></div>
       <ol start="6" type="1">
-        <li>As a result, <code>src/home.html</code> and <code>src/projects.html</code> are updated as follows.</li>
+        <li>As a result, the Home page and the Projects page are updated as follows.</li>
       </ol>
+<div class="codeblock-tabs"><label>src/home.html</label></div>
 <div class="codeblock" id="cb9"><pre><code><span id="cb9-1"><a href="#cb9-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="dt">&gt;</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a>  <span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
@@ -308,6 +310,8 @@
 <span id="cb9-14"><a href="#cb9-14"></a>    <span class="co">&lt;!--block-end: header--&gt;</span></span>
 <span id="cb9-15"><a href="#cb9-15"></a>  <span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
 <span id="cb9-16"><a href="#cb9-16"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+
+<div class="codeblock-tabs"><label>src/projects.html</label></div>
 <div class="codeblock" id="cb10"><pre><code><span id="cb10-1"><a href="#cb10-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="dt">&gt;</span></span>
 <span id="cb10-3"><a href="#cb10-3"></a>  <span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>

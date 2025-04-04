@@ -389,9 +389,7 @@ footer {
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
   color: var(--color-mono-08);
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--color-mono-04);
+  border: 1px solid var(--color-mono-04);
   border-radius: var(--radius-sm);
   padding: var(--spacing) calc(var(--spacing) * 1.5);
 }

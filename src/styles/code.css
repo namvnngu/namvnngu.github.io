@@ -4,6 +4,37 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+.codeblock-tabs {
+  --codeblock-tab-border: 1px solid var(--color-mono-04);
+  --codeblock-tab-border-radius: var(--radius-sm);
+  --codeblock-tab-background-color: var(--light, var(--color-mono-01)) var(--dark, var(--color-mono-02));
+}
+
+.codeblock-tabs > label {
+  display: inline-block;
+  font-size: var(--text-xs);
+  line-height: var(--text-xs--line-height);
+  font-family: var(--font-mono);
+  background-color: var(--codeblock-tab-background-color);
+  border: var(--codeblock-tab-border);
+  border-bottom: none;
+  border-right: none;
+  padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 2);
+}
+
+.codeblock-tabs > label:first-child {
+  border-top-left-radius: var(--codeblock-tab-border-radius);
+}
+
+.codeblock-tabs > label:last-child {
+  border-top-right-radius: var(--codeblock-tab-border-radius);
+  border-right: var(--codeblock-tab-border);
+}
+
+.codeblock-tabs + .codeblock {
+  border-top-left-radius: 0;
+}
+
 .codeblock *,
 .codeblock *::before,
 .codeblock *::after {
@@ -11,26 +42,26 @@ html {
 }
 
 .codeblock {
-  --codeblock-line-number-width: calc(var(--spacing) * 6);
+  --codeblock-background-color: var(--light, var(--color-mono-01)) var(--dark, var(--color-mono-02));
   --codeblock-code-translate-x: calc(var(--spacing) * -3);
+  --codeblock-line-number-width: calc(var(--spacing) * 6);
   --codeblock-line-number-translate-x: calc(var(--spacing) * -5);
+  --codeblock-line-number-color: var(--color-mono-05);
+  --codeblock-border: 1px solid var(--color-mono-04);
+  --codeblock-border-radius: var(--radius-sm);
   --codeblock-highlight-line-color: var(--light, #ffff00) var(--dark, #31340b);
 
   overflow: auto;
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
-  background-color: var(--color-mono-01);
+  background-color: var(--codeblock-background-color);
   padding: calc(var(--spacing) * 2);
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--color-mono-04);
-  border-radius: var(--radius-sm);
+  border: var(--codeblock-border);
+  border-radius: var(--codeblock-border-radius);
 }
 
 .codeblock > pre {
-  border-left-width: 1px;
-  border-left-style: solid;
-  border-left-color: var(--color-mono-04);
+  border-left: var(--codeblock-border);
   margin-left: var(--codeblock-line-number-width);
 }
 
@@ -54,7 +85,7 @@ html {
   text-align: right;
   text-decoration: underline;
   vertical-align: baseline;
-  color: var(--color-mono-05);
+  color: var(--codeblock-line-number-color);
   width: var(--codeblock-line-number-width);
   transform: translate3d(var(--codeblock-line-number-translate-x), 0, 0);
   -webkit-touch-callout: none;
