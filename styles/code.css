@@ -19,7 +19,7 @@ html {
   overflow: auto;
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
-  background-color: var(--color-bg);
+  background-color: var(--color-mono-01);
   padding: calc(var(--spacing) * 2);
   border-width: 1px;
   border-style: solid;
