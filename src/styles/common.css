@@ -6,7 +6,7 @@
   --dark: var(--OFF);
 
   --color-mono-00: var(--light, #ffffff) var(--dark, #111111);
-  --color-mono-01: var(--light, #fafafa) var(--dark, #111111);
+  --color-mono-01: var(--light, #fafafa) var(--dark, #141414);
   --color-mono-02: var(--light, #f5f5f5) var(--dark, #171717);
   --color-mono-03: var(--light, #e5e5e5) var(--dark, #262626);
   --color-mono-04: var(--light, #d4d4d4) var(--dark, #404040);
