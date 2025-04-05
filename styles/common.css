@@ -293,6 +293,9 @@ footer {
 
 /* == UTILITY == */
 
+.color-mono-06 {
+  color: var(--color-mono-06);
+}
 .color-mono-07 {
   color: var(--color-mono-07);
 }
@@ -370,28 +373,91 @@ footer {
   --grid-column-min-width: calc(var(--spacing) * 40);
   --grid-gap: calc(var(--spacing) * 6);
 }
-.brief__title {
+.brief > .brief__title {
   display: inline-block;
   color: var(--color-mono-10);
 }
-.brief__link {
+.brief > .brief__title > .brief__link {
   display: flex;
   align-items: center;
 }
-.brief__description {
+.brief > .brief__description {
   color: var(--color-mono-08);
 }
-.brief__chips {
+.brief > .brief__chips {
   --flow-x-space: var(--spacing);
   margin-top: calc(var(--spacing) * 2);
 }
-.brief__chip {
+.brief > .brief__chips > .brief__chip {
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
   color: var(--color-mono-08);
   border: 1px solid var(--color-mono-04);
   border-radius: var(--radius-sm);
   padding: var(--spacing) calc(var(--spacing) * 1.5);
+}
+
+.tab {
+  --tab-border-width: 1px;
+  --tab-border: var(--tab-border-width) solid var(--color-mono-04);
+  --tab-border-radius: var(--radius-lg);
+  --tab-top-spacing: 0px;
+
+  --tab-name-block-padding: calc(var(--spacing) * 1.5);
+  --tab-name-inline-padding: calc(var(--spacing) * 2);
+  --tab-name-font-size: var(--text-sm);
+  --tab-name-line-height: var(--text-sm--line-height);
+  --tab-name-font-family: var(--font-sans);
+  --tab-name-background-color: var(--color-mono-01);
+  --tab-name-active-background-color: var(--color-mono-03);
+
+  position: relative;
+  margin-top: calc(
+    var(--tab-name-font-size) * var(--tab-name-line-height) +
+    var(--tab-name-block-padding) * 2 +
+    var(--tab-border-width) +
+    var(--tab-top-spacing)
+  );
+}
+.tab > .tab__name {
+  position: absolute;
+  top: 0;
+  transform: translate3d(var(--tab-name-x, 0), -100%, 0);
+  display: inline-block;
+  font-size: var(--tab-name-font-size);
+  line-height: var(--tab-name-line-height);
+  font-family: var(--tab-name-font-family);
+  background-color: var(--tab-name-background-color);
+  border: var(--tab-border);
+  border-bottom: none;
+  border-right: none;
+  padding: var(--tab-name-block-padding) var(--tab-name-inline-padding);
+}
+.tab > .tab__name:first-of-type {
+  border-top-left-radius: var(--tab-border-radius);
+}
+.tab > .tab__name:last-of-type {
+  border-top-right-radius: var(--tab-border-radius);
+  border-right: var(--tab-border);
+}
+.tab > .tab__name + .tab__panel {
+  border-top-left-radius: 0;
+}
+.tab > input[name="tab-name"] {
+  position: absolute;
+  display: none;
+}
+.tab > input[name="tab-name"]:checked + .tab__name {
+  background-color: var(--tab-name-active-background-color);
+}
+.tab > input[name="tab-name"]:checked + .tab__name + .tab__panel {
+  display: block;
+}
+.tab > input[name="tab-name"] + .tab__name + .tab__panel {
+  display: none;
+}
+.tab > input[name="tab-name"] + .tab__name {
+  cursor: pointer;
 }
 
 .writing h2 {
