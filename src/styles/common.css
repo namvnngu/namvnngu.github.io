@@ -373,22 +373,22 @@ footer {
   --grid-column-min-width: calc(var(--spacing) * 40);
   --grid-gap: calc(var(--spacing) * 6);
 }
-.brief__title {
+.brief > .brief__title {
   display: inline-block;
   color: var(--color-mono-10);
 }
-.brief__link {
+.brief > .brief__title > .brief__link {
   display: flex;
   align-items: center;
 }
-.brief__description {
+.brief > .brief__description {
   color: var(--color-mono-08);
 }
-.brief__chips {
+.brief > .brief__chips {
   --flow-x-space: var(--spacing);
   margin-top: calc(var(--spacing) * 2);
 }
-.brief__chip {
+.brief > .brief__chips > .brief__chip {
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
   color: var(--color-mono-08);
@@ -419,7 +419,7 @@ footer {
     var(--tab-top-spacing)
   );
 }
-.tab > .tab-name {
+.tab > .tab__name {
   position: absolute;
   top: 0;
   transform: translate3d(var(--tab-name-x, 0), -100%, 0);
@@ -433,30 +433,30 @@ footer {
   border-right: none;
   padding: var(--tab-name-block-padding) var(--tab-name-inline-padding);
 }
-.tab > .tab-name:first-of-type {
+.tab > .tab__name:first-of-type {
   border-top-left-radius: var(--tab-border-radius);
 }
-.tab > .tab-name:last-of-type {
+.tab > .tab__name:last-of-type {
   border-top-right-radius: var(--tab-border-radius);
   border-right: var(--tab-border);
 }
-.tab > .tab-name + .tab-panel {
+.tab > .tab__name + .tab__panel {
   border-top-left-radius: 0;
 }
 .tab > input[name="tab-name"] {
   position: absolute;
   display: none;
 }
-.tab > input[name="tab-name"]:checked + .tab-name {
+.tab > input[name="tab-name"]:checked + .tab__name {
   background-color: var(--tab-name-active-background-color);
 }
-.tab > input[name="tab-name"]:checked + .tab-name + .tab-panel {
+.tab > input[name="tab-name"]:checked + .tab__name + .tab__panel {
   display: block;
 }
-.tab > input[name="tab-name"] + .tab-name + .tab-panel {
+.tab > input[name="tab-name"] + .tab__name + .tab__panel {
   display: none;
 }
-.tab > input[name="tab-name"] + .tab-name {
+.tab > input[name="tab-name"] + .tab__name {
   cursor: pointer;
 }
 
