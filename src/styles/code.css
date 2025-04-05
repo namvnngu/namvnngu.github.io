@@ -41,7 +41,7 @@ html {
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
   background-color: var(--codeblock-background-color);
-  padding: calc(var(--spacing) * 2);
+  padding: calc(var(--spacing) * 3) calc(var(--spacing) * 2);
   border: var(--codeblock-border);
   border-radius: var(--codeblock-border-radius);
 }
