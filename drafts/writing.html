@@ -352,12 +352,14 @@ Therefore, I created <code>Block</code> built on top of <a href="https://www.gnu
 to solve this issue. A block is similar to a component in popular front-end
 frameworks/libraries. It is a reusable group of HTML elements.</p>
 <p><code>Block</code> declaration syntax:</p>
+<p>HTML</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource html numberLines"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">&lt;!--block-start: block-name--&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co">&lt;!--block-end: block-name--&gt;</span></span></code></pre></div>
 <p>Let’s see <code>Block</code> in action with the example below.</p>
 <ol type="1">
 <li>Create files as the following tree.</li>
 </ol>
+<p>Directory tree</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb4-1"><a href="#cb4-1"></a>scripts/</span>
 <span id="cb4-2"><a href="#cb4-2"></a>└── block.sh</span>
 <span id="cb4-3"><a href="#cb4-3"></a>src/</span>
@@ -410,6 +412,7 @@ indentation does not matter in my case as I do not preserve it.</li>
 <li>Run <code>scripts/block.sh</code> with the block name (i.e. <code>header</code>). The script can
 be found in <a href="https://github.com/namvnngu/namvnngu.github.io/blob/main/scripts/block.sh">scripts/block.sh</a>.</li>
 </ol>
+<p>Shell</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">./scripts/block.sh</span> header</span></code></pre></div>
 <ol start="6" type="1">
 <li>As a result, the Home page and the Projects page are updated as follows.</li>
@@ -460,6 +463,7 @@ step 5 to update the <code>header</code> block across all pages.</li>
 <li>Run the following Pandoc command to convert Markdown to HTML, i.e.
 <code>writing.md</code> to <code>writing.html</code>.</li>
 </ol>
+<p>Shell</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="ex">pandoc</span> writing.md <span class="dt">\</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a>       <span class="at">--toc</span> <span class="dt">\</span></span>
 <span id="cb11-3"><a href="#cb11-3"></a>       <span class="at">--standalone</span> <span class="dt">\</span></span>

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <!--block-start: head-common-->
+  <!-- block-start: head-common -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="Nam Nguyen" />
@@ -13,11 +13,11 @@
   <link rel="icon" href="/images/favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme:no-preference)" />
   <link rel="icon" href="/images/favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme:dark)" />
   <link rel="icon" href="/images/favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme:light)" />
-  <!--block-end: head-common-->
+  <!-- block-end: head-common -->
 
-  <!--block-start: style-code-->
+  <!-- block-start: style-code -->
   <link rel="stylesheet" href="/styles/code.css" />
-  <!--block-end: style-code-->
+  <!-- block-end: style-code -->
 
   <title>How Did I Build My Website?</title>
   <meta property="og:title" content="Nam Nguyen" />
@@ -30,7 +30,7 @@
 </head>
 
 <body>
-  <!--block-start: header-->
+  <!-- block-start: header -->
   <header>
     <span id="back-to-top" class="[ visually-hidden top-0 ]" aria-hidden="true"></span>
     <nav class="[ navbar ] [ flow-x ]">
@@ -46,7 +46,7 @@
       <a href="/writing">Writing</a>
     </nav>
   </header>
-  <!--block-end: header-->
+  <!-- block-end: header -->
 
   <main class="[ writing ]">
     <h1>How Did I Build My Website?</h1>
@@ -102,9 +102,9 @@
         experiment and writing.</p>
       <p>The source code of my new website can be found at <a href="https://github.com/namvnngu/namvnngu.github.io"
           target="_blank">github.com/namvnngu/namvnngu.github.io</a>.</p>
-      <!--block-start: back-to-top-->
+      <!-- block-start: back-to-top -->
       <p class="[ color-mono-07 ]"><a href="#back-to-top">&#8593; Back to top</a></p>
-      <!--block-end: back-to-top-->
+      <!-- block-end: back-to-top -->
 
       <h2 id="tech-stack">
         <a href="#tech-stack">Tech stack</a>
@@ -124,9 +124,9 @@
         <li><a href="https://pandoc.org" target="_blank">Pandoc</a> converts Markdown to HTML.</li>
         <li><a href="https://pages.github.com" target="_blank">GitHub Pages</a> hosts the website.</li>
       </ul>
-      <!--block-start: back-to-top-->
+      <!-- block-start: back-to-top -->
       <p class="[ color-mono-07 ]"><a href="#back-to-top">&#8593; Back to top</a></p>
-      <!--block-end: back-to-top-->
+      <!-- block-end: back-to-top -->
 
       <h2 id="styling">
         <a href="#styling">Styling</a>
@@ -157,9 +157,9 @@
         used.</p>
       <p>I am not entirely confident that I am applying CUBE CSS correctly, but at least
         I find it fun to work with.</p>
-      <!--block-start: back-to-top-->
+      <!-- block-start: back-to-top -->
       <p class="[ color-mono-07 ]"><a href="#back-to-top">&#8593; Back to top</a></p>
-      <!--block-end: back-to-top-->
+      <!-- block-end: back-to-top -->
 
       <h3 id="css-reset">
         <a href="#css-reset">CSS Reset</a>
@@ -168,9 +168,9 @@
           Reset</a>.
         His CSS reset is solid, simple, and sufficient in most cases. If you get a
         chance, I highly recommend checking it out. He explains it in great detail.</p>
-      <!--block-start: back-to-top-->
+      <!-- block-start: back-to-top -->
       <p class="[ color-mono-07 ]"><a href="#back-to-top">&#8593; Back to top</a></p>
-      <!--block-end: back-to-top-->
+      <!-- block-end: back-to-top -->
 
       <h3 id="code-syntax-highlighting">
         <a href="#code-syntax-highlighting">Code syntax highlighting</a>
@@ -184,15 +184,18 @@
         It supports both light and dark mode.</p>
       <p>For example:</p>
 
-<div class="[ codeblock-tabs ]"><label>main.c</label></div>
-<div class="[ codeblock ]" id="cb1"><pre><code><span id="cb1-1"><a href="#cb1-1"></a><span class="[ pp ]">#include </span><span class="[ im ]">&lt;stdio.h&gt;</span></span>
+<form class="[ tab ] [ codeblock ]">
+<label class="[ tab-name ]">main.c</label>
+<div class="[ tab-panel ] [ sourcecode ]" id="cb1"><pre><code><span id="cb1-1"><a href="#cb1-1"></a><span class="[ pp ]">#include </span><span class="[ im ]">&lt;stdio.h&gt;</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="[ dt ]">int</span> main<span class="[ op ]">(</span><span class="[ dt ]">void</span><span class="[ op ]">)</span> <span class="[ op ]">{</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a>  printf<span class="[ op ]">(</span><span class="[ st ]">&quot;Hello world!&quot;</span><span class="[ op ]">);</span></span>
 <span id="cb1-5"><a href="#cb1-5"></a><span class="[ op ]">}</span></span></code></pre></div>
+</form>
 
-<div class="[ codeblock-tabs ]"><label>main.js</label></div>
-<div class="[ codeblock ]" id="cb2"><pre><code><span id="cb2-1"><a href="#cb2-1"></a><span class="[ kw ]">const</span> express <span class="[ op ]">=</span> <span class="[ pp ]">require</span>(<span class="[ st ]">&#39;express&#39;</span>)</span>
+<form class="[ tab ] [ codeblock ]">
+<label class="[ tab-name ]">main.js</label>
+<div class="[ tab-panel ] [ sourcecode ]" id="cb2"><pre><code><span id="cb2-1"><a href="#cb2-1"></a><span class="[ kw ]">const</span> express <span class="[ op ]">=</span> <span class="[ pp ]">require</span>(<span class="[ st ]">&#39;express&#39;</span>)</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="[ kw ]">const</span> app <span class="[ op ]">=</span> <span class="[ fu ]">express</span>()</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="[ kw ]">const</span> port <span class="[ op ]">=</span> <span class="[ dv ]">3000</span></span>
 <span id="cb2-4"><a href="#cb2-4"></a></span>
@@ -203,9 +206,10 @@
 <span id="cb2-9"><a href="#cb2-9"></a>app<span class="[ op ]">.</span><span class="[ fu ]">listen</span>(port<span class="[ op ]">,</span> () <span class="[ kw ]">=&gt;</span> {</span>
 <span id="cb2-10"><a href="#cb2-10"></a>  <span class="[ bu ]">console</span><span class="[ op ]">.</span><span class="[ fu ]">log</span>(<span class="[ vs ]">`Example app listening on port </span><span class="[ sc ]">${</span>port<span class="[ sc ]">}</span><span class="[ vs ]">`</span>)</span>
 <span id="cb2-11"><a href="#cb2-11"></a>})</span></code></pre></div>
-      <!--block-start: back-to-top-->
+</form>
+      <!-- block-start: back-to-top -->
       <p class="[ color-mono-07 ]"><a href="#back-to-top">&#8593; Back to top</a></p>
-      <!--block-end: back-to-top-->
+      <!-- block-end: back-to-top -->
 
       <h2 id="content">
         <a href="#content">Content</a>
@@ -227,13 +231,21 @@
         to solve this issue. A block is similar to a component in popular front-end
         frameworks/libraries. It is a reusable group of HTML elements.</p>
       <p><code>Block</code> declaration syntax:</p>
-<div class="[ codeblock ]" id="cb3"><pre><code><span id="cb3-1"><a href="#cb3-1"></a><span class="[ co ]">&lt;!--block-start: block-name--&gt;</span></span>
+
+<form class="[ tab ] [ codeblock ]">
+<label class="[ tab-name ]">HTML</label>
+<div class="[ tab-panel ] [ sourcecode ]" id="cb3"><pre><code><span id="cb3-1"><a href="#cb3-1"></a><span class="[ co ]">&lt;!--block-start: block-name--&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="[ co ]">&lt;!--block-end: block-name--&gt;</span></span></code></pre></div>
+</form>
+
       <p>Let’s see <code>Block</code> in action with the example below.</p>
       <ol type="1">
         <li>Create files as the following tree.</li>
       </ol>
-<div class="[ codeblock ]" id="cb4"><pre><code><span id="cb4-1"><a href="#cb4-1"></a>scripts/</span>
+
+<form class="[ tab ] [ codeblock ]">
+<label class="[ tab-name ]">Directory tree</label>
+<div class="[ tab-panel ] [ sourcecode ]" id="cb4"><pre><code><span id="cb4-1"><a href="#cb4-1"></a>scripts/</span>
 <span id="cb4-2"><a href="#cb4-2"></a>└── block.sh</span>
 <span id="cb4-3"><a href="#cb4-3"></a>src/</span>
 <span id="cb4-4"><a href="#cb4-4"></a>├── blocks/</span>
@@ -241,25 +253,33 @@
 <span id="cb4-6"><a href="#cb4-6"></a>├── home.html</span>
 <span id="cb4-7"><a href="#cb4-7"></a>├── index.html</span>
 <span id="cb4-8"><a href="#cb4-8"></a>└── projects.html</span></code></pre></div>
+</form>
+
       <ol start="2" type="1">
         <li>Define the <code>header</code> block. Note that while the
           indentation is expected to be formatted properly when the <code>header</code> block is
           placed in HTML page files, indentation does not matter in my case as I do not
           preserve it.</li>
       </ol>
-<div class="[ codeblock-tabs ]"><label>src/blocks/header.html</label></div>
-<div class="[ codeblock ]" id="cb5"><pre><code><span id="cb5-1"><a href="#cb5-1"></a>    <span class="[ dt ]">&lt;</span><span class="[ kw ]">header</span><span class="[ dt ]">&gt;</span></span>
+
+<form class="[ tab ] [ codeblock ]">
+<label class="[ tab-name ]">src/blocks/header.html</label>
+<div class="[ tab-panel ] [ sourcecode ]" id="cb5"><pre><code><span id="cb5-1"><a href="#cb5-1"></a>    <span class="[ dt ]">&lt;</span><span class="[ kw ]">header</span><span class="[ dt ]">&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>      <span class="[ dt ]">&lt;</span><span class="[ kw ]">nav</span><span class="[ dt ]">&gt;</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a>        <span class="[ dt ]">&lt;</span><span class="[ kw ]">a</span><span class="[ ot ]"> href</span><span class="[ op ]">=</span><span class="[ st ]">&quot;/home.html&quot;</span><span class="[ dt ]">&gt;</span>Home<span class="[ dt ]">&lt;/</span><span class="[ kw ]">a</span><span class="[ dt ]">&gt;</span></span>
 <span id="cb5-4"><a href="#cb5-4"></a>        <span class="[ dt ]">&lt;</span><span class="[ kw ]">a</span><span class="[ ot ]"> href</span><span class="[ op ]">=</span><span class="[ st ]">&quot;/projects.html&quot;</span><span class="[ dt ]">&gt;</span>Projects<span class="[ dt ]">&lt;/</span><span class="[ kw ]">a</span><span class="[ dt ]">&gt;</span></span>
 <span id="cb5-5"><a href="#cb5-5"></a>      <span class="[ dt ]">&lt;/</span><span class="[ kw ]">nav</span><span class="[ dt ]">&gt;</span></span>
 <span id="cb5-6"><a href="#cb5-6"></a>    <span class="[ dt ]">&lt;/</span><span class="[ kw ]">header</span><span class="[ dt ]">&gt;</span></span></code></pre></div>
+</form>
+
       <ol start="3" type="1">
         <li>Define the Home page with <code>header</code>’s <strong>start and end block
             tag</strong>.</li>
       </ol>
-<div class="[ codeblock-tabs ]"><label>src/home.html</label></div>
-<div class="[ codeblock ]" id="cb6"><pre><code><span id="cb6-1"><a href="#cb6-1"></a><span class="[ dt ]">&lt;!DOCTYPE</span> html<span class="[ dt ]">&gt;</span></span>
+
+<form class="[ tab ] [ codeblock ]">
+<label class="[ tab-name ]">src/home.html</label>
+<div class="[ tab-panel ] [ sourcecode ]" id="cb6"><pre><code><span id="cb6-1"><a href="#cb6-1"></a><span class="[ dt ]">&lt;!DOCTYPE</span> html<span class="[ dt ]">&gt;</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="[ dt ]">&lt;</span><span class="[ kw ]">html</span><span class="[ ot ]"> lang</span><span class="[ op ]">=</span><span class="[ st ]">&quot;en&quot;</span><span class="[ dt ]">&gt;</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a>  <span class="[ dt ]">&lt;</span><span class="[ kw ]">head</span><span class="[ dt ]">&gt;</span></span>
 <span id="cb6-4"><a href="#cb6-4"></a>  <span class="[ dt ]">&lt;</span><span class="[ kw ]">title</span><span class="[ dt ]">&gt;</span>Home<span class="[ dt ]">&lt;/</span><span class="[ kw ]">title</span><span class="[ dt ]">&gt;</span></span>
@@ -269,12 +289,16 @@
 <span id="cb6-8"><a href="#cb6-8"></a>    <span class="[ co ]">&lt;!--block-end: header--&gt;</span></span>
 <span id="cb6-9"><a href="#cb6-9"></a>  <span class="[ dt ]">&lt;/</span><span class="[ kw ]">body</span><span class="[ dt ]">&gt;</span></span>
 <span id="cb6-10"><a href="#cb6-10"></a><span class="[ dt ]">&lt;/</span><span class="[ kw ]">html</span><span class="[ dt ]">&gt;</span></span></code></pre></div>
+</form>
+
       <ol start="4" type="1">
         <li>Define the Projects page with <code>header</code>’s <strong>start and
             end block tag</strong>.</li>
       </ol>
-<div class="[ codeblock-tabs ]"><label>src/projects.html</label></div>
-<div class="[ codeblock ]" id="cb7"><pre><code><span id="cb7-1"><a href="#cb7-1"></a><span class="[ dt ]">&lt;!DOCTYPE</span> html<span class="[ dt ]">&gt;</span></span>
+
+<form class="[ tab ] [ codeblock ]">
+<label class="[ tab-name ]">src/projects.html</label>
+<div class="[ tab-panel ] [ sourcecode ]" id="cb7"><pre><code><span id="cb7-1"><a href="#cb7-1"></a><span class="[ dt ]">&lt;!DOCTYPE</span> html<span class="[ dt ]">&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="[ dt ]">&lt;</span><span class="[ kw ]">html</span><span class="[ ot ]"> lang</span><span class="[ op ]">=</span><span class="[ st ]">&quot;en&quot;</span><span class="[ dt ]">&gt;</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="[ dt ]">&lt;</span><span class="[ kw ]">head</span><span class="[ dt ]">&gt;</span></span>
 <span id="cb7-4"><a href="#cb7-4"></a>  <span class="[ dt ]">&lt;</span><span class="[ kw ]">title</span><span class="[ dt ]">&gt;</span>Projects<span class="[ dt ]">&lt;/</span><span class="[ kw ]">title</span><span class="[ dt ]">&gt;</span></span>
@@ -284,17 +308,26 @@
 <span id="cb7-8"><a href="#cb7-8"></a>    <span class="[ co ]">&lt;!--block-end: header--&gt;</span></span>
 <span id="cb7-9"><a href="#cb7-9"></a>  <span class="[ dt ]">&lt;/</span><span class="[ kw ]">body</span><span class="[ dt ]">&gt;</span></span>
 <span id="cb7-10"><a href="#cb7-10"></a><span class="[ dt ]">&lt;/</span><span class="[ kw ]">html</span><span class="[ dt ]">&gt;</span></span></code></pre></div>
+</form>
+
       <ol start="5" type="1">
         <li>Run <code>scripts/block.sh</code> with the block name (i.e. <code>header</code>). The script can be found in
           <a href="https://github.com/namvnngu/namvnngu.github.io/blob/main/scripts/block.sh" target="_blank">scripts/block.sh</a>.
         </li>
       </ol>
-<div class="[ codeblock ]" id="cb8"><pre><code><span id="cb8-1"><a href="#cb8-1"></a><span class="[ ex ]">./scripts/block.sh</span> header</span></code></pre></div>
+
+<form class="[ tab ] [ codeblock ]">
+<label class="[ tab-name ]">Shell</label>
+<div class="[ tab-panel ] [ sourcecode ]" id="cb8"><pre><code><span id="cb8-1"><a href="#cb8-1"></a><span class="[ ex ]">./scripts/block.sh</span> header</span></code></pre></div>
+</form>
+
       <ol start="6" type="1">
         <li>As a result, the Home page and the Projects page are updated as follows.</li>
       </ol>
-<div class="[ codeblock-tabs ]"><label>src/home.html</label></div>
-<div class="[ codeblock ]" id="cb9"><pre><code><span id="cb9-1"><a href="#cb9-1"></a><span class="[ dt ]">&lt;!DOCTYPE</span> html<span class="[ dt ]">&gt;</span></span>
+
+<form class="[ tab ] [ codeblock ]">
+<label class="[ tab-name ]">src/home.html</label>
+<div class="[ tab-panel ] [ sourcecode ]" id="cb9"><pre><code><span id="cb9-1"><a href="#cb9-1"></a><span class="[ dt ]">&lt;!DOCTYPE</span> html<span class="[ dt ]">&gt;</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="[ dt ]">&lt;</span><span class="[ kw ]">html</span><span class="[ ot ]"> lang</span><span class="[ op ]">=</span><span class="[ st ]">&quot;en&quot;</span><span class="[ dt ]">&gt;</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a>  <span class="[ dt ]">&lt;</span><span class="[ kw ]">head</span><span class="[ dt ]">&gt;</span></span>
 <span id="cb9-4"><a href="#cb9-4"></a>  <span class="[ dt ]">&lt;</span><span class="[ kw ]">title</span><span class="[ dt ]">&gt;</span>Home<span class="[ dt ]">&lt;/</span><span class="[ kw ]">title</span><span class="[ dt ]">&gt;</span></span>
@@ -310,9 +343,11 @@
 <span id="cb9-14"><a href="#cb9-14"></a>    <span class="[ co ]">&lt;!--block-end: header--&gt;</span></span>
 <span id="cb9-15"><a href="#cb9-15"></a>  <span class="[ dt ]">&lt;/</span><span class="[ kw ]">body</span><span class="[ dt ]">&gt;</span></span>
 <span id="cb9-16"><a href="#cb9-16"></a><span class="[ dt ]">&lt;/</span><span class="[ kw ]">html</span><span class="[ dt ]">&gt;</span></span></code></pre></div>
+</form>
 
-<div class="[ codeblock-tabs ]"><label>src/projects.html</label></div>
-<div class="[ codeblock ]" id="cb10"><pre><code><span id="cb10-1"><a href="#cb10-1"></a><span class="[ dt ]">&lt;!DOCTYPE</span> html<span class="[ dt ]">&gt;</span></span>
+<form class="[ tab ] [ codeblock ]">
+<label class="[ tab-name ]">src/projects.html</label>
+<div class="[ tab-panel ] [ sourcecode ]" id="cb10"><pre><code><span id="cb10-1"><a href="#cb10-1"></a><span class="[ dt ]">&lt;!DOCTYPE</span> html<span class="[ dt ]">&gt;</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="[ dt ]">&lt;</span><span class="[ kw ]">html</span><span class="[ ot ]"> lang</span><span class="[ op ]">=</span><span class="[ st ]">&quot;en&quot;</span><span class="[ dt ]">&gt;</span></span>
 <span id="cb10-3"><a href="#cb10-3"></a>  <span class="[ dt ]">&lt;</span><span class="[ kw ]">head</span><span class="[ dt ]">&gt;</span></span>
 <span id="cb10-4"><a href="#cb10-4"></a>  <span class="[ dt ]">&lt;</span><span class="[ kw ]">title</span><span class="[ dt ]">&gt;</span>Projects<span class="[ dt ]">&lt;/</span><span class="[ kw ]">title</span><span class="[ dt ]">&gt;</span></span>
@@ -328,13 +363,15 @@
 <span id="cb10-14"><a href="#cb10-14"></a>    <span class="[ co ]">&lt;!--block-end: header--&gt;</span></span>
 <span id="cb10-15"><a href="#cb10-15"></a>  <span class="[ dt ]">&lt;/</span><span class="[ kw ]">body</span><span class="[ dt ]">&gt;</span></span>
 <span id="cb10-16"><a href="#cb10-16"></a><span class="[ dt ]">&lt;/</span><span class="[ kw ]">html</span><span class="[ dt ]">&gt;</span></span></code></pre></div>
+</form>
+
       <ol start="7" type="1">
         <li>Whenever <code>src/blocks/header.html</code> is updated, simply run the script in the
           step 5 to update the <code>header</code> block across all pages.</li>
       </ol>
-      <!--block-start: back-to-top-->
+      <!-- block-start: back-to-top -->
       <p class="[ color-mono-07 ]"><a href="#back-to-top">&#8593; Back to top</a></p>
-      <!--block-end: back-to-top-->
+      <!-- block-end: back-to-top -->
 
       <h3 id="how-is-a-writing-like-this-created">
         <a href="#how-is-a-writing-like-this-created">How is a writing like this created?</a>
@@ -347,12 +384,17 @@
           <code>writing.md</code> to <code>writing.html</code>.
         </li>
       </ol>
-<div class="[ codeblock ]" id="cb11"><pre><code><span id="cb11-1"><a href="#cb11-1"></a><span class="[ ex ]">pandoc</span> writing.md <span class="[ dt ]">\</span></span>
+
+<form class="[ tab ] [ codeblock ]">
+<label class="[ tab-name ]">Shell</label>
+<div class="[ tab-panel ] [ sourcecode ]" id="cb11"><pre><code><span id="cb11-1"><a href="#cb11-1"></a><span class="[ ex ]">pandoc</span> writing.md <span class="[ dt ]">\</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a>       <span class="[ at ]">--toc</span> <span class="[ dt ]">\</span></span>
 <span id="cb11-3"><a href="#cb11-3"></a>       <span class="[ at ]">--standalone</span> <span class="[ dt ]">\</span></span>
 <span id="cb11-4"><a href="#cb11-4"></a>       <span class="[ at ]">--wrap</span><span class="[ op ]">=</span>preserve <span class="[ dt ]">\</span></span>
 <span id="cb11-5"><a href="#cb11-5"></a>       <span class="[ at ]">--highlight-style</span><span class="[ op ]">=</span>kate <span class="[ dt ]">\</span></span>
 <span id="cb11-6"><a href="#cb11-6"></a>       <span class="[ at ]">--output</span><span class="[ op ]">=</span>writing.html</span></code></pre></div>
+</form>
+
       <ol start="4" type="1">
         <li>Copy content line by line from <code>writing.html</code> to the actual HTML page,
           making adjustments to align with my website’s styling.</li>
@@ -360,9 +402,9 @@
       <p>As you can see, writing pages are first written in Markdown and then converted
         to HTML. This is the only exception to not using HTML directly to create pages,
         which is mentioned in the section <a href="#how-is-page-content-managed">How is page content managed?</a>.</p>
-      <!--block-start: back-to-top-->
+      <!-- block-start: back-to-top -->
       <p class="[ color-mono-07 ]"><a href="#back-to-top">&#8593; Back to top</a></p>
-      <!--block-end: back-to-top-->
+      <!-- block-end: back-to-top -->
 
       <h2 id="interesting-points-during-development">
         <a href="#interesting-points-during-development">Interesting points during development</a>
@@ -381,29 +423,29 @@
         <li>Writing pure CSS is fun.</li>
         <li>Writing pure HTML is fun.</li>
       </ul>
-      <!--block-start: back-to-top-->
+      <!-- block-start: back-to-top -->
       <p class="[ color-mono-07 ]"><a href="#back-to-top">&#8593; Back to top</a></p>
-      <!--block-end: back-to-top-->
+      <!-- block-end: back-to-top -->
     </article>
 
-    <!--block-start: cheers-->
+    <!-- block-start: cheers -->
     <p>
       Cheers,<br>
       Nam Nguyen
     </p>
-    <!--block-end: cheers-->
+    <!-- block-end: cheers -->
 
-    <!--block-start: back-to-writing-->
+    <!-- block-start: back-to-writing -->
     <p><a class="[ color-mono-07 ]" href="/writing">$ cd ~/writing</a></p>
-    <!--block-end: back-to-writing-->
+    <!-- block-end: back-to-writing -->
   </main>
 
-  <!--block-start: footer-->
+  <!-- block-start: footer -->
   <footer>
     <p>Always remember to love yourself. ٩( ᐛ )و</p>
     <p><a href="/404">404</a></p>
   </footer>
-  <!--block-end: footer-->
+  <!-- block-end: footer -->
 </body>
 
 </html>

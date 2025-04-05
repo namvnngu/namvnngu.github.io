@@ -126,15 +126,17 @@ frameworks/libraries. It is a reusable group of HTML elements.
 
 `Block` declaration syntax:
 
+HTML
 ``` html {.numberLines}
-<!--block-start: block-name-->
-<!--block-end: block-name-->
+<!-- block-start: block-name -->
+<!-- block-end: block-name -->
 ```
 
 Let's see `Block` in action with the example below.
 
 1. Create files as the following tree.
 
+Directory tree
 ``` {.numberLines}
 scripts/
 └── block.sh
@@ -170,8 +172,8 @@ src/home.html
   <title>Home</title>
   </head>
   <body>
-    <!--block-start: header-->
-    <!--block-end: header-->
+    <!-- block-start: header -->
+    <!-- block-end: header -->
   </body>
 </html>
 ```
@@ -186,8 +188,8 @@ src/projects.html
   <title>Projects</title>
   </head>
   <body>
-    <!--block-start: header-->
-    <!--block-end: header-->
+    <!-- block-start: header -->
+    <!-- block-end: header -->
   </body>
 </html>
 ```
@@ -195,6 +197,7 @@ src/projects.html
 5. Run `scripts/block.sh` with the block name (i.e. `header`). The script can
 be found in [scripts/block.sh](https://github.com/namvnngu/namvnngu.github.io/blob/main/scripts/block.sh).
 
+Shell
 ``` bash {.numberLines}
 ./scripts/block.sh header
 ```
@@ -209,14 +212,14 @@ src/home.html
   <title>Home</title>
   </head>
   <body>
-    <!--block-start: header-->
+    <!-- block-start: header -->
     <header>
       <nav>
         <a href="/home.html">Home</a>
         <a href="/projects.html">Projects</a>
       </nav>
     </header>
-    <!--block-end: header-->
+    <!-- block-end: header -->
   </body>
 </html>
 ```
@@ -229,14 +232,14 @@ src/projects.html
   <title>Projects</title>
   </head>
   <body>
-    <!--block-start: header-->
+    <!-- block-start: header -->
     <header>
       <nav>
         <a href="/home.html">Home</a>
         <a href="/projects.html">Projects</a>
       </nav>
     </header>
-    <!--block-end: header-->
+    <!-- block-end: header -->
   </body>
 </html>
 ```
@@ -253,6 +256,7 @@ A writing is created through the following steps:
 3. Run the following Pandoc command to convert Markdown to HTML, i.e.
 `writing.md` to `writing.html`.
 
+Shell
 ``` bash {.numberLines}
 pandoc writing.md \
        --toc \

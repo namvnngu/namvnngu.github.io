@@ -394,6 +394,69 @@ footer {
   padding: var(--spacing) calc(var(--spacing) * 1.5);
 }
 
+.tab {
+  --tab-border-width: 1px;
+  --tab-border: var(--tab-border-width) solid var(--color-mono-04);
+  --tab-border-radius: var(--radius-lg);
+  --tab-top-spacing: 0px;
+
+  --tab-name-block-padding: calc(var(--spacing) * 1.5);
+  --tab-name-inline-padding: calc(var(--spacing) * 2);
+  --tab-name-font-size: var(--text-sm);
+  --tab-name-line-height: var(--text-sm--line-height);
+  --tab-name-font-family: var(--font-sans);
+  --tab-name-background-color: var(--color-mono-01);
+  --tab-name-active-background-color: var(--color-mono-03);
+
+  position: relative;
+  margin-top: calc(
+    var(--tab-name-font-size) * var(--tab-name-line-height) +
+    var(--tab-name-block-padding) * 2 +
+    var(--tab-border-width) +
+    var(--tab-top-spacing)
+  );
+}
+.tab > .tab-name {
+  position: absolute;
+  top: 0;
+  transform: translate3d(var(--tab-name-x, 0), -100%, 0);
+  display: inline-block;
+  font-size: var(--tab-name-font-size);
+  line-height: var(--tab-name-line-height);
+  font-family: var(--tab-name-font-family);
+  background-color: var(--tab-name-background-color);
+  border: var(--tab-border);
+  border-bottom: none;
+  border-right: none;
+  padding: var(--tab-name-block-padding) var(--tab-name-inline-padding);
+}
+.tab > .tab-name:first-of-type {
+  border-top-left-radius: var(--tab-border-radius);
+}
+.tab > .tab-name:last-of-type {
+  border-top-right-radius: var(--tab-border-radius);
+  border-right: var(--tab-border);
+}
+.tab > .tab-name + .tab-panel {
+  border-top-left-radius: 0;
+}
+.tab > input[name="tab-name"] {
+  position: absolute;
+  display: none;
+}
+.tab > input[name="tab-name"]:checked + .tab-name {
+  background-color: var(--tab-name-active-background-color);
+}
+.tab > input[name="tab-name"]:checked + .tab-name + .tab-panel {
+  display: block;
+}
+.tab > input[name="tab-name"] + .tab-name + .tab-panel {
+  display: none;
+}
+.tab > input[name="tab-name"] + .tab-name {
+  cursor: pointer;
+}
+
 .writing h2 {
   margin-top: calc(var(--spacing) * 6);
 }
