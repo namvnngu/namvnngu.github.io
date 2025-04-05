@@ -24,6 +24,8 @@ html {
   --tab-name-line-height: var(--text-xs--line-height);
   --tab-name-font-family: var(--font-mono);
   --tab-name-background-color: var(--codeblock-background-color);
+
+  --tab-panel-background-color: var(--codeblock-background-color);
 }
 
 * + .codeblock {
@@ -40,10 +42,6 @@ html {
   overflow: auto;
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
-  background-color: var(--codeblock-background-color);
-  padding: calc(var(--spacing) * 3) calc(var(--spacing) * 2);
-  border: var(--codeblock-border);
-  border-radius: var(--codeblock-border-radius);
 }
 
 .codeblock > .sourcecode > pre {

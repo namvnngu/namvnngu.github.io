@@ -403,13 +403,17 @@ footer {
   --tab-border-radius: var(--radius-lg);
   --tab-top-spacing: 0px;
 
-  --tab-name-block-padding: calc(var(--spacing) * 1.5);
-  --tab-name-inline-padding: calc(var(--spacing) * 2);
   --tab-name-font-size: var(--text-sm);
   --tab-name-line-height: var(--text-sm--line-height);
   --tab-name-font-family: var(--font-sans);
+  --tab-name-block-padding: calc(var(--spacing) * 1.5);
+  --tab-name-inline-padding: calc(var(--spacing) * 2);
   --tab-name-background-color: var(--color-mono-01);
   --tab-name-active-background-color: var(--color-mono-03);
+
+  --tab-panel-background-color: var(--color-mono-01);
+  --tab-panel-block-padding: calc(var(--spacing) * 3);
+  --tab-panel-inline-padding: calc(var(--spacing) * 2);
 
   position: relative;
   margin-top: calc(
@@ -432,6 +436,12 @@ footer {
   border-bottom: none;
   border-right: none;
   padding: var(--tab-name-block-padding) var(--tab-name-inline-padding);
+}
+.tab > .tab__panel {
+  background-color: var(--tab-panel-background-color);
+  padding: var(--tab-panel-block-padding) var(--tab-panel-inline-padding);
+  border: var(--tab-border);
+  border-radius: var(--tab-border-radius);
 }
 .tab > .tab__name:first-of-type {
   border-top-left-radius: var(--tab-border-radius);
