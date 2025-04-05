@@ -293,6 +293,9 @@ footer {
 
 /* == UTILITY == */
 
+.color-mono-06 {
+  color: var(--color-mono-06);
+}
 .color-mono-07 {
   color: var(--color-mono-07);
 }
