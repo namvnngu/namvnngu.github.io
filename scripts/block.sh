@@ -13,8 +13,7 @@ if [[ ! -f "$block_path" ]]; then
   exit 1
 fi
 
-for target in "$SRC_PATH"/*.html "$SRC_PATH"/**/*.html "$SRC_PATH"/**/**/*.html;
-do
+for target in "$SRC_PATH"/*.html "$SRC_PATH"/**/*.html "$SRC_PATH"/**/**/*.html; do
   if [[ "$target" == "$BLOCKS_PATH"* ]]; then
     continue
   fi
@@ -29,8 +28,7 @@ do
 
   indices=($(echo ${!start_line_numbers[@]} | tr ' ' '\n'))
 
-  for index in "${indices[@]}";
-  do
+  for index in "${indices[@]}"; do
     start_line_numbers=($(sed -n "/<!-- block-start: $block -->/=" $target | tr ' ' '\n'))
     end_line_numbers=($(sed -n "/<!-- block-end: $block -->/=" $target | tr ' ' '\n'))
 
