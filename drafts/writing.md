@@ -61,6 +61,7 @@ git rename current branch: git branch -m <new-name>
 
 ### Find command with `fzf`
 
+cmd
 ```bash {.numberLines}
 #!/usr/bin/env bash
 ```
