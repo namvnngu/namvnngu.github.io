@@ -27,10 +27,8 @@ commands on MacOS/Linux and [fzf](https://github.com/junegunn/fzf).
 
 ## Build a simple command manager
 
-The command manager is named `cmd`, but you can name it whatever you like, as
-long as you remember the name and use it when naming files later on.
-
-NOTE: `cmd` supports macOS and Linux only.
+The command manager is named `cmd`. A note that `cmd` supports macOS and Linux
+only.
 
 ### Prerequisites
 
@@ -49,12 +47,23 @@ Files
 └── cmd-git
 ```
 
-- `cmd`:
-- `cmd-*` (e.g. `cmd-find` and `cmd-git`):
+- `cmd` is the command manager.
+- `cmd-*` (e.g. `cmd-find` and `cmd-git`) files stores saved commands along with
+brief descriptions. These files will be explained in detail below.
 
 ### Command files
 
+cmd-git
+``` {.numberLines}
+git log oneline in graph: git log --oneline --graph
+git rename current branch: git branch -m <new-name>
+```
+
 ### Find command with `fzf`
+
+```bash {.numberLines}
+#!/usr/bin/env bash
+```
 
 ### Detect placeholders and fill in values
 
