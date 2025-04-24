@@ -23,18 +23,34 @@ values.
 Therefore, I want to build a command manager that I can use directly within the
 terminal. It can detect option placeholders in a saved command and prompt me to
 fill values in. It should be built with my existing daily tools namely built-in
-commands and [fzf](https://github.com/junegunn/fzf).
+commands on MacOS/Linux and [fzf](https://github.com/junegunn/fzf).
 
 ## Build a simple command manager
 
+The command manager is named `cmd`, but you can name it whatever you like, as
+long as you remember the name and use it when naming files later on.
+
+NOTE: `cmd` supports macOS and Linux only.
+
 ### Prerequisites
 
-- [bash](https://www.gnu.org/software/bash)
+- `bash`
 - [fzf](https://github.com/junegunn/fzf)
-- [sed](https://www.gnu.org/software/sed)
-- [grep](https://www.gnu.org/software/grep)
+- Built-in commands such as `sed`, `grep`, `cat`, `find`, `tr`, `uname` and
+`pbcopy` on macOS or `xclip` on Linux.
 
 ### Project structure
+
+Files
+``` {.numberLines}
+.
+├── cmd
+├── cmd-find
+└── cmd-git
+```
+
+- `cmd`:
+- `cmd-*` (e.g. `cmd-find` and `cmd-git`):
 
 ### Command files
 

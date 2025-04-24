@@ -259,7 +259,7 @@ code {
   font-family: var(--font-mono);
 }
 
-b {
+b, strong {
   font-weight: var(--font-weight-bold);
 }
 
