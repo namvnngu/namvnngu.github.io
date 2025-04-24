@@ -471,11 +471,9 @@ footer {
 }
 
 .writing h2 {
-  width: fit-content;
   margin-top: calc(var(--spacing) * 6);
 }
 .writing h3 {
-  width: fit-content;
   margin-top: calc(var(--spacing) * 4);
 }
 .writing h2 a,
