@@ -175,13 +175,50 @@
 <nav id="TOC" role="doc-toc">
 <ul>
 <li><a href="#motivation" id="toc-motivation">Motivation</a></li>
-<li><a href="#build-a-simple-command-manager" id="toc-build-a-simple-command-manager">Build a simple command manager</a></li>
+<li><a href="#build-a-simple-command-manager" id="toc-build-a-simple-command-manager">Build a simple command manager</a>
+<ul>
+<li><a href="#prerequisites" id="toc-prerequisites">Prerequisites</a></li>
+<li><a href="#project-structure" id="toc-project-structure">Project structure</a></li>
+<li><a href="#command-files" id="toc-command-files">Command files</a></li>
+<li><a href="#find-command-with-fzf" id="toc-find-command-with-fzf">Find command with <code>fzf</code></a></li>
+<li><a href="#detect-placeholders-and-fill-in-values" id="toc-detect-placeholders-and-fill-in-values">Detect placeholders and fill in values</a></li>
+<li><a href="#execute-command" id="toc-execute-command">Execute command</a></li>
+<li><a href="#full-implementation" id="toc-full-implementation">Full implementation</a></li>
+</ul></li>
 <li><a href="#final-words" id="toc-final-words">Final words</a></li>
 </ul>
 </nav>
 <p>Published on April 24, 2025.</p>
 <h2 id="motivation">Motivation</h2>
+<p>I often find myself in a situation where I want to remember a useful terminal
+command, but I have a poor memory and tend to forget it after just a few days.
+I used to save all the useful commands in <a href="https://obsidian.md">Obsidian</a>, which
+I use daily as my second brain for notes, planning, learning, and more.</p>
+<p>However, whenever I need to use a command I previously bumped into and saved in
+the note, it is a bit tedious to jump out of terminal, open Obsidian, search for
+the note and find the right command. On top of that, I sometimes include
+placeholders for command options whose values are dynamic case by case, so
+whenever I need to use such a command with options, I have to copy it from the
+note, paste it into the terminal, and then manually fill in the appropriate
+values.</p>
+<p>Therefore, I want to build a command manager that I can use directly within the
+terminal. It can detect option placeholders in a saved command and prompt me to
+fill values in. It should be built with my existing daily tools namely built-in
+commands and <a href="https://github.com/junegunn/fzf">fzf</a>.</p>
 <h2 id="build-a-simple-command-manager">Build a simple command manager</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li><a href="https://www.gnu.org/software/bash">bash</a></li>
+<li><a href="https://github.com/junegunn/fzf">fzf</a></li>
+<li><a href="https://www.gnu.org/software/sed">sed</a></li>
+<li><a href="https://www.gnu.org/software/grep">grep</a></li>
+</ul>
+<h3 id="project-structure">Project structure</h3>
+<h3 id="command-files">Command files</h3>
+<h3 id="find-command-with-fzf">Find command with <code>fzf</code></h3>
+<h3 id="detect-placeholders-and-fill-in-values">Detect placeholders and fill in values</h3>
+<h3 id="execute-command">Execute command</h3>
+<h3 id="full-implementation">Full implementation</h3>
 <h2 id="final-words">Final words</h2>
 <p>Hope you enjoy it. Take care.</p>
 <p>Nam Nguyen</p>
