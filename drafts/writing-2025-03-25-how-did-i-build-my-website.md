@@ -3,7 +3,7 @@ title: How To Create Tab With Only HTML and CSS
 lang: en
 ...
 
-Created on March 25, 2025. Last updated on April 05, 2025.
+Published on March 25, 2025. Last updated on April 05, 2025.
 
 ## Motivation
 
