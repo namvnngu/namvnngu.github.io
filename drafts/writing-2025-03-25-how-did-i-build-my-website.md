@@ -1,5 +1,5 @@
 ---
-title: How To Create Tab With Only HTML and CSS
+title: How Did I Build My Website?
 lang: en
 ...
 
@@ -21,7 +21,7 @@ understanding how technologies work under the hood and sharing my thoughts on
 topics that intrigue me. This new website will become a space for exploration,
 experiment and writing.
 
-The source code of my new website can be found at [github.com/namvnngu/namvnngu.github.io](https://github.com/namvnngu/namvnngu.github.io).
+The source code of my new website can be found at [namvnngu/namvnngu.github.io](https://github.com/namvnngu/namvnngu.github.io).
 
 ## Tech stack
 
