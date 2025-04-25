@@ -49,7 +49,7 @@ category.
 - If a category as an argument is given, list only the commands of that
 category.
 - Allow to select one command at a time.
-- If the selected command has placeholders, prompt to fill them in.
+- If the selected command has placeholders, prompt to fill them with values.
 - After a command is selected and placeholders are filled, there are three
 options: copy, execute and quit. If neither option is selected, continue prompting
 until one option is chosen.
@@ -69,6 +69,12 @@ Files
 with brief descriptions, where `*` is a category. The content of these files
 will be explained in detail below.
 
+Remember to run the below command to make `cmd` executable:
+
+``` bash {.numberLines}
+chmod +x ./cmd
+```
+
 ### Command files
 
 In a command file, each line is one command entry. The format is
@@ -78,8 +84,8 @@ format
 description: command
 ```
 
-- The `description` should be short and sweet.
-- The `command` is a command which will be copied or executed. It may optionally
+- `description` should be short and sweet.
+- `command` is a command which will be copied or executed. It may optionally
 contain placeholders.
   - Placeholders are written in a format `<placeholder>`.
 
@@ -94,27 +100,106 @@ git rename current branch: git branch -m <new-name>
 Let's break down the above example:
 
 - The first entry: `git log oneline in graph: git log --oneline --graph`
-  - `git log oneline in graph` is the description.
-  - `git log --oneline --graph` is the command with no placeholders.
+  - `git log oneline in graph` is a description.
+  - `git log --oneline --graph` is a command with no placeholders.
 - The second entry: `git rename current branch: git branch -m <new-name>`
-  - `git rename current branch` is the description.
-  - `git branch -m <new-name>` is the command with a `<new-name>` placeholder.
+  - `git rename current branch` is a description.
+  - `git branch -m <new-name>` is a command with a `<new-name>` placeholder.
 
 ### Find command with `fzf`
 
 cmd
-```bash {.numberLines}
+``` bash {.numberLines}
 #!/usr/bin/env bash
+
+# The optional category passed as an argument
+category="$1"
+
+# The directory of all command files
+cmd_dir="."
+
+# The path to the command file based on the given category
+cmd_file="$cmd_dir/cmd-$category"
+
+# The selected command based on the given category
+selected_cmd=""
+
+# === Find command with `fzf` ===
+
+# If no argument is provided, i.e. no category
+if [[ $# -eq 0 ]]; then
+  # Find all command files whose prefix is "cmd-"
+  files=$(find "$cmd_dir" -maxdepth 1 -name "cmd-*")
+  # Find a command entry across all found command files
+  selected_cmd_entry=$(cat $files | fzf)
+# If a category is provided, and the command file exists
+# based on the provided category
+elif [[ -e "$cmd_file" ]]; then
+  # Find a command entry within the specified command file
+  selected_cmd_entry=$(cat "$cmd_file" | fzf)
+# If the command file is not found based on
+# the provided category
+else
+  # Print error message
+  echo "$cmd_file: No such file"
+  # Exit with error code
+  exit 1
+fi
+
+# If no command entry is selected
+if [[ -z "$selected_cmd_entry" ]]; then
+  # Exit with success code
+  exit 0
+fi
+
+# Remove "description: " part to get the actual command
+# from the selected command entry
+selected_cmd=$(echo "$selected_cmd_entry" | sed "s/^.*: //")
+# Print the selected command
+echo "Selected command: $selected_cmd"
 ```
 
 ### Detect placeholders and fill in values
 
-### Execute command
+cmd
+``` bash {.numberLines}
+#!/usr/bin/env bash
+
+...
+
+# The selected command based on the given category
+selected_cmd=""
+
+# === Find command with fzf ===
+...
+
+# === Detect placeholders and fill in values ===
+```
+
+### Perform an action on command
+
+cmd
+``` bash {.numberLines}
+#!/usr/bin/env bash
+
+...
+
+# The selected command based on the given category
+selected_cmd=""
+
+# === Find command with fzf ===
+...
+
+# === Detect placeholders and fill in values ===
+...
+
+# === Perform an action on command ===
+```
 
 ### Full implementation
 
 cmd
-```bash {.numberLines}
+``` bash {.numberLines}
 #!/usr/bin/env bash
 ```
 
