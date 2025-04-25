@@ -246,6 +246,7 @@
 <li><a href="#build-a-simple-command-manager" id="toc-build-a-simple-command-manager">Build a simple command manager</a>
 <ul>
 <li><a href="#prerequisites" id="toc-prerequisites">Prerequisites</a></li>
+<li><a href="#features" id="toc-features">Features</a></li>
 <li><a href="#project-structure" id="toc-project-structure">Project structure</a></li>
 <li><a href="#command-files" id="toc-command-files">Command files</a></li>
 <li><a href="#find-command-with-fzf" id="toc-find-command-with-fzf">Find command with <code>fzf</code></a></li>
@@ -272,7 +273,7 @@ values.</p>
 <p>Therefore, I want to build a command manager that I can use directly within the
 terminal. It can detect option placeholders in a saved command and prompt me to
 fill values in. It should be built with my existing daily tools namely built-in
-commands on MacOS/Linux and <a href="https://github.com/junegunn/fzf">fzf</a>.</p>
+commands on macOS/Linux and <a href="https://github.com/junegunn/fzf">fzf</a>.</p>
 <h2 id="build-a-simple-command-manager">Build a simple command manager</h2>
 <p>The command manager is named <code>cmd</code>. A note that <code>cmd</code> supports macOS and Linux
 only.</p>
@@ -283,27 +284,49 @@ only.</p>
 <li>Built-in commands such as <code>sed</code>, <code>grep</code>, <code>cat</code>, <code>find</code>, <code>tr</code>, <code>uname</code> and
 <code>pbcopy</code> on macOS or <code>xclip</code> on Linux.</li>
 </ul>
+<h3 id="features">Features</h3>
+<p>Before jumping into building the command, it is helpful to define the list of
+features first:</p>
+<ul>
+<li>Save commands in <code>cmd-*</code> files (e.g. <code>cmd-git</code>), where <code>*</code> is a category.</li>
+<li>Accept either zero or one argument; if provided, the argument should be a
+category.</li>
+<li>If no argument is given, list all saved commands across all categories.</li>
+<li>If a category as an argument is given, list only the commands of that
+category.</li>
+<li>Allow to select one command at a time.</li>
+<li>If the selected command has placeholders, prompt to fill them in.</li>
+<li>After a command is selected and placeholders are filled, there are two
+options: copy or execute. If neither option is selected, continue prompting
+until one option is chosen.</li>
+</ul>
 <h3 id="project-structure">Project structure</h3>
 <p>Files</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>.</span>
 <span id="cb1-2"><a href="#cb1-2"></a>├── cmd</span>
-<span id="cb1-3"><a href="#cb1-3"></a>├── cmd-find</span>
-<span id="cb1-4"><a href="#cb1-4"></a>└── cmd-git</span></code></pre></div>
+<span id="cb1-3"><a href="#cb1-3"></a>└── cmd-git</span>
+<span id="cb1-4"><a href="#cb1-4"></a>├── cmd-find</span></code></pre></div>
 <ul>
 <li><code>cmd</code> is the command manager.</li>
-<li><code>cmd-*</code> (e.g. <code>cmd-find</code> and <code>cmd-git</code>) files stores saved commands along with
-brief descriptions. These files will be explained in detail below.</li>
+<li><code>cmd-*</code> (e.g. <code>cmd-find</code> and <code>cmd-git</code>) files consist of saved commands along
+with brief descriptions, where <code>*</code> is a category. The content of these files
+will be explained in detail below.</li>
 </ul>
 <h3 id="command-files">Command files</h3>
 <p>cmd-git</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>git log oneline in graph: git log --oneline --graph</span>
 <span id="cb2-2"><a href="#cb2-2"></a>git rename current branch: git branch -m &lt;new-name&gt;</span></code></pre></div>
+<p>Let’s break down the above file:</p>
 <h3 id="find-command-with-fzf">Find command with <code>fzf</code></h3>
 <p>cmd</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#!/usr/bin/env bash</span></span></code></pre></div>
 <h3 id="detect-placeholders-and-fill-in-values">Detect placeholders and fill in values</h3>
 <h3 id="execute-command">Execute command</h3>
 <h3 id="full-implementation">Full implementation</h3>
+<p>cmd</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#!/usr/bin/env bash</span></span></code></pre></div>
+<p>Or, you can find <a href="https://github.com/namvnngu/.dotfiles/blob/main/bin/cmd">my full implementation</a>
+that I use in my daily development.</p>
 <h2 id="final-words">Final words</h2>
 <p>Hope you enjoy it. Take care.</p>
 <p>Nam Nguyen</p>

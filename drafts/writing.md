@@ -23,7 +23,7 @@ values.
 Therefore, I want to build a command manager that I can use directly within the
 terminal. It can detect option placeholders in a saved command and prompt me to
 fill values in. It should be built with my existing daily tools namely built-in
-commands on MacOS/Linux and [fzf](https://github.com/junegunn/fzf).
+commands on macOS/Linux and [fzf](https://github.com/junegunn/fzf).
 
 ## Build a simple command manager
 
@@ -37,19 +37,37 @@ only.
 - Built-in commands such as `sed`, `grep`, `cat`, `find`, `tr`, `uname` and
 `pbcopy` on macOS or `xclip` on Linux.
 
+### Features
+
+Before jumping into building the command, it is helpful to define the list of
+features first:
+
+- Save commands in `cmd-*` files (e.g. `cmd-git`), where `*` is a category.
+- Accept either zero or one argument; if provided, the argument should be a
+category.
+- If no argument is given, list all saved commands across all categories.
+- If a category as an argument is given, list only the commands of that
+category.
+- Allow to select one command at a time.
+- If the selected command has placeholders, prompt to fill them in.
+- After a command is selected and placeholders are filled, there are two
+options: copy or execute. If neither option is selected, continue prompting
+until one option is chosen.
+
 ### Project structure
 
 Files
 ``` {.numberLines}
 .
 ├── cmd
-├── cmd-find
 └── cmd-git
+├── cmd-find
 ```
 
 - `cmd` is the command manager.
-- `cmd-*` (e.g. `cmd-find` and `cmd-git`) files stores saved commands along with
-brief descriptions. These files will be explained in detail below.
+- `cmd-*` (e.g. `cmd-find` and `cmd-git`) files consist of saved commands along
+with brief descriptions, where `*` is a category. The content of these files
+will be explained in detail below.
 
 ### Command files
 
@@ -58,6 +76,8 @@ cmd-git
 git log oneline in graph: git log --oneline --graph
 git rename current branch: git branch -m <new-name>
 ```
+
+Let's break down the above file:
 
 ### Find command with `fzf`
 
@@ -71,6 +91,14 @@ cmd
 ### Execute command
 
 ### Full implementation
+
+cmd
+```bash {.numberLines}
+#!/usr/bin/env bash
+```
+
+Or, you can find [my full implementation](https://github.com/namvnngu/.dotfiles/blob/main/bin/cmd)
+that I use in my daily development.
 
 ## Final words
 
