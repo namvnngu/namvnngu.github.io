@@ -71,13 +71,30 @@ will be explained in detail below.
 
 ### Command files
 
+In a command file, each line is one command entry. The format is
+`description: command`.
+
+- The `description` should be short and sweet.
+- The `command` is a command which will be copied or executed. It may optionally
+contain placeholders.
+  - Placeholders are written in a format `<placeholder>`.
+
+For example, the content of a `cmd-git` file looks like this:
+
 cmd-git
 ``` {.numberLines}
 git log oneline in graph: git log --oneline --graph
 git rename current branch: git branch -m <new-name>
 ```
 
-Let's break down the above file:
+Let's break down the above example:
+
+- The first entry: `git log oneline in graph: git log --oneline --graph`
+  - `git log oneline in graph` is the description.
+  - `git log --oneline --graph` is the command with no placeholders.
+- The second entry: `git rename current branch: git branch -m <new-name>`
+  - `git rename current branch` is the description.
+  - `git branch -m <new-name>` is the command with a `<new-name>` placeholder.
 
 ### Find command with `fzf`
 

@@ -307,16 +307,39 @@ until one option is chosen.</li>
 <span id="cb1-3"><a href="#cb1-3"></a>└── cmd-git</span>
 <span id="cb1-4"><a href="#cb1-4"></a>├── cmd-find</span></code></pre></div>
 <ul>
-<li><code>cmd</code> is the command manager.</li>
+<li><code>cmd</code> is the command manager written in <code>bash</code>.</li>
 <li><code>cmd-*</code> (e.g. <code>cmd-find</code> and <code>cmd-git</code>) files consist of saved commands along
 with brief descriptions, where <code>*</code> is a category. The content of these files
 will be explained in detail below.</li>
 </ul>
 <h3 id="command-files">Command files</h3>
+<p>In a command file, each line is one command entry. The format is
+<code>description: command</code>.</p>
+<ul>
+<li>The <code>description</code> should be short and sweet.</li>
+<li>The <code>command</code> is a command which will be copied or executed. It may optionally
+contain placeholders.
+<ul>
+<li>Placeholders are written in a format <code>&lt;placeholder&gt;</code>.</li>
+</ul></li>
+</ul>
+<p>For example, the content of a <code>cmd-git</code> file looks like this:</p>
 <p>cmd-git</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>git log oneline in graph: git log --oneline --graph</span>
 <span id="cb2-2"><a href="#cb2-2"></a>git rename current branch: git branch -m &lt;new-name&gt;</span></code></pre></div>
-<p>Let’s break down the above file:</p>
+<p>Let’s break down the above example:</p>
+<ul>
+<li>The first entry: <code>git log oneline in graph: git log --oneline --graph</code>
+<ul>
+<li><code>git log oneline in graph</code> is the description.</li>
+<li><code>git log --oneline --graph</code> is the command with no placeholders.</li>
+</ul></li>
+<li>The second entry: <code>git rename current branch: git branch -m &lt;new-name&gt;</code>
+<ul>
+<li><code>git rename current branch</code> is the description.</li>
+<li><code>git branch -m &lt;new-name&gt;</code> is the command with a <code>&lt;new-name&gt;</code> placeholder.</li>
+</ul></li>
+</ul>
 <h3 id="find-command-with-fzf">Find command with <code>fzf</code></h3>
 <p>cmd</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#!/usr/bin/env bash</span></span></code></pre></div>
