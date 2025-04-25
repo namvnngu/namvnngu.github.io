@@ -64,7 +64,7 @@ Files
 ├── cmd-find
 ```
 
-- `cmd` is the command manager.
+- `cmd` is the command manager written in `bash`.
 - `cmd-*` (e.g. `cmd-find` and `cmd-git`) files consist of saved commands along
 with brief descriptions, where `*` is a category. The content of these files
 will be explained in detail below.
