@@ -296,8 +296,8 @@ category.</li>
 category.</li>
 <li>Allow to select one command at a time.</li>
 <li>If the selected command has placeholders, prompt to fill them in.</li>
-<li>After a command is selected and placeholders are filled, there are two
-options: copy or execute. If neither option is selected, continue prompting
+<li>After a command is selected and placeholders are filled, there are three
+options: copy, execute and quit. If neither option is selected, continue prompting
 until one option is chosen.</li>
 </ul>
 <h3 id="project-structure">Project structure</h3>
@@ -313,8 +313,9 @@ with brief descriptions, where <code>*</code> is a category. The content of thes
 will be explained in detail below.</li>
 </ul>
 <h3 id="command-files">Command files</h3>
-<p>In a command file, each line is one command entry. The format is
-<code>description: command</code>.</p>
+<p>In a command file, each line is one command entry. The format is</p>
+<p>format</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>description: command</span></code></pre></div>
 <ul>
 <li>The <code>description</code> should be short and sweet.</li>
 <li>The <code>command</code> is a command which will be copied or executed. It may optionally
@@ -325,8 +326,8 @@ contain placeholders.
 </ul>
 <p>For example, the content of a <code>cmd-git</code> file looks like this:</p>
 <p>cmd-git</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>git log oneline in graph: git log --oneline --graph</span>
-<span id="cb2-2"><a href="#cb2-2"></a>git rename current branch: git branch -m &lt;new-name&gt;</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb3-1"><a href="#cb3-1"></a>git log oneline in graph: git log --oneline --graph</span>
+<span id="cb3-2"><a href="#cb3-2"></a>git rename current branch: git branch -m &lt;new-name&gt;</span></code></pre></div>
 <p>Let’s break down the above example:</p>
 <ul>
 <li>The first entry: <code>git log oneline in graph: git log --oneline --graph</code>
@@ -342,12 +343,12 @@ contain placeholders.
 </ul>
 <h3 id="find-command-with-fzf">Find command with <code>fzf</code></h3>
 <p>cmd</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#!/usr/bin/env bash</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#!/usr/bin/env bash</span></span></code></pre></div>
 <h3 id="detect-placeholders-and-fill-in-values">Detect placeholders and fill in values</h3>
 <h3 id="execute-command">Execute command</h3>
 <h3 id="full-implementation">Full implementation</h3>
 <p>cmd</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#!/usr/bin/env bash</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#!/usr/bin/env bash</span></span></code></pre></div>
 <p>Or, you can find <a href="https://github.com/namvnngu/.dotfiles/blob/main/bin/cmd">my full implementation</a>
 that I use in my daily development.</p>
 <h2 id="final-words">Final words</h2>

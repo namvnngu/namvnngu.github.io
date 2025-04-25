@@ -50,8 +50,8 @@ category.
 category.
 - Allow to select one command at a time.
 - If the selected command has placeholders, prompt to fill them in.
-- After a command is selected and placeholders are filled, there are two
-options: copy or execute. If neither option is selected, continue prompting
+- After a command is selected and placeholders are filled, there are three
+options: copy, execute and quit. If neither option is selected, continue prompting
 until one option is chosen.
 
 ### Project structure
@@ -72,7 +72,11 @@ will be explained in detail below.
 ### Command files
 
 In a command file, each line is one command entry. The format is
-`description: command`.
+
+format
+``` {.numberLines}
+description: command
+```
 
 - The `description` should be short and sweet.
 - The `command` is a command which will be copied or executed. It may optionally
