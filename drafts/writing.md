@@ -3,7 +3,7 @@ title: How Do I Save Terminal Commands?
 lang: en
 ...
 
-Published on April 24, 2025.
+Published on April 28, 2025.
 
 ## Motivation
 
@@ -118,43 +118,46 @@ category="$1"
 # The directory of all command files
 cmd_dir="."
 
-# The path to the command file based on the given category
+# The path to the command file based on the category
 cmd_file="$cmd_dir/cmd-$category"
 
-# The selected command based on the given category
+# The selected command based on the category
 selected_cmd=""
 
-# === Find command with `fzf` ===
+# === Find command with fzf ===
 
 # If no argument is provided, i.e. no category
 if [[ $# -eq 0 ]]; then
   # Find all command files whose prefix is "cmd-"
+  # in the "cmd_dir" directory
   files=$(find "$cmd_dir" -maxdepth 1 -name "cmd-*")
+
   # Find a command entry across all found command files
-  selected_cmd_entry=$(cat $files | fzf)
-# If a category is provided, and the command file exists
-# based on the provided category
+  selected_cmd=$(cat $files | fzf)
+# If the command file exists based on the category
 elif [[ -e "$cmd_file" ]]; then
-  # Find a command entry within the specified command file
-  selected_cmd_entry=$(cat "$cmd_file" | fzf)
-# If the command file is not found based on
-# the provided category
+  # Find a command entry within the command file
+  selected_cmd=$(cat "$cmd_file" | fzf)
+# If the command file is not found based on the category
 else
-  # Print error message
+  # Print the not found error message
   echo "$cmd_file: No such file"
-  # Exit with error code
+
+  # Exit with the error code
   exit 1
 fi
 
-# If no command entry is selected
-if [[ -z "$selected_cmd_entry" ]]; then
-  # Exit with success code
+# If the "selected_cmd" variable is empty,
+# i.e. no command entry is selected
+if [[ -z "$selected_cmd" ]]; then
+  # Exit with the success code
   exit 0
 fi
 
-# Remove "description: " part to get the actual command
+# Remove the "description: " part to get the command
 # from the selected command entry
-selected_cmd=$(echo "$selected_cmd_entry" | sed "s/^.*: //")
+selected_cmd=$(echo "$selected_cmd" | sed "s/^.*: //")
+
 # Print the selected command
 echo "Selected command: $selected_cmd"
 ```
@@ -167,13 +170,36 @@ cmd
 
 ...
 
-# The selected command based on the given category
+# The selected command based on the category
 selected_cmd=""
 
 # === Find command with fzf ===
 ...
 
 # === Detect placeholders and fill in values ===
+
+# Get all placeholders in the selected command
+placeholders=$(echo "$selected_cmd" | grep -oE "<(\w|-)+>")
+
+# If the "placeholders" variable is not empty,
+# i.e. there is at least one placeholder
+if [[ -n "$placeholders" ]]; then
+  echo "----------------------"
+
+  # Loop through each placeholder
+  for phd in $placeholders; do
+    # Prompt to input a value for the current placeholder
+    read -p "$phd: " phd_value
+
+    # Replace the placeholder in the selected command with the input value
+    selected_cmd=$(echo "$selected_cmd" | sed "s/$phd/$phd_value/g")
+
+    # Print the updated command after the replacement
+    echo "Command: $selected_cmd"
+  done
+
+  echo "----------------------"
+fi
 ```
 
 ### Perform an action on command
@@ -184,7 +210,7 @@ cmd
 
 ...
 
-# The selected command based on the given category
+# The selected command based on the category
 selected_cmd=""
 
 # === Find command with fzf ===
@@ -194,6 +220,57 @@ selected_cmd=""
 ...
 
 # === Perform an action on command ===
+
+# Keep prompting until a valid action is chosen
+while true; do
+  # Prompt to input a value for the action
+  read -p "copy (c), execute (e) or quit (q)? " action
+
+  # Transform the input value to lowercase for easier matching
+  action=$(echo "$action" | tr "[:upper:]" "[:lower:]")
+
+  # If the selection action is to copy
+  if [[ "$action" == c* ]]; then
+    # Get the operating system
+    os=$(uname -s)
+
+    case "$os" in
+      # If OS is macOS
+      Darwin*)
+        # Copy the selected command to clipboard
+        echo -n "$selected_cmd" | pbcopy
+        ;;
+      # If OS is Linux
+      Linux*)
+        # Copy the selected command to clipboard
+        echo -n "$selected_cmd" | xclip -selection clipboard
+        ;;
+    esac
+
+    # Print a message that the selected command has been copied
+    echo "Copied to clipboard: $selected_cmd"
+
+    # Exit with the success code
+    exit 0
+  # If the selection action is to execute
+  elif [[ "$action" == e* ]]; then
+    # Print a message that the selected command is being executed
+    echo "Executing: $selected_cmd"
+
+    # Execute the selected command
+    eval "$selected_cmd"
+
+    # Exit with the success code
+    exit 0
+  # If the selection action is to quit
+  elif [[ "$action" == q* ]]; then
+    # Exit with the success code
+    exit 0
+  else
+    # Print a warning message to enter a valid option
+    echo "You should choose copy (c), execute (e) or quit (q)"
+  fi
+done
 ```
 
 ### Full implementation
@@ -201,13 +278,146 @@ selected_cmd=""
 cmd
 ``` bash {.numberLines}
 #!/usr/bin/env bash
+
+# The optional category passed as an argument
+category="$1"
+
+# The directory of all command files
+cmd_dir="."
+
+# The path to the command file based on the category
+cmd_file="$cmd_dir/cmd-$category"
+
+# The selected command based on the category
+selected_cmd=""
+
+# === Find command with fzf ===
+
+# If no argument is provided, i.e. no category
+if [[ $# -eq 0 ]]; then
+  # Find all command files whose prefix is "cmd-"
+  # in the "cmd_dir" directory
+  files=$(find "$cmd_dir" -maxdepth 1 -name "cmd-*")
+
+  # Find a command entry across all found command files
+  selected_cmd=$(cat $files | fzf)
+# If the command file exists based on the category
+elif [[ -e "$cmd_file" ]]; then
+  # Find a command entry within the command file
+  selected_cmd=$(cat "$cmd_file" | fzf)
+# If the command file is not found based on the category
+else
+  # Print the not found error message
+  echo "$cmd_file: No such file"
+
+  # Exit with the error code
+  exit 1
+fi
+
+# If the "selected_cmd" variable is empty,
+# i.e. no command entry is selected
+if [[ -z "$selected_cmd" ]]; then
+  # Exit with the success code
+  exit 0
+fi
+
+# Remove the "description: " part to get the command
+# from the selected command entry
+selected_cmd=$(echo "$selected_cmd" | sed "s/^.*: //")
+
+# Print the selected command
+echo "Selected command: $selected_cmd"
+
+# === Detect placeholders and fill in values ===
+
+# Get all placeholders in the selected command
+placeholders=$(echo "$selected_cmd" | grep -oE "<(\w|-)+>")
+
+# If the "placeholders" variable is not empty,
+# i.e. there is at least one placeholder
+if [[ -n "$placeholders" ]]; then
+  echo "----------------------"
+
+  # Loop through each placeholder
+  for phd in $placeholders; do
+    # Prompt to input a value for the current placeholder
+    read -p "$phd: " phd_value
+
+    # Replace the placeholder in the selected command with the input value
+    selected_cmd=$(echo "$selected_cmd" | sed "s/$phd/$phd_value/g")
+
+    # Print the updated command after the replacement
+    echo "Command: $selected_cmd"
+  done
+
+  echo "----------------------"
+fi
+
+# === Perform an action on command ===
+
+# Keep prompting until a valid action is chosen
+while true; do
+  # Prompt to input a value for the action
+  read -p "copy (c), execute (e) or quit (q)? " action
+
+  # Transform the input value to lowercase for easier matching
+  action=$(echo "$action" | tr "[:upper:]" "[:lower:]")
+
+  # If the selection action is to copy
+  if [[ "$action" == c* ]]; then
+    # Get the operating system
+    os=$(uname -s)
+
+    case "$os" in
+      # If OS is macOS
+      Darwin*)
+        # Copy the selected command to clipboard
+        echo -n "$selected_cmd" | pbcopy
+        ;;
+      # If OS is Linux
+      Linux*)
+        # Copy the selected command to clipboard
+        echo -n "$selected_cmd" | xclip -selection clipboard
+        ;;
+    esac
+
+    # Print a message that the selected command has been copied
+    echo "Copied to clipboard: $selected_cmd"
+
+    # Exit with the success code
+    exit 0
+  # If the selection action is to execute
+  elif [[ "$action" == e* ]]; then
+    # Print a message that the selected command is being executed
+    echo "Executing: $selected_cmd"
+
+    # Execute the selected command
+    eval "$selected_cmd"
+
+    # Exit with the success code
+    exit 0
+  # If the selection action is to quit
+  elif [[ "$action" == q* ]]; then
+    # Exit with the success code
+    exit 0
+  else
+    # Print a warning message to enter a valid option
+    echo "You should choose copy (c), execute (e) or quit (q)"
+  fi
+done
 ```
 
-Or, you can find [my full implementation](https://github.com/namvnngu/.dotfiles/blob/main/bin/cmd)
-that I use in my daily development.
+Remember to run the below command to make `cmd` executable:
+
+``` bash {.numberLines}
+chmod +x ./cmd
+```
 
 ## Final words
 
-Hope you enjoy it. Take care.
+I hope you enjoy the process of building and learn something along the way. If
+you would like a brief introduction to Bash, I recommend checking out
+[Learn Bash in Y minutes](https://learnxinyminutes.com/bash) or
+[Bash scripting cheatsheet](https://devhints.io/bash).
 
 Nam Nguyen
