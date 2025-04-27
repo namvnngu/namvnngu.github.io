@@ -8,21 +8,20 @@ Published on April 28, 2025.
 ## Motivation
 
 I often find myself in a situation where I want to remember a useful terminal
-command, but I have a poor memory and tend to forget it after just a few days.
-I used to save all the useful commands in [Obsidian](https://obsidian.md), which
-I use daily as my second brain for notes, planning, learning, and more.
+command, but I have a poor memory and will forget it after a few days. I used
+to save all the useful commands in [Obsidian](https://obsidian.md), which I use
+daily as my second brain for notes, planning, learning, and more.
 
 However, whenever I need to use a command I previously bumped into and saved in
-the note, it is a bit tedious to jump out of terminal, open Obsidian, search for
-the note and find the right command. On top of that, I sometimes include
-placeholders for command options whose values are dynamic case by case, so
-whenever I need to use such a command with options, I have to copy it from the
-note, paste it into the terminal, and then manually fill in the appropriate
-values.
+the note, it is a bit tedious to jump out of the terminal, open Obsidian, search
+for the note and find the right command. On top of that, I sometimes include
+placeholders for command arguments which are dynamic case by case, so whenever
+I need to use such a command with placeholders, I have to copy it from the note,
+paste it into the terminal, and then manually fill in the appropriate values.
 
 Therefore, I want to build a command manager that I can use directly within the
-terminal. It can detect option placeholders in a saved command and prompt me to
-fill values in. It should be built with my existing daily tools namely built-in
+terminal. It can detect placeholders in a saved command and prompt me to fill
+values in. It should be built with my existing daily tools namely built-in
 commands on macOS/Linux and [fzf](https://github.com/junegunn/fzf).
 
 ## Build a simple command manager
@@ -42,17 +41,19 @@ only.
 Before jumping into building the command, it is helpful to define the list of
 features first:
 
-- Save commands in `cmd-*` files (e.g. `cmd-git`), where `*` is a category.
+- Save commands in `cmd-*` categories files, where `*` is a category, e.g.
+`cmd-git` where `git` is a category.
 - Accept either zero or one argument; if provided, the argument should be a
 category.
-- If no argument is given, list all saved commands across all categories.
-- If a category as an argument is given, list only the commands of that
-category.
-- Allow to select one command at a time.
-- If the selected command has placeholders, prompt to fill them with values.
+- If no argument is given, list all saved commands across all category files.
+- If a category as an argument is given, list only saved commands in the
+corresponding category file.
+- Allow to select only one command at a time.
+- If the selected command has placeholders, prompt to fill them with input
+values.
 - After a command is selected and placeholders are filled, there are three
-options: copy, execute and quit. If neither option is selected, continue prompting
-until one option is chosen.
+actions: copy, execute and quit. If neither action is selected, continue
+prompting until one action is chosen.
 
 ### Project structure
 
@@ -60,8 +61,8 @@ Files
 ``` {.numberLines}
 .
 ├── cmd
-└── cmd-git
 ├── cmd-find
+└── cmd-git
 ```
 
 - `cmd` is the command manager written in `bash`.
@@ -86,8 +87,7 @@ description: command
 
 - `description` should be short and sweet.
 - `command` is a command which will be copied or executed. It may optionally
-contain placeholders.
-  - Placeholders are written in a format `<placeholder>`.
+contain `<placeholder>`s.
 
 For example, the content of a `cmd-git` file looks like this:
 
@@ -95,6 +95,7 @@ cmd-git
 ``` {.numberLines}
 git log oneline in graph: git log --oneline --graph
 git rename current branch: git branch -m <new-name>
+git go back n commit(s) from HEAD: git reset --<mode> HEAD~<n>
 ```
 
 Let's break down the above example:
@@ -105,6 +106,21 @@ Let's break down the above example:
 - The second entry: `git rename current branch: git branch -m <new-name>`
   - `git rename current branch` is a description.
   - `git branch -m <new-name>` is a command with a `<new-name>` placeholder.
+- The third entry: `git go back n commit(s) from HEAD: git reset --<mode> HEAD~<n>`
+  - `git go back n commit(s) from HEAD` is a description.
+  - `git reset --<mode> HEAD~<n>` is a command with two placeholders, `<mode>`
+  and `<n>`.
+
+Let's build the command manager in Bash in the below sections.
+
+I have a tip. If you do not understand what a command is and what their flags or
+options are, you can run the `man` command with a command name to read its
+manual. For example, if I want to read `grep` manual, I can run the below
+command:
+
+``` bash {.numberLines}
+man grep
+```
 
 ### Find command with `fzf`
 
@@ -128,8 +144,8 @@ selected_cmd=""
 
 # If no argument is provided, i.e. no category
 if [[ $# -eq 0 ]]; then
-  # Find all command files whose prefix is "cmd-"
-  # in the "cmd_dir" directory
+  # Find all command files whose name starts
+  # with "cmd-" in the "cmd_dir" directory
   files=$(find "$cmd_dir" -maxdepth 1 -name "cmd-*")
 
   # Find a command entry across all found command files
@@ -191,7 +207,8 @@ if [[ -n "$placeholders" ]]; then
     # Prompt to input a value for the current placeholder
     read -p "$phd: " phd_value
 
-    # Replace the placeholder in the selected command with the input value
+    # Replace the placeholder in the selected command
+    # with the input value
     selected_cmd=$(echo "$selected_cmd" | sed "s/$phd/$phd_value/g")
 
     # Print the updated command after the replacement
@@ -229,7 +246,7 @@ while true; do
   # Transform the input value to lowercase for easier matching
   action=$(echo "$action" | tr "[:upper:]" "[:lower:]")
 
-  # If the selection action is to copy
+  # If the selected action is to copy
   if [[ "$action" == c* ]]; then
     # Get the operating system
     os=$(uname -s)
@@ -252,7 +269,7 @@ while true; do
 
     # Exit with the success code
     exit 0
-  # If the selection action is to execute
+  # If the selected action is to execute
   elif [[ "$action" == e* ]]; then
     # Print a message that the selected command is being executed
     echo "Executing: $selected_cmd"
@@ -262,12 +279,12 @@ while true; do
 
     # Exit with the success code
     exit 0
-  # If the selection action is to quit
+  # If the selected action is to quit
   elif [[ "$action" == q* ]]; then
     # Exit with the success code
     exit 0
   else
-    # Print a warning message to enter a valid option
+    # Print a warning message to enter a valid action
     echo "You should choose copy (c), execute (e) or quit (q)"
   fi
 done
@@ -295,8 +312,8 @@ selected_cmd=""
 
 # If no argument is provided, i.e. no category
 if [[ $# -eq 0 ]]; then
-  # Find all command files whose prefix is "cmd-"
-  # in the "cmd_dir" directory
+  # Find all command files whose name starts
+  # with "cmd-" in the "cmd_dir" directory
   files=$(find "$cmd_dir" -maxdepth 1 -name "cmd-*")
 
   # Find a command entry across all found command files
@@ -343,7 +360,8 @@ if [[ -n "$placeholders" ]]; then
     # Prompt to input a value for the current placeholder
     read -p "$phd: " phd_value
 
-    # Replace the placeholder in the selected command with the input value
+    # Replace the placeholder in the selected command
+    # with the input value
     selected_cmd=$(echo "$selected_cmd" | sed "s/$phd/$phd_value/g")
 
     # Print the updated command after the replacement
@@ -363,7 +381,7 @@ while true; do
   # Transform the input value to lowercase for easier matching
   action=$(echo "$action" | tr "[:upper:]" "[:lower:]")
 
-  # If the selection action is to copy
+  # If the selected action is to copy
   if [[ "$action" == c* ]]; then
     # Get the operating system
     os=$(uname -s)
@@ -386,7 +404,7 @@ while true; do
 
     # Exit with the success code
     exit 0
-  # If the selection action is to execute
+  # If the selected action is to execute
   elif [[ "$action" == e* ]]; then
     # Print a message that the selected command is being executed
     echo "Executing: $selected_cmd"
@@ -396,12 +414,12 @@ while true; do
 
     # Exit with the success code
     exit 0
-  # If the selection action is to quit
+  # If the selected action is to quit
   elif [[ "$action" == q* ]]; then
     # Exit with the success code
     exit 0
   else
-    # Print a warning message to enter a valid option
+    # Print a warning message to enter a valid action
     echo "You should choose copy (c), execute (e) or quit (q)"
   fi
 done
