@@ -225,7 +225,7 @@ a {
 @media (hover: hover) {
   a {
     transition-property: text-decoration-color;
-    transition-duration: var(--transition-duration-lg);
+    transition-duration: var(--transition-duration-sm);
     transition-timing-function: ease;
   }
   a:hover {
@@ -489,7 +489,7 @@ footer {
   color: var(--color-mono-05);
   transition-property: opacity;
   transition-timing-function: ease;
-  transition-duration: var(--transition-duration-lg);
+  transition-duration: var(--transition-duration-sm);
 }
 .writing h2:hover a::before,
 .writing h3:hover a::before {
