@@ -3,7 +3,7 @@ title: How Do I Save Terminal Commands?
 lang: en
 ...
 
-Published on April 29, 2025.
+Published on April 30, 2025.
 
 ## Motivation
 
@@ -25,6 +25,10 @@ values in. It should be built with my existing daily tools namely built-in
 commands on macOS/Linux and [fzf](https://github.com/junegunn/fzf).
 
 ## Build a simple command manager
+
+Before we start, if you are not yet familiar with Bash, I highly recommend
+checking out [Learn Bash in Y minutes](https://learnxinyminutes.com/bash) or
+[Bash scripting cheatsheet](https://devhints.io/bash) for a brief introduction.
 
 The command manager is named `cmd`. A note that `cmd` supports macOS and Linux
 only.
@@ -451,9 +455,10 @@ included in your `$PATH`.
 
 ## Final words
 
-I hope you enjoy the process of building and learn something along the way. If
-you would like a brief introduction to Bash, I recommend checking out
-[Learn Bash in Y minutes](https://learnxinyminutes.com/bash) or
-[Bash scripting cheatsheet](https://devhints.io/bash).
+I hope you enjoy the process of building and learn something along the way. I
+often build something simple using tools already available on my machine, if the
+existing solutions are more complex than necessary for my needs. As a result, I
+have a chance to learn something new while producing fairly-good-and-simple
+tools to serve my daily tasks.
 
 Nam Nguyen
