@@ -496,6 +496,8 @@ footer {
   opacity: 1;
 }
 .writing p code,
+.writing h2 code,
+.writing h3 code,
 .writing li code {
   font-size: 85%;
   padding: 0.2em 0.4em;

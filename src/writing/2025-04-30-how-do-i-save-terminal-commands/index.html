@@ -1,369 +1,237 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html lang="en">
+
 <head>
+  <!-- block-start: head-common -->
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Nam Nguyen" />
+  <meta name="color-scheme" content="light dark" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Nam Nguyen" />
+  <link rel="stylesheet" href="/styles/common.css" />
+  <link rel="icon" href="/images/favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme:no-preference)" />
+  <link rel="icon" href="/images/favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme:dark)" />
+  <link rel="icon" href="/images/favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme:light)" />
+  <!-- block-end: head-common -->
+
+  <!-- block-start: style-code -->
+  <link rel="stylesheet" href="/styles/code.css" />
+  <!-- block-end: style-code -->
+
   <title>How Do I Save Terminal Commands?</title>
-  <style>
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    svg {
-      height: auto;
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-      font-size: 85%;
-      margin: 0;
-      hyphens: manual;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      border: none;
-      border-top: 1px solid #1a1a1a;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC > ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        background-color: #ffffff;
-        color: #a0a0a0;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
-    div.sourceCode
-      { color: #1f1c1b; background-color: #ffffff; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #1f1c1b; } /* Normal */
-    code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
-    code span.an { color: #ca60ca; } /* Annotation */
-    code span.at { color: #0057ae; } /* Attribute */
-    code span.bn { color: #b08000; } /* BaseN */
-    code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-    code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #924c9d; } /* Char */
-    code span.cn { color: #aa5500; } /* Constant */
-    code span.co { color: #898887; } /* Comment */
-    code span.cv { color: #0095ff; } /* CommentVar */
-    code span.do { color: #607880; } /* Documentation */
-    code span.dt { color: #0057ae; } /* DataType */
-    code span.dv { color: #b08000; } /* DecVal */
-    code span.er { color: #bf0303; text-decoration: underline; } /* Error */
-    code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-    code span.fl { color: #b08000; } /* Float */
-    code span.fu { color: #644a9b; } /* Function */
-    code span.im { color: #ff5500; } /* Import */
-    code span.in { color: #b08000; } /* Information */
-    code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-    code span.op { color: #1f1c1b; } /* Operator */
-    code span.ot { color: #006e28; } /* Other */
-    code span.pp { color: #006e28; } /* Preprocessor */
-    code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
-    code span.sc { color: #3daee9; } /* SpecialChar */
-    code span.ss { color: #ff5500; } /* SpecialString */
-    code span.st { color: #bf0303; } /* String */
-    code span.va { color: #0057ae; } /* Variable */
-    code span.vs { color: #bf0303; } /* VerbatimString */
-    code span.wa { color: #bf0303; } /* Warning */
-  </style>
+  <meta property="og:title" content="Nam Nguyen" />
+  <meta name="description" content="Build a command manager in Bash to save terminal commands." />
+  <meta property="og:description" content="Build a command manager in Bash to save terminal commands." />
+  <meta property="og:image"
+    content="https://namvnngu.github.io/images/writing-2025-04-30-how-do-i-save-terminal-commands-og.png">
+  <meta property="og:url" content="https://namvnngu.github.io/writing/2025-04-30-how-do-i-save-terminal-commands" />
+  <link rel="canonical" href="https://namvnngu.github.io/writing/2025-04-30-how-do-i-save-terminal-commands" />
 </head>
+
 <body>
-<header id="title-block-header">
-<h1 class="title">How Do I Save Terminal Commands?</h1>
-</header>
-<nav id="TOC" role="doc-toc">
-<ul>
-<li><a href="#motivation" id="toc-motivation">Motivation</a></li>
-<li><a href="#build-a-simple-command-manager" id="toc-build-a-simple-command-manager">Build a simple command manager</a>
-<ul>
-<li><a href="#prerequisites" id="toc-prerequisites">Prerequisites</a></li>
-<li><a href="#features" id="toc-features">Features</a></li>
-<li><a href="#project-structure" id="toc-project-structure">Project structure</a></li>
-<li><a href="#command-files" id="toc-command-files">Command files</a></li>
-<li><a href="#find-command-with-fzf" id="toc-find-command-with-fzf">Find command with <code>fzf</code></a></li>
-<li><a href="#detect-placeholders-and-fill-in-values" id="toc-detect-placeholders-and-fill-in-values">Detect placeholders and fill in values</a></li>
-<li><a href="#perform-action-on-command" id="toc-perform-action-on-command">Perform action on command</a></li>
-<li><a href="#full-implementation" id="toc-full-implementation">Full implementation</a></li>
-</ul></li>
-<li><a href="#final-words" id="toc-final-words">Final words</a></li>
-</ul>
-</nav>
-<p>Published on April 30, 2025.</p>
-<h2 id="motivation">Motivation</h2>
-<p>I often find myself in a situation where I want to remember a useful terminal
-command, but I have a poor memory and will forget it after a few days. I used
-to save all useful commands in <a href="https://obsidian.md">Obsidian</a>, which I use
-daily as my second brain for notes, planning, learning, and more.</p>
-<p>However, whenever I need to use a command I previously bumped into and saved in
-the note, it is a bit tedious to jump out of the terminal, open Obsidian, search
-for the note and find the right command. On top of that, I sometimes include
-placeholders for command arguments which are dynamic case by case, so whenever
-I need to use such a command with placeholders, I have to copy it from the note,
-paste it into the terminal, and then manually fill in the appropriate values.</p>
-<p>Therefore, I want to build a command manager that I can use directly within the
-terminal. It can detect placeholders in a saved command and prompt me to fill
-values in. It should be built with my existing daily tools namely built-in
-commands on macOS/Linux and <a href="https://github.com/junegunn/fzf">fzf</a>.</p>
-<h2 id="build-a-simple-command-manager">Build a simple command manager</h2>
-<p>Before we start, if you are not yet familiar with Bash, I highly recommend
-checking out <a href="https://learnxinyminutes.com/bash">Learn Bash in Y minutes</a> or
-<a href="https://devhints.io/bash">Bash scripting cheatsheet</a> for a brief introduction.</p>
-<p>The command manager is named <code>cmd</code>. A note that <code>cmd</code> supports macOS and Linux
-only.</p>
-<h3 id="prerequisites">Prerequisites</h3>
-<ul>
-<li><code>bash</code></li>
-<li><a href="https://github.com/junegunn/fzf">fzf</a></li>
-<li>Built-in commands such as <code>sed</code>, <code>grep</code>, <code>cat</code>, <code>find</code>, <code>tr</code>, <code>uname</code> and
-<code>pbcopy</code> on macOS or <code>xclip</code> on Linux.</li>
-</ul>
-<h3 id="features">Features</h3>
-<p>Before we jump into building the command, it is helpful to define the list of
-features first:</p>
-<ul>
-<li>Save commands in <code>cmd-*</code> categories files, where <code>*</code> is a category, e.g.
-<code>cmd-git</code> where <code>git</code> is a category.</li>
-<li>Accept either zero or one argument; if provided, the argument should be a
-category.</li>
-<li>If no argument is given, list all saved commands across all category files.</li>
-<li>If a category as an argument is given, list only saved commands in the
-corresponding category file.</li>
-<li>Allow to select only one command at a time.</li>
-<li>If the selected command has placeholders, prompt to fill them with input
-values.</li>
-<li>After a command is selected and placeholders are filled, there are three
-actions: copy, execute and quit. If neither action is selected, continue
-prompting until one action is chosen.</li>
-</ul>
-<h3 id="project-structure">Project structure</h3>
-<p>Files</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>.</span>
+  <!-- block-start: header -->
+  <header>
+    <span id="back-to-top" class="[ visually-hidden top-0 ]" aria-hidden="true"></span>
+    <nav class="[ navbar ] [ flow-x ]">
+      <a href="/" data-line="none">
+        <svg class="[ navbar__logo ] [ self-drawing ]" width="28" height="26" viewBox="0 0 28 26" fill="none"
+          aria-label="logo" role="img" xmlns="http://www.w3.org/2000/svg">
+          <path pathLength="1"
+            d="M5.04113 25.256C3.78246 25.256 2.77979 24.808 2.03313 23.912C1.30779 22.9947 0.945125 21.9493 0.945125 20.776C0.945125 19.6027 1.33979 18.5573 2.12913 17.64C2.93979 16.7013 3.89979 16.232 5.00913 16.232C5.47846 16.232 5.86246 16.3493 6.16113 16.584C6.48113 16.7973 6.64113 17.1173 6.64113 17.544C6.64113 18.3333 6.12913 18.728 5.10513 18.728C4.63579 18.728 4.23046 18.9307 3.88913 19.336C3.54779 19.72 3.37713 20.2107 3.37713 20.808C3.37713 21.384 3.53713 21.864 3.85713 22.248C4.17713 22.6107 4.62513 22.792 5.20113 22.792C7.18513 22.792 8.17712 19.72 8.17712 13.576C8.17712 11.8907 8.00646 9.68267 7.66513 6.952C7.32379 4.22133 7.15313 2.632 7.15313 2.184C7.15313 1.71467 7.30246 1.34133 7.60113 1.064C7.89979 0.786666 8.25179 0.647999 8.65713 0.647999C9.25446 0.647999 9.73446 1.02133 10.0971 1.768C11.2491 4.008 12.8918 7.00533 15.0251 10.76C17.1585 14.5147 19.0038 17.6293 20.5611 20.104C20.4758 20.104 20.3691 18.6213 20.2411 15.656C20.1345 12.6693 20.0811 10.7067 20.0811 9.768C20.0811 7.4 20.3158 5.384 20.7851 3.72C21.0625 2.76 21.5105 2.01333 22.1291 1.48C22.7691 0.925332 23.4945 0.647999 24.3051 0.647999C25.1371 0.647999 25.8411 0.871999 26.4171 1.32C26.9931 1.74667 27.2811 2.248 27.2811 2.824C27.2811 3.4 27.0358 3.688 26.5451 3.688C26.3958 3.688 26.0865 3.592 25.6171 3.4C25.1478 3.208 24.7318 3.112 24.3691 3.112C23.0251 3.112 22.3531 6.19467 22.3531 12.36C22.3531 13.8107 22.4705 16.0293 22.7051 19.016C22.9398 22.0027 23.0571 23.6667 23.0571 24.008C23.0571 24.3493 22.9078 24.6587 22.6091 24.936C22.3318 25.2133 22.0011 25.352 21.6171 25.352C21.0411 25.352 20.5398 24.9787 20.1131 24.232C19.0465 22.3333 17.8305 20.2107 16.4651 17.864L12.4011 10.6C11.2278 8.424 10.4171 6.99467 9.96913 6.312C10.2678 9.128 10.4171 11.8053 10.4171 14.344C10.4171 21.6187 8.62513 25.256 5.04113 25.256Z" />
+        </svg>
+      </a>
+      <a href="/">Home</a>
+      <a href="/projects">Projects</a>
+      <a href="/writing">Writing</a>
+    </nav>
+  </header>
+  <!-- block-end: header -->
+
+  <main class="[ writing ]">
+    <h1 class="title">How Do I Save Terminal Commands?</h1>
+    <p class="[ -mt-4 color-mono-06 ]">Published on April 30, 2025.</p>
+
+    <ul id="toc" class="[ toc ]">
+      <li><a href="#motivation" id="toc-motivation">Motivation</a></li>
+      <li><a href="#build-a-simple-command-manager" id="toc-build-a-simple-command-manager">Build a simple command manager</a>
+        <ul>
+          <li><a href="#prerequisites" id="toc-prerequisites">Prerequisites</a></li>
+          <li><a href="#features" id="toc-features">Features</a></li>
+          <li><a href="#project-structure" id="toc-project-structure">Project structure</a></li>
+          <li><a href="#command-files" id="toc-command-files">Command files</a></li>
+          <li><a href="#find-command-with-fzf" id="toc-find-command-with-fzf">Find command with <code>fzf</code></a></li>
+          <li><a href="#detect-placeholders-and-fill-in-values" id="toc-detect-placeholders-and-fill-in-values">Detect placeholders and fill in values</a></li>
+          <li><a href="#perform-action-on-command" id="toc-perform-action-on-command">Perform action on command</a></li>
+          <li><a href="#full-implementation" id="toc-full-implementation">Full implementation</a></li>
+        </ul>
+      </li>
+      <li><a href="#final-words" id="toc-final-words">Final words</a></li>
+    </ul>
+
+    <article>
+      <h2 id="motivation">
+        <a href="#motivation">Motivation</a>
+      </h2>
+      <p>I often find myself in a situation where I want to remember a useful terminal
+      command, but I have a poor memory and will forget it after a few days. I used
+      to save all useful commands in <a href="https://obsidian.md" target="_blank">Obsidian</a>, which I use
+      daily as my second brain for notes, planning, learning, and more.</p>
+      <p>However, whenever I need to use a command I previously bumped into and saved in
+      the note, it is a bit tedious to jump out of the terminal, open Obsidian, search
+      for the note and find the right command. On top of that, I sometimes include
+      placeholders for command arguments which are dynamic case by case, so whenever
+      I need to use such a command with placeholders, I have to copy it from the note,
+      paste it into the terminal, and then manually fill in the appropriate values.</p>
+      <p>Therefore, I want to build a command manager that I can use directly within the
+      terminal. It can detect placeholders in a saved command and prompt me to fill
+      values in. It should be built with my existing daily tools namely built-in
+      commands on macOS/Linux and <a href="https://github.com/junegunn/fzf" target="_blank">fzf</a>.</p>
+      <!-- block-start: back-to-top -->
+      <p class="[ color-mono-07 ]"><a href="#back-to-top">&#8593; Back to top</a></p>
+      <!-- block-end: back-to-top -->
+
+      <h2 id="build-a-simple-command-manager">
+        <a href="#build-a-simple-command-manager">Build a simple command manager</a>
+      </h2>
+      <p>Before we start, if you are not yet familiar with Bash, I highly recommend
+      checking out <a href="https://learnxinyminutes.com/bash" target="_blank">Learn Bash in Y minutes</a> or
+      <a href="https://devhints.io/bash" target="_blank">Bash scripting cheatsheet</a> for a brief introduction.</p>
+      <p>The command manager is named <code>cmd</code>. A note that <code>cmd</code> supports macOS and Linux
+      only.</p>
+      <!-- block-start: back-to-top -->
+      <p class="[ color-mono-07 ]"><a href="#back-to-top">&#8593; Back to top</a></p>
+      <!-- block-end: back-to-top -->
+
+      <h3 id="prerequisites">
+        <a href="#prerequisites">Prerequisites</a>
+      </h3>
+      <ul>
+        <li><code>bash</code></li>
+        <li><a href="https://github.com/junegunn/fzf" target="_blank">fzf</a></li>
+        <li>Built-in commands such as <code>sed</code>, <code>grep</code>, <code>cat</code>, <code>find</code>, <code>tr</code>, <code>uname</code> and
+          <code>pbcopy</code> on macOS or <code>xclip</code> on Linux.</li>
+      </ul>
+      <!-- block-start: back-to-top -->
+      <p class="[ color-mono-07 ]"><a href="#back-to-top">&#8593; Back to top</a></p>
+      <!-- block-end: back-to-top -->
+
+      <h3 id="features">
+        <a href="#features">Features</a>
+      </h3>
+      <p>Before we jump into building the command, it is helpful to define the list of
+      features first:</p>
+      <ul>
+        <li>Save commands in <code>cmd-*</code> categories files, where <code>*</code> is a category, e.g.
+          <code>cmd-git</code> where <code>git</code> is a category.</li>
+        <li>Accept either zero or one argument; if provided, the argument should be a
+          category.</li>
+        <li>If no argument is given, list all saved commands across all category files.</li>
+        <li>If a category as an argument is given, list only saved commands in the
+          corresponding category file.</li>
+        <li>Allow to select only one command at a time.</li>
+        <li>If the selected command has placeholders, prompt to fill them with input
+          values.</li>
+        <li>After a command is selected and placeholders are filled, there are three
+          actions: copy, execute and quit. If neither action is selected, continue
+          prompting until one action is chosen.</li>
+      </ul>
+      <!-- block-start: back-to-top -->
+      <p class="[ color-mono-07 ]"><a href="#back-to-top">&#8593; Back to top</a></p>
+      <!-- block-end: back-to-top -->
+
+      <h3 id="project-structure">
+        <a href="#project-structure">Project structure</a>
+      </h3>
+<div class="[ codeblock ] [ tab ]">
+<label class="[ tab__name ]">Files</label>
+<div class="[ sourcecode ] [ tab__panel ]" id="cb1"><pre><code><span id="cb1-1"><a href="#cb1-1"></a>.</span>
 <span id="cb1-2"><a href="#cb1-2"></a>├── cmd</span>
 <span id="cb1-3"><a href="#cb1-3"></a>├── cmd-find</span>
 <span id="cb1-4"><a href="#cb1-4"></a>└── cmd-git</span></code></pre></div>
-<ul>
-<li><code>cmd</code> is the command manager written in <code>bash</code>.</li>
-<li><code>cmd-*</code> (e.g. <code>cmd-find</code> and <code>cmd-git</code>) files consist of saved commands along
-with brief descriptions, where <code>*</code> is a category. The content of these files
-will be explained in detail below.</li>
-</ul>
-<p>Remember to run the below command to make <code>cmd</code> executable:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">chmod</span> +x ./cmd</span></code></pre></div>
-<h3 id="command-files">Command files</h3>
-<p>In a command file, each line is one command entry. The format is</p>
-<p>format</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb3-1"><a href="#cb3-1"></a>description: command</span></code></pre></div>
-<ul>
-<li><code>description</code> should be short and sweet.</li>
-<li><code>command</code> is a command which will be copied or executed. It may optionally
-contain <code>&lt;placeholder&gt;</code>s.</li>
-</ul>
-<p>The content of the <code>cmd-git</code> file looks like this:</p>
-<p>cmd-git</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb4-1"><a href="#cb4-1"></a>git log oneline in graph: git log --oneline --graph</span>
+</div>
+      <ul>
+        <li><code>cmd</code> is the command manager written in <code>bash</code>.</li>
+        <li><code>cmd-*</code> (e.g. <code>cmd-find</code> and <code>cmd-git</code>) files consist of saved commands along
+          with brief descriptions, where <code>*</code> is a category. The content of these files
+          will be explained in detail below.</li>
+      </ul>
+      <p>Remember to run the below command to make <code>cmd</code> executable:</p>
+<div class="[ codeblock ] [ tab ]">
+<label class="[ tab__name ]">shell</label>
+<div class="[ sourcecode ] [ tab__panel ]" id="cb2"><pre><code><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">chmod</span> +x ./cmd</span></code></pre></div>
+</div>
+      <!-- block-start: back-to-top -->
+      <p class="[ color-mono-07 ]"><a href="#back-to-top">&#8593; Back to top</a></p>
+      <!-- block-end: back-to-top -->
+
+      <h3 id="command-files">
+        <a href="#command-files">Command files</a>
+      </h3>
+      <p>In a command file, each line is one command entry. The format is</p>
+<div class="[ codeblock ] [ tab ]">
+<label class="[ tab__name ]">Format</label>
+<div class="[ sourcecode ] [ tab__panel ]" id="cb3"><pre><code><span id="cb3-1"><a href="#cb3-1"></a>description: command</span></code></pre></div>
+</div>
+      <ul>
+        <li><code>description</code> should be short and sweet.</li>
+        <li><code>command</code> is a command which will be copied or executed. It may optionally
+          contain <code>&lt;placeholder&gt;</code>s.</li>
+      </ul>
+      <p>The content of the <code>cmd-git</code> file looks like this:</p>
+<div class="[ codeblock ] [ tab ]">
+<label class="[ tab__name ]">cmd-git</label>
+<div class="[ sourcecode ] [ tab__panel ]" id="cb4"><pre><code><span id="cb4-1"><a href="#cb4-1"></a>git log oneline in graph: git log --oneline --graph</span>
 <span id="cb4-2"><a href="#cb4-2"></a>git rename current branch: git branch -m &lt;new-name&gt;</span>
 <span id="cb4-3"><a href="#cb4-3"></a>git go back n commit(s) from HEAD: git reset --&lt;mode&gt; HEAD~&lt;n&gt;</span></code></pre></div>
-<p>Let's break down the <code>cmd-git</code> file above:</p>
-<ul>
-<li>The first entry: <code>git log oneline in graph: git log --oneline --graph</code>
-<ul>
-<li><code>git log oneline in graph</code> is a description.</li>
-<li><code>git log --oneline --graph</code> is a command with no placeholders.</li>
-</ul></li>
-<li>The second entry: <code>git rename current branch: git branch -m &lt;new-name&gt;</code>
-<ul>
-<li><code>git rename current branch</code> is a description.</li>
-<li><code>git branch -m &lt;new-name&gt;</code> is a command with a <code>&lt;new-name&gt;</code> placeholder.</li>
-</ul></li>
-<li>The third entry: <code>git go back n commit(s) from HEAD: git reset --&lt;mode&gt; HEAD~&lt;n&gt;</code>
-<ul>
-<li><code>git go back n commit(s) from HEAD</code> is a description.</li>
-<li><code>git reset --&lt;mode&gt; HEAD~&lt;n&gt;</code> is a command with two placeholders, <code>&lt;mode&gt;</code>
-and <code>&lt;n&gt;</code>.</li>
-</ul></li>
-</ul>
-<p>Then, let's fill up <code>cmd-find</code>, too:</p>
-<p>cmd-find</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb5-1"><a href="#cb5-1"></a>find and delete empty directories: find &lt;target-path&gt; -type d -empty -delete</span></code></pre></div>
-<p>Now, let's build the command manager in Bash in the below sections. I will use
-in-line comments to explain what each line is.</p>
-<p>I have a tip. If you do not understand what a command is and what their flags or
-options are, you can run the <code>man</code> command with a command name to read its
-manual. For example, if I want to read <code>grep</code> manual, I can run the below
-command:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">man</span> grep</span></code></pre></div>
-<h3 id="find-command-with-fzf">Find command with <code>fzf</code></h3>
-<p>cmd</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+</div>
+      <p>Let's break down the <code>cmd-git</code> file above:</p>
+      <ul>
+        <li>The first entry: <code>git log oneline in graph: git log --oneline --graph</code>
+          <ul>
+            <li><code>git log oneline in graph</code> is a description.</li>
+            <li><code>git log --oneline --graph</code> is a command with no placeholders.</li>
+          </ul>
+        </li>
+        <li>The second entry: <code>git rename current branch: git branch -m &lt;new-name&gt;</code>
+          <ul>
+            <li><code>git rename current branch</code> is a description.</li>
+            <li><code>git branch -m &lt;new-name&gt;</code> is a command with a <code>&lt;new-name&gt;</code> placeholder.</li>
+          </ul>
+        </li>
+        <li>The third entry: <code>git go back n commit(s) from HEAD: git reset --&lt;mode&gt; HEAD~&lt;n&gt;</code>
+          <ul>
+            <li><code>git go back n commit(s) from HEAD</code> is a description.</li>
+            <li><code>git reset --&lt;mode&gt; HEAD~&lt;n&gt;</code> is a command with two placeholders, <code>&lt;mode&gt;</code>
+              and <code>&lt;n&gt;</code>.</li>
+          </ul>
+        </li>
+      </ul>
+      <p>Then, let's fill up <code>cmd-find</code>, too:</p>
+<div class="[ codeblock ] [ tab ]">
+<label class="[ tab__name ]">cmd-find</label>
+<div class="[ sourcecode ] [ tab__panel ]" id="cb5"><pre><code><span id="cb5-1"><a href="#cb5-1"></a>find and delete empty directories: find &lt;target-path&gt; -type d -empty -delete</span></code></pre></div>
+</div>
+      <p>Now, let's build the command manager in Bash in the below sections. I will use
+      in-line comments to explain what each line is.</p>
+      <p>I have a tip. If you do not understand what a command is and what their flags or
+      options are, you can run the <code>man</code> command with a command name to read its
+      manual. For example, if I want to read <code>grep</code> manual, I can run the below
+      command:</p>
+<div class="[ codeblock ] [ tab ]">
+<label class="[ tab__name ]">shell</label>
+<div class="[ sourcecode ] [ tab__panel ]"  id="cb6"><pre><code><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">man</span> grep</span></code></pre></div>
+</div>
+      <!-- block-start: back-to-top -->
+      <p class="[ color-mono-07 ]"><a href="#back-to-top">&#8593; Back to top</a></p>
+      <!-- block-end: back-to-top -->
+
+      <h3 id="find-command-with-fzf">
+        <a href="#find-command-with-fzf">Find command with <code>fzf</code></a>
+      </h3>
+<div class="[ codeblock ] [ tab ]">
+<label class="[ tab__name ]">cmd</label>
+<div class="[ sourcecode ] [ tab__panel ]" id="cb7"><pre><code><span id="cb7-1"><a href="#cb7-1"></a><span class="co">#!/usr/bin/env bash</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="co"># The optional category passed as an argument</span></span>
 <span id="cb7-4"><a href="#cb7-4"></a><span class="va">category</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span></span>
@@ -413,9 +281,17 @@ command:</p>
 <span id="cb7-48"><a href="#cb7-48"></a></span>
 <span id="cb7-49"><a href="#cb7-49"></a><span class="co"># Print the selected command</span></span>
 <span id="cb7-50"><a href="#cb7-50"></a><span class="bu">echo</span> <span class="st">&quot;Selected command: </span><span class="va">$cmd</span><span class="st">&quot;</span></span></code></pre></div>
-<h3 id="detect-placeholders-and-fill-in-values">Detect placeholders and fill in values</h3>
-<p>cmd</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+</div>
+      <!-- block-start: back-to-top -->
+      <p class="[ color-mono-07 ]"><a href="#back-to-top">&#8593; Back to top</a></p>
+      <!-- block-end: back-to-top -->
+
+      <h3 id="detect-placeholders-and-fill-in-values">
+        <a href="#detect-placeholders-and-fill-in-values">Detect placeholders and fill in values</a>
+      </h3>
+<div class="[ codeblock ] [ tab ]">
+<label class="[ tab__name ]">cmd</label>
+<div class="[ sourcecode ] [ tab__panel ]" id="cb8"><pre><code><span id="cb8-1"><a href="#cb8-1"></a><span class="co">#!/usr/bin/env bash</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a></span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="ex">...</span></span>
 <span id="cb8-4"><a href="#cb8-4"></a></span>
@@ -450,9 +326,17 @@ command:</p>
 <span id="cb8-33"><a href="#cb8-33"></a></span>
 <span id="cb8-34"><a href="#cb8-34"></a>  <span class="bu">echo</span> <span class="st">&quot;----------------------&quot;</span></span>
 <span id="cb8-35"><a href="#cb8-35"></a><span class="cf">fi</span></span></code></pre></div>
-<h3 id="perform-action-on-command">Perform action on command</h3>
-<p>cmd</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+</div>
+      <!-- block-start: back-to-top -->
+      <p class="[ color-mono-07 ]"><a href="#back-to-top">&#8593; Back to top</a></p>
+      <!-- block-end: back-to-top -->
+
+      <h3 id="perform-action-on-command">
+        <a href="#perform-action-on-command">Perform action on command</a>
+      </h3>
+<div class="[ codeblock ] [ tab ]">
+<label class="[ tab__name ]">cmd</label>
+<div class="[ sourcecode ] [ tab__panel ]" id="cb9"><pre><code><span id="cb9-1"><a href="#cb9-1"></a><span class="co">#!/usr/bin/env bash</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a></span>
 <span id="cb9-3"><a href="#cb9-3"></a><span class="ex">...</span></span>
 <span id="cb9-4"><a href="#cb9-4"></a></span>
@@ -520,9 +404,17 @@ command:</p>
 <span id="cb9-66"><a href="#cb9-66"></a>    <span class="bu">echo</span> <span class="st">&quot;Only copy (c), execute (e) or quit (q)?&quot;</span></span>
 <span id="cb9-67"><a href="#cb9-67"></a>  <span class="cf">fi</span></span>
 <span id="cb9-68"><a href="#cb9-68"></a><span class="cf">done</span></span></code></pre></div>
-<h3 id="full-implementation">Full implementation</h3>
-<p>cmd</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+</div>
+      <!-- block-start: back-to-top -->
+      <p class="[ color-mono-07 ]"><a href="#back-to-top">&#8593; Back to top</a></p>
+      <!-- block-end: back-to-top -->
+
+      <h3 id="full-implementation">
+        <a href="#full-implementation">Full implementation</a>
+      </h3>
+<div class="[ codeblock ] [ tab ]">
+<label class="[ tab__name ]">cmd</label>
+<div class="[ sourcecode ] [ tab__panel ]" id="cb10"><pre><code><span id="cb10-1"><a href="#cb10-1"></a><span class="co">#!/usr/bin/env bash</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a></span>
 <span id="cb10-3"><a href="#cb10-3"></a><span class="co"># The optional category passed as an argument</span></span>
 <span id="cb10-4"><a href="#cb10-4"></a><span class="va">category</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span></span>
@@ -654,24 +546,64 @@ command:</p>
 <span id="cb10-130"><a href="#cb10-130"></a>    <span class="bu">echo</span> <span class="st">&quot;Only copy (c), execute (e) or quit (q)?&quot;</span></span>
 <span id="cb10-131"><a href="#cb10-131"></a>  <span class="cf">fi</span></span>
 <span id="cb10-132"><a href="#cb10-132"></a><span class="cf">done</span></span></code></pre></div>
-<p>Remember to run the below command to make <code>cmd</code> executable:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">chmod</span> +x ./cmd</span></code></pre></div>
-<p>Now run it with all categories:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="ex">./cmd</span></span></code></pre></div>
-<p>Or, run it with the <code>git</code> category:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="ex">./cmd</span> git</span></code></pre></div>
-<p>To make the <code>cmd</code> command accessible from anywhere, you can either add the path
-to the directory containing it to your <code>$PATH</code> environment variable,</p>
-<p>.zshrc/.bashrc</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash numberLines"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$PATH</span><span class="st">:path-to-directory-containing-cmd&quot;</span></span></code></pre></div>
-<p>or move it along with the <code>cmd-*</code> files into a directory that is already
-included in your <code>$PATH</code>.</p>
-<h2 id="final-words">Final words</h2>
-<p>I hope you enjoy the process of building and learn something along the way. I
-often build something simple using tools already available on my machine, if the
-existing solutions are more complex than necessary for my needs. As a result, I
-have a chance to learn something new while producing fairly-good-and-simple
-tools to serve my daily tasks.</p>
-<p>Nam Nguyen</p>
+</div>
+      <p>Remember to run the below command to make <code>cmd</code> executable:</p>
+<div class="[ codeblock ] [ tab ]">
+<label class="[ tab__name ]">shell</label>
+<div class="[ sourcecode ] [ tab__panel ]" id="cb11"><pre><code><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">chmod</span> +x ./cmd</span></code></pre></div>
+</div>
+      <p>Now run it with all categories:</p>
+<div class="[ codeblock ] [ tab ]">
+<label class="[ tab__name ]">shell</label>
+<div class="[ sourcecode ] [ tab__panel ]" id="cb12"><pre><code><span id="cb12-1"><a href="#cb12-1"></a><span class="ex">./cmd</span></span></code></pre></div>
+</div>
+      <p>Or, run it with the <code>git</code> category:</p>
+<div class="[ codeblock ] [ tab ]">
+<label class="[ tab__name ]">shell</label>
+<div class="[ sourcecode ] [ tab__panel ]" id="cb13"><pre><code><span id="cb13-1"><a href="#cb13-1"></a><span class="ex">./cmd</span> git</span></code></pre></div>
+</div>
+      <p>To make the <code>cmd</code> command accessible from anywhere, you can either add the path
+<div class="[ codeblock ] [ tab ]">
+<label class="[ tab__name ]">.zshrc/.bashrc</label>
+<div class="[ sourcecode ] [ tab__panel ]" id="cb14"><pre><code><span id="cb14-1"><a href="#cb14-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$PATH</span><span class="st">:path-to-directory-containing-cmd&quot;</span></span></code></pre></div>
+</div>
+      <p>or move it along with the <code>cmd-*</code> files into a directory that is already
+      included in your <code>$PATH</code>.</p>
+      <!-- block-start: back-to-top -->
+      <p class="[ color-mono-07 ]"><a href="#back-to-top">&#8593; Back to top</a></p>
+      <!-- block-end: back-to-top -->
+
+      <h2 id="final-words">
+        <a href="#final-words">Final words</a>
+      </h2>
+      <p>I hope you enjoy the process of building and learn something along the way. I
+      often build something simple using tools already available on my machine, if the
+      existing solutions are more complex than necessary for my needs. As a result, I
+      have a chance to learn something new while producing fairly-good-and-simple
+      tools to serve my daily tasks.</p>
+      <!-- block-start: back-to-top -->
+      <p class="[ color-mono-07 ]"><a href="#back-to-top">&#8593; Back to top</a></p>
+      <!-- block-end: back-to-top -->
+    </article>
+
+    <!-- block-start: cheers -->
+    <p>
+      Cheers,<br>
+      Nam Nguyen
+    </p>
+    <!-- block-end: cheers -->
+
+    <!-- block-start: back-to-writing -->
+    <p><a class="[ color-mono-07 ]" href="/writing">$ cd ~/writing</a></p>
+    <!-- block-end: back-to-writing -->
+  </main>
+
+  <!-- block-start: footer -->
+  <footer>
+    <p>Always remember to love yourself. ٩( ᐛ )و</p>
+    <p><a href="/404">404</a></p>
+  </footer>
+  <!-- block-end: footer -->
 </body>
+
 </html>

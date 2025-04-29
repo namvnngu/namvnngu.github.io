@@ -9,7 +9,7 @@ Published on April 30, 2025.
 
 I often find myself in a situation where I want to remember a useful terminal
 command, but I have a poor memory and will forget it after a few days. I used
-to save all the useful commands in [Obsidian](https://obsidian.md), which I use
+to save all useful commands in [Obsidian](https://obsidian.md), which I use
 daily as my second brain for notes, planning, learning, and more.
 
 However, whenever I need to use a command I previously bumped into and saved in
@@ -42,7 +42,7 @@ only.
 
 ### Features
 
-Before jumping into building the command, it is helpful to define the list of
+Before we jump into building the command, it is helpful to define the list of
 features first:
 
 - Save commands in `cmd-*` categories files, where `*` is a category, e.g.
@@ -93,7 +93,7 @@ description: command
 - `command` is a command which will be copied or executed. It may optionally
 contain `<placeholder>`s.
 
-For example, the content of a `cmd-git` file looks like this:
+The content of the `cmd-git` file looks like this:
 
 cmd-git
 ``` {.numberLines}
@@ -102,7 +102,7 @@ git rename current branch: git branch -m <new-name>
 git go back n commit(s) from HEAD: git reset --<mode> HEAD~<n>
 ```
 
-Let's break down the above example:
+Let's break down the `cmd-git` file above:
 
 - The first entry: `git log oneline in graph: git log --oneline --graph`
   - `git log oneline in graph` is a description.
@@ -115,7 +115,14 @@ Let's break down the above example:
   - `git reset --<mode> HEAD~<n>` is a command with two placeholders, `<mode>`
   and `<n>`.
 
-Let's build the command manager in Bash in the below sections. I will use
+Then, let's fill up `cmd-find`, too:
+
+cmd-find
+``` {.numberLines}
+find and delete empty directories: find <target-path> -type d -empty -delete
+```
+
+Now, let's build the command manager in Bash in the below sections. I will use
 in-line comments to explain what each line is.
 
 I have a tip. If you do not understand what a command is and what their flags or
@@ -224,7 +231,7 @@ if [[ -n "$placeholders" ]]; then
 fi
 ```
 
-### Perform an action on command
+### Perform action on command
 
 cmd
 ``` bash {.numberLines}
@@ -241,7 +248,7 @@ cmd=""
 # === Detect placeholders and fill in values ===
 ...
 
-# === Perform an action on command ===
+# === Perform action on command ===
 
 # Keep prompting until a valid action is chosen
 while true; do
@@ -379,7 +386,7 @@ if [[ -n "$placeholders" ]]; then
   echo "----------------------"
 fi
 
-# === Perform an action on command ===
+# === Perform action on command ===
 
 # Keep prompting until a valid action is chosen
 while true; do
@@ -440,6 +447,18 @@ Remember to run the below command to make `cmd` executable:
 
 ``` bash {.numberLines}
 chmod +x ./cmd
+```
+
+Now run it with all categories:
+
+``` bash {.numberLines}
+./cmd
+```
+
+Or, run it with the `git` category:
+
+``` bash {.numberLines}
+./cmd git
 ```
 
 To make the `cmd` command accessible from anywhere, you can either add the path

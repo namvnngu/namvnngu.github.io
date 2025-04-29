@@ -267,7 +267,7 @@ pandoc writing.md \
 ```
 
 4. Copy content line by line from `writing.html` to the actual HTML page,
-making adjustments to align with my website’s styling.
+making adjustments to align with my website's styling.
 
 As you can see, writing pages are first written in Markdown and then converted
 to HTML. This is the only exception to not using HTML directly to create pages,

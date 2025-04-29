@@ -35,9 +35,9 @@ tmp: blocks
 .PHONY: blocks
 blocks:
 	@find $(SRC_PATH)/$(BLOCKS_DIR) -type file \
-		-exec "echo" ";" \
-		-exec "echo" "==> Update {} block in all pages" ";" \
-		-exec "./scripts/block.sh" "{}" ";"
+		-exec echo ";" \
+		-exec echo "==> Update {} block in all pages" ";" \
+		-exec ./scripts/block.sh "{}" ";"
 
 .PHONY: block
 block:
