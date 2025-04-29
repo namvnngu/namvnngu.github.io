@@ -225,7 +225,7 @@ a {
 @media (hover: hover) {
   a {
     transition-property: text-decoration-color;
-    transition-duration: var(--transition-duration-lg);
+    transition-duration: var(--transition-duration-sm);
     transition-timing-function: ease;
   }
   a:hover {
@@ -259,7 +259,7 @@ code {
   font-family: var(--font-mono);
 }
 
-b {
+b, strong {
   font-weight: var(--font-weight-bold);
 }
 
@@ -489,13 +489,15 @@ footer {
   color: var(--color-mono-05);
   transition-property: opacity;
   transition-timing-function: ease;
-  transition-duration: var(--transition-duration-lg);
+  transition-duration: var(--transition-duration-sm);
 }
 .writing h2:hover a::before,
 .writing h3:hover a::before {
   opacity: 1;
 }
 .writing p code,
+.writing h2 code,
+.writing h3 code,
 .writing li code {
   font-size: 85%;
   padding: 0.2em 0.4em;
