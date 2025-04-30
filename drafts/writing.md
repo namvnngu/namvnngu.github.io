@@ -115,7 +115,7 @@ Let's break down the `cmd-git` file above:
   - `git reset --<mode> HEAD~<n>` is a command with two placeholders, `<mode>`
   and `<n>`.
 
-Then, let's fill up `cmd-find`, too:
+Then, let's add one command entry to the `cmd-find` file:
 
 cmd-find
 ``` {.numberLines}
