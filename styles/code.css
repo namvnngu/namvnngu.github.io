@@ -85,6 +85,15 @@ html {
   background-color: var(--codeblock-line-target-background-color);
 }
 
+@media print {
+  .codeblock > .sourcecode > pre > code {
+    white-space: pre-wrap;
+  }
+  .codeblock > .sourcecode > pre > code > span {
+    text-indent: -5em; padding-left: 5em;
+  }
+}
+
 .codeblock > .sourcecode > pre > code span    { color: var(--light, #1f1c1b) var(--dark, #cfcfc2); } /* Normal */
 .codeblock > .sourcecode > pre > code span.al { color: var(--light, #bf0303) var(--dark, #95da4c); background-color: var(--light, #f7e6e6) var(--dark, #4d1f24); font-weight: var(--font-weight-bold); } /* Alert */
 .codeblock > .sourcecode > pre > code span.an { color: var(--light, #ca60ca) var(--dark, #3f8058); } /* Annotation */
