@@ -381,12 +381,12 @@ command:</p>
 <span id="cb7-16"><a href="#cb7-16"></a></span>
 <span id="cb7-17"><a href="#cb7-17"></a><span class="co"># If no argument is provided, i.e. no category</span></span>
 <span id="cb7-18"><a href="#cb7-18"></a><span class="cf">if</span> <span class="kw">[[</span> <span class="va">$#</span> <span class="ot">-eq</span> 0 <span class="kw">]];</span> <span class="cf">then</span></span>
-<span id="cb7-19"><a href="#cb7-19"></a>  <span class="co"># Find all command files whose name starts</span></span>
-<span id="cb7-20"><a href="#cb7-20"></a>  <span class="co"># with &quot;cmd-&quot; in the &quot;cmd_dir&quot; directory</span></span>
-<span id="cb7-21"><a href="#cb7-21"></a>  <span class="va">files</span><span class="op">=</span><span class="va">$(</span><span class="fu">find</span> <span class="st">&quot;</span><span class="va">$cmd_dir</span><span class="st">&quot;</span> <span class="at">-maxdepth</span> 1 <span class="at">-name</span> <span class="st">&quot;cmd-*&quot;</span><span class="va">)</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a>  <span class="co"># Get commands in all command files whose name</span></span>
+<span id="cb7-20"><a href="#cb7-20"></a>  <span class="co"># starts with &quot;cmd-&quot; in the &quot;cmd_dir&quot; directory</span></span>
+<span id="cb7-21"><a href="#cb7-21"></a>  <span class="va">cmds</span><span class="op">=</span><span class="va">$(</span><span class="fu">find</span> <span class="st">&quot;</span><span class="va">$cmd_dir</span><span class="st">&quot;</span> <span class="at">-maxdepth</span> 1 <span class="at">-name</span> <span class="st">&quot;cmd-*&quot;</span> <span class="at">-exec</span> cat {} <span class="st">&#39;+&#39;</span><span class="va">)</span></span>
 <span id="cb7-22"><a href="#cb7-22"></a></span>
 <span id="cb7-23"><a href="#cb7-23"></a>  <span class="co"># Find a command entry across all found command files</span></span>
-<span id="cb7-24"><a href="#cb7-24"></a>  <span class="va">cmd</span><span class="op">=</span><span class="va">$(</span><span class="fu">cat</span> <span class="va">$files</span> <span class="kw">|</span> <span class="ex">fzf</span><span class="va">)</span></span>
+<span id="cb7-24"><a href="#cb7-24"></a>  <span class="va">cmd</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$cmds</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="ex">fzf</span><span class="va">)</span></span>
 <span id="cb7-25"><a href="#cb7-25"></a><span class="co"># If the command file exists based on the category</span></span>
 <span id="cb7-26"><a href="#cb7-26"></a><span class="cf">elif</span> <span class="kw">[[</span> <span class="ot">-e</span> <span class="st">&quot;</span><span class="va">$cmd_file</span><span class="st">&quot;</span> <span class="kw">]];</span> <span class="cf">then</span></span>
 <span id="cb7-27"><a href="#cb7-27"></a>  <span class="co"># Find a command entry within the command file</span></span>
@@ -407,9 +407,9 @@ command:</p>
 <span id="cb7-42"><a href="#cb7-42"></a>  <span class="bu">exit</span> 0</span>
 <span id="cb7-43"><a href="#cb7-43"></a><span class="cf">fi</span></span>
 <span id="cb7-44"><a href="#cb7-44"></a></span>
-<span id="cb7-45"><a href="#cb7-45"></a><span class="co"># Remove the &quot;description: &quot; part to get</span></span>
+<span id="cb7-45"><a href="#cb7-45"></a><span class="co"># Remove the &quot;description: &quot; prefix to get</span></span>
 <span id="cb7-46"><a href="#cb7-46"></a><span class="co"># the command from the selected command entry</span></span>
-<span id="cb7-47"><a href="#cb7-47"></a><span class="va">cmd</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$cmd</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">&quot;s/^.*: //&quot;</span><span class="va">)</span></span>
+<span id="cb7-47"><a href="#cb7-47"></a><span class="va">cmd</span><span class="op">=</span><span class="va">${cmd</span><span class="op">/#</span><span class="pp">*</span><span class="ss">: </span><span class="op">/</span><span class="va">}</span></span>
 <span id="cb7-48"><a href="#cb7-48"></a></span>
 <span id="cb7-49"><a href="#cb7-49"></a><span class="co"># Print the selected command</span></span>
 <span id="cb7-50"><a href="#cb7-50"></a><span class="bu">echo</span> <span class="st">&quot;Selected command: </span><span class="va">$cmd</span><span class="st">&quot;</span></span></code></pre></div>
@@ -438,11 +438,11 @@ command:</p>
 <span id="cb8-21"><a href="#cb8-21"></a>  <span class="co"># Loop through each placeholder</span></span>
 <span id="cb8-22"><a href="#cb8-22"></a>  <span class="cf">for</span> k <span class="kw">in</span> <span class="va">$placeholders</span><span class="kw">;</span> <span class="cf">do</span></span>
 <span id="cb8-23"><a href="#cb8-23"></a>    <span class="co"># Prompt to input a value for the placeholder</span></span>
-<span id="cb8-24"><a href="#cb8-24"></a>    <span class="bu">read</span> <span class="at">-p</span> <span class="st">&quot;</span><span class="va">$k</span><span class="st">: &quot;</span> <span class="va">v</span></span>
+<span id="cb8-24"><a href="#cb8-24"></a>    <span class="bu">read</span> <span class="at">-r</span> <span class="at">-p</span> <span class="st">&quot;</span><span class="va">$k</span><span class="st">: &quot;</span> <span class="va">v</span></span>
 <span id="cb8-25"><a href="#cb8-25"></a></span>
 <span id="cb8-26"><a href="#cb8-26"></a>    <span class="co"># Replace the placeholder in the selected command</span></span>
 <span id="cb8-27"><a href="#cb8-27"></a>    <span class="co"># with the input value</span></span>
-<span id="cb8-28"><a href="#cb8-28"></a>    <span class="va">cmd</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$cmd</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">&quot;s/</span><span class="va">$k</span><span class="st">/</span><span class="va">$v</span><span class="st">/g&quot;</span><span class="va">)</span></span>
+<span id="cb8-28"><a href="#cb8-28"></a>    <span class="va">cmd</span><span class="op">=</span><span class="va">${cmd</span><span class="op">//</span><span class="va">$k</span><span class="op">/</span><span class="va">$v}</span></span>
 <span id="cb8-29"><a href="#cb8-29"></a></span>
 <span id="cb8-30"><a href="#cb8-30"></a>    <span class="co"># Print the updated command after the replacement</span></span>
 <span id="cb8-31"><a href="#cb8-31"></a>    <span class="bu">echo</span> <span class="st">&quot;Command: </span><span class="va">$cmd</span><span class="st">&quot;</span></span>
@@ -470,7 +470,7 @@ command:</p>
 <span id="cb9-16"><a href="#cb9-16"></a><span class="co"># Keep prompting until a valid action is chosen</span></span>
 <span id="cb9-17"><a href="#cb9-17"></a><span class="cf">while</span> <span class="fu">true</span><span class="kw">;</span> <span class="cf">do</span></span>
 <span id="cb9-18"><a href="#cb9-18"></a>  <span class="co"># Prompt to input a value for the action</span></span>
-<span id="cb9-19"><a href="#cb9-19"></a>  <span class="bu">read</span> <span class="at">-p</span> <span class="st">&quot;copy (c), execute (e) or quit (q)? &quot;</span> <span class="va">action</span></span>
+<span id="cb9-19"><a href="#cb9-19"></a>  <span class="bu">read</span> <span class="at">-r</span> <span class="at">-p</span> <span class="st">&quot;copy (c), execute (e) or quit (q)? &quot;</span> <span class="va">action</span></span>
 <span id="cb9-20"><a href="#cb9-20"></a></span>
 <span id="cb9-21"><a href="#cb9-21"></a>  <span class="co"># Transform the input value to lowercase</span></span>
 <span id="cb9-22"><a href="#cb9-22"></a>  <span class="co"># for easier matching</span></span>
@@ -540,12 +540,12 @@ command:</p>
 <span id="cb10-16"><a href="#cb10-16"></a></span>
 <span id="cb10-17"><a href="#cb10-17"></a><span class="co"># If no argument is provided, i.e. no category</span></span>
 <span id="cb10-18"><a href="#cb10-18"></a><span class="cf">if</span> <span class="kw">[[</span> <span class="va">$#</span> <span class="ot">-eq</span> 0 <span class="kw">]];</span> <span class="cf">then</span></span>
-<span id="cb10-19"><a href="#cb10-19"></a>  <span class="co"># Find all command files whose name starts</span></span>
-<span id="cb10-20"><a href="#cb10-20"></a>  <span class="co"># with &quot;cmd-&quot; in the &quot;cmd_dir&quot; directory</span></span>
-<span id="cb10-21"><a href="#cb10-21"></a>  <span class="va">files</span><span class="op">=</span><span class="va">$(</span><span class="fu">find</span> <span class="st">&quot;</span><span class="va">$cmd_dir</span><span class="st">&quot;</span> <span class="at">-maxdepth</span> 1 <span class="at">-name</span> <span class="st">&quot;cmd-*&quot;</span><span class="va">)</span></span>
+<span id="cb10-19"><a href="#cb10-19"></a>  <span class="co"># Get commands in all command files whose name</span></span>
+<span id="cb10-20"><a href="#cb10-20"></a>  <span class="co"># starts with &quot;cmd-&quot; in the &quot;cmd_dir&quot; directory</span></span>
+<span id="cb10-21"><a href="#cb10-21"></a>  <span class="va">cmds</span><span class="op">=</span><span class="va">$(</span><span class="fu">find</span> <span class="st">&quot;</span><span class="va">$cmd_dir</span><span class="st">&quot;</span> <span class="at">-maxdepth</span> 1 <span class="at">-name</span> <span class="st">&quot;cmd-*&quot;</span> <span class="at">-exec</span> cat {} <span class="st">&#39;+&#39;</span><span class="va">)</span></span>
 <span id="cb10-22"><a href="#cb10-22"></a></span>
 <span id="cb10-23"><a href="#cb10-23"></a>  <span class="co"># Find a command entry across all found command files</span></span>
-<span id="cb10-24"><a href="#cb10-24"></a>  <span class="va">cmd</span><span class="op">=</span><span class="va">$(</span><span class="fu">cat</span> <span class="va">$files</span> <span class="kw">|</span> <span class="ex">fzf</span><span class="va">)</span></span>
+<span id="cb10-24"><a href="#cb10-24"></a>  <span class="va">cmd</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$cmds</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="ex">fzf</span><span class="va">)</span></span>
 <span id="cb10-25"><a href="#cb10-25"></a><span class="co"># If the command file exists based on the category</span></span>
 <span id="cb10-26"><a href="#cb10-26"></a><span class="cf">elif</span> <span class="kw">[[</span> <span class="ot">-e</span> <span class="st">&quot;</span><span class="va">$cmd_file</span><span class="st">&quot;</span> <span class="kw">]];</span> <span class="cf">then</span></span>
 <span id="cb10-27"><a href="#cb10-27"></a>  <span class="co"># Find a command entry within the command file</span></span>
@@ -566,9 +566,9 @@ command:</p>
 <span id="cb10-42"><a href="#cb10-42"></a>  <span class="bu">exit</span> 0</span>
 <span id="cb10-43"><a href="#cb10-43"></a><span class="cf">fi</span></span>
 <span id="cb10-44"><a href="#cb10-44"></a></span>
-<span id="cb10-45"><a href="#cb10-45"></a><span class="co"># Remove the &quot;description: &quot; part to get</span></span>
+<span id="cb10-45"><a href="#cb10-45"></a><span class="co"># Remove the &quot;description: &quot; prefix to get</span></span>
 <span id="cb10-46"><a href="#cb10-46"></a><span class="co"># the command from the selected command entry</span></span>
-<span id="cb10-47"><a href="#cb10-47"></a><span class="va">cmd</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$cmd</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">&quot;s/^.*: //&quot;</span><span class="va">)</span></span>
+<span id="cb10-47"><a href="#cb10-47"></a><span class="va">cmd</span><span class="op">=</span><span class="va">${cmd</span><span class="op">/#</span><span class="pp">*</span><span class="ss">: </span><span class="op">/</span><span class="va">}</span></span>
 <span id="cb10-48"><a href="#cb10-48"></a></span>
 <span id="cb10-49"><a href="#cb10-49"></a><span class="co"># Print the selected command</span></span>
 <span id="cb10-50"><a href="#cb10-50"></a><span class="bu">echo</span> <span class="st">&quot;Selected command: </span><span class="va">$cmd</span><span class="st">&quot;</span></span>
@@ -586,11 +586,11 @@ command:</p>
 <span id="cb10-62"><a href="#cb10-62"></a>  <span class="co"># Loop through each placeholder</span></span>
 <span id="cb10-63"><a href="#cb10-63"></a>  <span class="cf">for</span> k <span class="kw">in</span> <span class="va">$placeholders</span><span class="kw">;</span> <span class="cf">do</span></span>
 <span id="cb10-64"><a href="#cb10-64"></a>    <span class="co"># Prompt to input a value for the placeholder</span></span>
-<span id="cb10-65"><a href="#cb10-65"></a>    <span class="bu">read</span> <span class="at">-p</span> <span class="st">&quot;</span><span class="va">$k</span><span class="st">: &quot;</span> <span class="va">v</span></span>
+<span id="cb10-65"><a href="#cb10-65"></a>    <span class="bu">read</span> <span class="at">-r</span> <span class="at">-p</span> <span class="st">&quot;</span><span class="va">$k</span><span class="st">: &quot;</span> <span class="va">v</span></span>
 <span id="cb10-66"><a href="#cb10-66"></a></span>
 <span id="cb10-67"><a href="#cb10-67"></a>    <span class="co"># Replace the placeholder in the selected command</span></span>
 <span id="cb10-68"><a href="#cb10-68"></a>    <span class="co"># with the input value</span></span>
-<span id="cb10-69"><a href="#cb10-69"></a>    <span class="va">cmd</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$cmd</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">&quot;s/</span><span class="va">$k</span><span class="st">/</span><span class="va">$v</span><span class="st">/g&quot;</span><span class="va">)</span></span>
+<span id="cb10-69"><a href="#cb10-69"></a>    <span class="va">cmd</span><span class="op">=</span><span class="va">${cmd</span><span class="op">//</span><span class="va">$k</span><span class="op">/</span><span class="va">$v}</span></span>
 <span id="cb10-70"><a href="#cb10-70"></a></span>
 <span id="cb10-71"><a href="#cb10-71"></a>    <span class="co"># Print the updated command after the replacement</span></span>
 <span id="cb10-72"><a href="#cb10-72"></a>    <span class="bu">echo</span> <span class="st">&quot;Command: </span><span class="va">$cmd</span><span class="st">&quot;</span></span>
@@ -604,7 +604,7 @@ command:</p>
 <span id="cb10-80"><a href="#cb10-80"></a><span class="co"># Keep prompting until a valid action is chosen</span></span>
 <span id="cb10-81"><a href="#cb10-81"></a><span class="cf">while</span> <span class="fu">true</span><span class="kw">;</span> <span class="cf">do</span></span>
 <span id="cb10-82"><a href="#cb10-82"></a>  <span class="co"># Prompt to input a value for the action</span></span>
-<span id="cb10-83"><a href="#cb10-83"></a>  <span class="bu">read</span> <span class="at">-p</span> <span class="st">&quot;copy (c), execute (e) or quit (q)? &quot;</span> <span class="va">action</span></span>
+<span id="cb10-83"><a href="#cb10-83"></a>  <span class="bu">read</span> <span class="at">-r</span> <span class="at">-p</span> <span class="st">&quot;copy (c), execute (e) or quit (q)? &quot;</span> <span class="va">action</span></span>
 <span id="cb10-84"><a href="#cb10-84"></a></span>
 <span id="cb10-85"><a href="#cb10-85"></a>  <span class="co"># Transform the input value to lowercase</span></span>
 <span id="cb10-86"><a href="#cb10-86"></a>  <span class="co"># for easier matching</span></span>

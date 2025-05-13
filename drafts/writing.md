@@ -156,12 +156,12 @@ cmd=""
 
 # If no argument is provided, i.e. no category
 if [[ $# -eq 0 ]]; then
-  # Find all command files whose name starts
-  # with "cmd-" in the "cmd_dir" directory
-  files=$(find "$cmd_dir" -maxdepth 1 -name "cmd-*")
+  # Get commands in all command files whose name
+  # starts with "cmd-" in the "cmd_dir" directory
+  cmds=$(find "$cmd_dir" -maxdepth 1 -name "cmd-*" -exec cat {} '+')
 
   # Find a command entry across all found command files
-  cmd=$(cat $files | fzf)
+  cmd=$(echo "$cmds" | fzf)
 # If the command file exists based on the category
 elif [[ -e "$cmd_file" ]]; then
   # Find a command entry within the command file
@@ -182,9 +182,9 @@ if [[ -z "$cmd" ]]; then
   exit 0
 fi
 
-# Remove the "description: " part to get
+# Remove the "description: " prefix to get
 # the command from the selected command entry
-cmd=$(echo "$cmd" | sed "s/^.*: //")
+cmd=${cmd/#*: /}
 
 # Print the selected command
 echo "Selected command: $cmd"
@@ -217,11 +217,11 @@ if [[ -n "$placeholders" ]]; then
   # Loop through each placeholder
   for k in $placeholders; do
     # Prompt to input a value for the placeholder
-    read -p "$k: " v
+    read -r -p "$k: " v
 
     # Replace the placeholder in the selected command
     # with the input value
-    cmd=$(echo "$cmd" | sed "s/$k/$v/g")
+    cmd=${cmd//$k/$v}
 
     # Print the updated command after the replacement
     echo "Command: $cmd"
@@ -253,7 +253,7 @@ cmd=""
 # Keep prompting until a valid action is chosen
 while true; do
   # Prompt to input a value for the action
-  read -p "copy (c), execute (e) or quit (q)? " action
+  read -r -p "copy (c), execute (e) or quit (q)? " action
 
   # Transform the input value to lowercase
   # for easier matching
@@ -327,12 +327,12 @@ cmd=""
 
 # If no argument is provided, i.e. no category
 if [[ $# -eq 0 ]]; then
-  # Find all command files whose name starts
-  # with "cmd-" in the "cmd_dir" directory
-  files=$(find "$cmd_dir" -maxdepth 1 -name "cmd-*")
+  # Get commands in all command files whose name
+  # starts with "cmd-" in the "cmd_dir" directory
+  cmds=$(find "$cmd_dir" -maxdepth 1 -name "cmd-*" -exec cat {} '+')
 
   # Find a command entry across all found command files
-  cmd=$(cat $files | fzf)
+  cmd=$(echo "$cmds" | fzf)
 # If the command file exists based on the category
 elif [[ -e "$cmd_file" ]]; then
   # Find a command entry within the command file
@@ -353,9 +353,9 @@ if [[ -z "$cmd" ]]; then
   exit 0
 fi
 
-# Remove the "description: " part to get
+# Remove the "description: " prefix to get
 # the command from the selected command entry
-cmd=$(echo "$cmd" | sed "s/^.*: //")
+cmd=${cmd/#*: /}
 
 # Print the selected command
 echo "Selected command: $cmd"
@@ -373,11 +373,11 @@ if [[ -n "$placeholders" ]]; then
   # Loop through each placeholder
   for k in $placeholders; do
     # Prompt to input a value for the placeholder
-    read -p "$k: " v
+    read -r -p "$k: " v
 
     # Replace the placeholder in the selected command
     # with the input value
-    cmd=$(echo "$cmd" | sed "s/$k/$v/g")
+    cmd=${cmd//$k/$v}
 
     # Print the updated command after the replacement
     echo "Command: $cmd"
@@ -391,7 +391,7 @@ fi
 # Keep prompting until a valid action is chosen
 while true; do
   # Prompt to input a value for the action
-  read -p "copy (c), execute (e) or quit (q)? " action
+  read -r -p "copy (c), execute (e) or quit (q)? " action
 
   # Transform the input value to lowercase
   # for easier matching
