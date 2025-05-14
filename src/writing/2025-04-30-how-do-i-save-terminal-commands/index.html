@@ -50,7 +50,7 @@
 
   <main class="[ writing ]">
     <h1 class="title">How Do I Save Terminal Commands?</h1>
-    <p class="[ -mt-4 color-mono-06 ]">Published on April 30, 2025. Last updated on May 13, 2025.</p>
+    <p class="[ -mt-4 color-mono-06 ]">Published on April 30, 2025. Last updated on May 14, 2025.</p>
 
     <ul id="toc" class="[ toc ]">
       <li><a href="#motivation" id="toc-motivation">Motivation</a></li>
@@ -277,10 +277,16 @@
 <span id="cb7-44"><a href="#cb7-44"></a></span>
 <span id="cb7-45"><a href="#cb7-45"></a><span class="co"># Remove the &quot;description: &quot; prefix to get</span></span>
 <span id="cb7-46"><a href="#cb7-46"></a><span class="co"># the command from the selected command entry</span></span>
-<span id="cb7-47"><a href="#cb7-47"></a><span class="va">cmd</span><span class="op">=</span><span class="va">${cmd</span><span class="op">/#</span><span class="pp">*</span><span class="ss">: </span><span class="op">/</span><span class="va">}</span></span>
+<span id="cb7-47"><a href="#cb7-47"></a><span class="va">cmd</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$cmd</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span> <span class="st">&#39;:&#39;</span> <span class="at">-f</span> 2-<span class="va">)</span></span>
 <span id="cb7-48"><a href="#cb7-48"></a></span>
-<span id="cb7-49"><a href="#cb7-49"></a><span class="co"># Print the selected command</span></span>
-<span id="cb7-50"><a href="#cb7-50"></a><span class="bu">echo</span> <span class="st">&quot;Selected command: </span><span class="va">$cmd</span><span class="st">&quot;</span></span></code></pre></div>
+<span id="cb7-49"><a href="#cb7-49"></a><span class="co"># Trim leading spaces</span></span>
+<span id="cb7-50"><a href="#cb7-50"></a><span class="va">cmd</span><span class="op">=</span><span class="va">${cmd</span><span class="op">/#</span><span class="ss">[[:space:]]</span><span class="op">/</span><span class="va">}</span></span>
+<span id="cb7-51"><a href="#cb7-51"></a></span>
+<span id="cb7-52"><a href="#cb7-52"></a><span class="co"># Trim trailing spaces</span></span>
+<span id="cb7-53"><a href="#cb7-53"></a><span class="va">cmd</span><span class="op">=</span><span class="va">${cmd</span><span class="op">/%</span><span class="ss">[[:space:]]</span><span class="op">/</span><span class="va">}</span></span>
+<span id="cb7-54"><a href="#cb7-54"></a></span>
+<span id="cb7-55"><a href="#cb7-55"></a><span class="co"># Print the selected command</span></span>
+<span id="cb7-56"><a href="#cb7-56"></a><span class="bu">echo</span> <span class="st">&quot;Selected command: </span><span class="va">$cmd</span><span class="st">&quot;</span></span></code></pre></div>
 </div>
       <!-- block-start: back-to-top -->
       <p class="[ color-mono-07 ]"><a href="#back-to-top">&#8593; Back to top</a></p>
@@ -460,92 +466,98 @@
 <span id="cb10-44"><a href="#cb10-44"></a></span>
 <span id="cb10-45"><a href="#cb10-45"></a><span class="co"># Remove the &quot;description: &quot; prefix to get</span></span>
 <span id="cb10-46"><a href="#cb10-46"></a><span class="co"># the command from the selected command entry</span></span>
-<span id="cb10-47"><a href="#cb10-47"></a><span class="va">cmd</span><span class="op">=</span><span class="va">${cmd</span><span class="op">/#</span><span class="pp">*</span><span class="ss">: </span><span class="op">/</span><span class="va">}</span></span>
+<span id="cb10-47"><a href="#cb10-47"></a><span class="va">cmd</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$cmd</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span> <span class="st">&#39;:&#39;</span> <span class="at">-f</span> 2-<span class="va">)</span></span>
 <span id="cb10-48"><a href="#cb10-48"></a></span>
-<span id="cb10-49"><a href="#cb10-49"></a><span class="co"># Print the selected command</span></span>
-<span id="cb10-50"><a href="#cb10-50"></a><span class="bu">echo</span> <span class="st">&quot;Selected command: </span><span class="va">$cmd</span><span class="st">&quot;</span></span>
+<span id="cb10-49"><a href="#cb10-49"></a><span class="co"># Trim leading spaces</span></span>
+<span id="cb10-50"><a href="#cb10-50"></a><span class="va">cmd</span><span class="op">=</span><span class="va">${cmd</span><span class="op">/#</span><span class="ss">[[:space:]]</span><span class="op">/</span><span class="va">}</span></span>
 <span id="cb10-51"><a href="#cb10-51"></a></span>
-<span id="cb10-52"><a href="#cb10-52"></a><span class="co"># === Detect placeholders and fill in values ===</span></span>
-<span id="cb10-53"><a href="#cb10-53"></a></span>
-<span id="cb10-54"><a href="#cb10-54"></a><span class="co"># Get all placeholders in the selected command</span></span>
-<span id="cb10-55"><a href="#cb10-55"></a><span class="va">placeholders</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$cmd</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-oE</span> <span class="st">&quot;&lt;(\w|-)+&gt;&quot;</span><span class="va">)</span></span>
-<span id="cb10-56"><a href="#cb10-56"></a></span>
-<span id="cb10-57"><a href="#cb10-57"></a><span class="co"># If the &quot;placeholders&quot; variable is not empty,</span></span>
-<span id="cb10-58"><a href="#cb10-58"></a><span class="co"># i.e. there is at least one placeholder</span></span>
-<span id="cb10-59"><a href="#cb10-59"></a><span class="cf">if</span> <span class="kw">[[</span> <span class="ot">-n</span> <span class="st">&quot;</span><span class="va">$placeholders</span><span class="st">&quot;</span> <span class="kw">]];</span> <span class="cf">then</span></span>
-<span id="cb10-60"><a href="#cb10-60"></a>  <span class="bu">echo</span> <span class="st">&quot;----------------------&quot;</span></span>
-<span id="cb10-61"><a href="#cb10-61"></a></span>
-<span id="cb10-62"><a href="#cb10-62"></a>  <span class="co"># Loop through each placeholder</span></span>
-<span id="cb10-63"><a href="#cb10-63"></a>  <span class="cf">for</span> k <span class="kw">in</span> <span class="va">$placeholders</span><span class="kw">;</span> <span class="cf">do</span></span>
-<span id="cb10-64"><a href="#cb10-64"></a>    <span class="co"># Prompt to input a value for the placeholder</span></span>
-<span id="cb10-65"><a href="#cb10-65"></a>    <span class="bu">read</span> <span class="at">-r</span> <span class="at">-p</span> <span class="st">&quot;</span><span class="va">$k</span><span class="st">: &quot;</span> <span class="va">v</span></span>
-<span id="cb10-66"><a href="#cb10-66"></a></span>
-<span id="cb10-67"><a href="#cb10-67"></a>    <span class="co"># Replace the placeholder in the selected command</span></span>
-<span id="cb10-68"><a href="#cb10-68"></a>    <span class="co"># with the input value</span></span>
-<span id="cb10-69"><a href="#cb10-69"></a>    <span class="va">cmd</span><span class="op">=</span><span class="va">${cmd</span><span class="op">//</span><span class="va">$k</span><span class="op">/</span><span class="va">$v}</span></span>
-<span id="cb10-70"><a href="#cb10-70"></a></span>
-<span id="cb10-71"><a href="#cb10-71"></a>    <span class="co"># Print the updated command after the replacement</span></span>
-<span id="cb10-72"><a href="#cb10-72"></a>    <span class="bu">echo</span> <span class="st">&quot;Command: </span><span class="va">$cmd</span><span class="st">&quot;</span></span>
-<span id="cb10-73"><a href="#cb10-73"></a>  <span class="cf">done</span></span>
-<span id="cb10-74"><a href="#cb10-74"></a></span>
-<span id="cb10-75"><a href="#cb10-75"></a>  <span class="bu">echo</span> <span class="st">&quot;----------------------&quot;</span></span>
-<span id="cb10-76"><a href="#cb10-76"></a><span class="cf">fi</span></span>
-<span id="cb10-77"><a href="#cb10-77"></a></span>
-<span id="cb10-78"><a href="#cb10-78"></a><span class="co"># === Perform action on command ===</span></span>
-<span id="cb10-79"><a href="#cb10-79"></a></span>
-<span id="cb10-80"><a href="#cb10-80"></a><span class="co"># Keep prompting until a valid action is chosen</span></span>
-<span id="cb10-81"><a href="#cb10-81"></a><span class="cf">while</span> <span class="fu">true</span><span class="kw">;</span> <span class="cf">do</span></span>
-<span id="cb10-82"><a href="#cb10-82"></a>  <span class="co"># Prompt to input a value for the action</span></span>
-<span id="cb10-83"><a href="#cb10-83"></a>  <span class="bu">read</span> <span class="at">-r</span> <span class="at">-p</span> <span class="st">&quot;copy (c), execute (e) or quit (q)? &quot;</span> <span class="va">action</span></span>
-<span id="cb10-84"><a href="#cb10-84"></a></span>
-<span id="cb10-85"><a href="#cb10-85"></a>  <span class="co"># Transform the input value to lowercase</span></span>
-<span id="cb10-86"><a href="#cb10-86"></a>  <span class="co"># for easier matching</span></span>
-<span id="cb10-87"><a href="#cb10-87"></a>  <span class="va">action</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$action</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="st">&quot;[:upper:]&quot;</span> <span class="st">&quot;[:lower:]&quot;</span><span class="va">)</span></span>
-<span id="cb10-88"><a href="#cb10-88"></a></span>
-<span id="cb10-89"><a href="#cb10-89"></a>  <span class="co"># If the selected action is to copy</span></span>
-<span id="cb10-90"><a href="#cb10-90"></a>  <span class="cf">if</span> <span class="kw">[[</span> <span class="st">&quot;</span><span class="va">$action</span><span class="st">&quot;</span> <span class="ot">==</span> c<span class="pp">*</span> <span class="kw">]];</span> <span class="cf">then</span></span>
-<span id="cb10-91"><a href="#cb10-91"></a>    <span class="co"># Get the operating system</span></span>
-<span id="cb10-92"><a href="#cb10-92"></a>    <span class="va">os</span><span class="op">=</span><span class="va">$(</span><span class="fu">uname</span> <span class="at">-s</span><span class="va">)</span></span>
-<span id="cb10-93"><a href="#cb10-93"></a></span>
-<span id="cb10-94"><a href="#cb10-94"></a>    <span class="cf">case</span> <span class="st">&quot;</span><span class="va">$os</span><span class="st">&quot;</span> <span class="kw">in</span></span>
-<span id="cb10-95"><a href="#cb10-95"></a>      <span class="co"># If OS is macOS</span></span>
-<span id="cb10-96"><a href="#cb10-96"></a>      <span class="ss">Darwin</span><span class="pp">*</span><span class="kw">)</span></span>
-<span id="cb10-97"><a href="#cb10-97"></a>        <span class="co"># Copy the selected command to clipboard</span></span>
-<span id="cb10-98"><a href="#cb10-98"></a>        <span class="bu">echo</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$cmd</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="ex">pbcopy</span></span>
-<span id="cb10-99"><a href="#cb10-99"></a>        <span class="cf">;;</span></span>
-<span id="cb10-100"><a href="#cb10-100"></a>      <span class="co"># If OS is Linux</span></span>
-<span id="cb10-101"><a href="#cb10-101"></a>      <span class="ss">Linux</span><span class="pp">*</span><span class="kw">)</span></span>
-<span id="cb10-102"><a href="#cb10-102"></a>        <span class="co"># Copy the selected command to clipboard</span></span>
-<span id="cb10-103"><a href="#cb10-103"></a>        <span class="bu">echo</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$cmd</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="ex">xclip</span> <span class="at">-selection</span> clipboard</span>
-<span id="cb10-104"><a href="#cb10-104"></a>        <span class="cf">;;</span></span>
-<span id="cb10-105"><a href="#cb10-105"></a>    <span class="cf">esac</span></span>
-<span id="cb10-106"><a href="#cb10-106"></a></span>
-<span id="cb10-107"><a href="#cb10-107"></a>    <span class="co"># Print a message that the selected command</span></span>
-<span id="cb10-108"><a href="#cb10-108"></a>    <span class="co"># has been copied</span></span>
-<span id="cb10-109"><a href="#cb10-109"></a>    <span class="bu">echo</span> <span class="st">&quot;Copied to clipboard: </span><span class="va">$cmd</span><span class="st">&quot;</span></span>
-<span id="cb10-110"><a href="#cb10-110"></a></span>
-<span id="cb10-111"><a href="#cb10-111"></a>    <span class="co"># Exit with the success code</span></span>
-<span id="cb10-112"><a href="#cb10-112"></a>    <span class="bu">exit</span> 0</span>
-<span id="cb10-113"><a href="#cb10-113"></a>  <span class="co"># If the selected action is to execute</span></span>
-<span id="cb10-114"><a href="#cb10-114"></a>  <span class="cf">elif</span> <span class="kw">[[</span> <span class="st">&quot;</span><span class="va">$action</span><span class="st">&quot;</span> <span class="ot">==</span> e<span class="pp">*</span> <span class="kw">]];</span> <span class="cf">then</span></span>
-<span id="cb10-115"><a href="#cb10-115"></a>    <span class="co"># Print a message that the selected command</span></span>
-<span id="cb10-116"><a href="#cb10-116"></a>    <span class="co"># is being executed</span></span>
-<span id="cb10-117"><a href="#cb10-117"></a>    <span class="bu">echo</span> <span class="st">&quot;Executing: </span><span class="va">$cmd</span><span class="st">&quot;</span></span>
-<span id="cb10-118"><a href="#cb10-118"></a></span>
-<span id="cb10-119"><a href="#cb10-119"></a>    <span class="co"># Execute the selected command</span></span>
-<span id="cb10-120"><a href="#cb10-120"></a>    <span class="bu">eval</span> <span class="st">&quot;</span><span class="va">$cmd</span><span class="st">&quot;</span></span>
-<span id="cb10-121"><a href="#cb10-121"></a></span>
-<span id="cb10-122"><a href="#cb10-122"></a>    <span class="co"># Exit with the success code</span></span>
-<span id="cb10-123"><a href="#cb10-123"></a>    <span class="bu">exit</span> 0</span>
-<span id="cb10-124"><a href="#cb10-124"></a>  <span class="co"># If the selected action is to quit</span></span>
-<span id="cb10-125"><a href="#cb10-125"></a>  <span class="cf">elif</span> <span class="kw">[[</span> <span class="st">&quot;</span><span class="va">$action</span><span class="st">&quot;</span> <span class="ot">==</span> q<span class="pp">*</span> <span class="kw">]];</span> <span class="cf">then</span></span>
-<span id="cb10-126"><a href="#cb10-126"></a>    <span class="co"># Exit with the success code</span></span>
-<span id="cb10-127"><a href="#cb10-127"></a>    <span class="bu">exit</span> 0</span>
-<span id="cb10-128"><a href="#cb10-128"></a>  <span class="cf">else</span></span>
-<span id="cb10-129"><a href="#cb10-129"></a>    <span class="co"># Print a warning message to enter a valid action</span></span>
-<span id="cb10-130"><a href="#cb10-130"></a>    <span class="bu">echo</span> <span class="st">&quot;Only copy (c), execute (e) or quit (q)?&quot;</span></span>
-<span id="cb10-131"><a href="#cb10-131"></a>  <span class="cf">fi</span></span>
-<span id="cb10-132"><a href="#cb10-132"></a><span class="cf">done</span></span></code></pre></div>
+<span id="cb10-52"><a href="#cb10-52"></a><span class="co"># Trim trailing spaces</span></span>
+<span id="cb10-53"><a href="#cb10-53"></a><span class="va">cmd</span><span class="op">=</span><span class="va">${cmd</span><span class="op">/%</span><span class="ss">[[:space:]]</span><span class="op">/</span><span class="va">}</span></span>
+<span id="cb10-54"><a href="#cb10-54"></a></span>
+<span id="cb10-55"><a href="#cb10-55"></a><span class="co"># Print the selected command</span></span>
+<span id="cb10-56"><a href="#cb10-56"></a><span class="bu">echo</span> <span class="st">&quot;Selected command: </span><span class="va">$cmd</span><span class="st">&quot;</span></span>
+<span id="cb10-57"><a href="#cb10-57"></a></span>
+<span id="cb10-58"><a href="#cb10-58"></a><span class="co"># === Detect placeholders and fill in values ===</span></span>
+<span id="cb10-59"><a href="#cb10-59"></a></span>
+<span id="cb10-60"><a href="#cb10-60"></a><span class="co"># Get all placeholders in the selected command</span></span>
+<span id="cb10-61"><a href="#cb10-61"></a><span class="va">placeholders</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$cmd</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-oE</span> <span class="st">&quot;&lt;(\w|-)+&gt;&quot;</span><span class="va">)</span></span>
+<span id="cb10-62"><a href="#cb10-62"></a></span>
+<span id="cb10-63"><a href="#cb10-63"></a><span class="co"># If the &quot;placeholders&quot; variable is not empty,</span></span>
+<span id="cb10-64"><a href="#cb10-64"></a><span class="co"># i.e. there is at least one placeholder</span></span>
+<span id="cb10-65"><a href="#cb10-65"></a><span class="cf">if</span> <span class="kw">[[</span> <span class="ot">-n</span> <span class="st">&quot;</span><span class="va">$placeholders</span><span class="st">&quot;</span> <span class="kw">]];</span> <span class="cf">then</span></span>
+<span id="cb10-66"><a href="#cb10-66"></a>  <span class="bu">echo</span> <span class="st">&quot;----------------------&quot;</span></span>
+<span id="cb10-67"><a href="#cb10-67"></a></span>
+<span id="cb10-68"><a href="#cb10-68"></a>  <span class="co"># Loop through each placeholder</span></span>
+<span id="cb10-69"><a href="#cb10-69"></a>  <span class="cf">for</span> k <span class="kw">in</span> <span class="va">$placeholders</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb10-70"><a href="#cb10-70"></a>    <span class="co"># Prompt to input a value for the placeholder</span></span>
+<span id="cb10-71"><a href="#cb10-71"></a>    <span class="bu">read</span> <span class="at">-r</span> <span class="at">-p</span> <span class="st">&quot;</span><span class="va">$k</span><span class="st">: &quot;</span> <span class="va">v</span></span>
+<span id="cb10-72"><a href="#cb10-72"></a></span>
+<span id="cb10-73"><a href="#cb10-73"></a>    <span class="co"># Replace the placeholder in the selected command</span></span>
+<span id="cb10-74"><a href="#cb10-74"></a>    <span class="co"># with the input value</span></span>
+<span id="cb10-75"><a href="#cb10-75"></a>    <span class="va">cmd</span><span class="op">=</span><span class="va">${cmd</span><span class="op">//</span><span class="va">$k</span><span class="op">/</span><span class="va">$v}</span></span>
+<span id="cb10-76"><a href="#cb10-76"></a></span>
+<span id="cb10-77"><a href="#cb10-77"></a>    <span class="co"># Print the updated command after the replacement</span></span>
+<span id="cb10-78"><a href="#cb10-78"></a>    <span class="bu">echo</span> <span class="st">&quot;Command: </span><span class="va">$cmd</span><span class="st">&quot;</span></span>
+<span id="cb10-79"><a href="#cb10-79"></a>  <span class="cf">done</span></span>
+<span id="cb10-80"><a href="#cb10-80"></a></span>
+<span id="cb10-81"><a href="#cb10-81"></a>  <span class="bu">echo</span> <span class="st">&quot;----------------------&quot;</span></span>
+<span id="cb10-82"><a href="#cb10-82"></a><span class="cf">fi</span></span>
+<span id="cb10-83"><a href="#cb10-83"></a></span>
+<span id="cb10-84"><a href="#cb10-84"></a><span class="co"># === Perform action on command ===</span></span>
+<span id="cb10-85"><a href="#cb10-85"></a></span>
+<span id="cb10-86"><a href="#cb10-86"></a><span class="co"># Keep prompting until a valid action is chosen</span></span>
+<span id="cb10-87"><a href="#cb10-87"></a><span class="cf">while</span> <span class="fu">true</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb10-88"><a href="#cb10-88"></a>  <span class="co"># Prompt to input a value for the action</span></span>
+<span id="cb10-89"><a href="#cb10-89"></a>  <span class="bu">read</span> <span class="at">-r</span> <span class="at">-p</span> <span class="st">&quot;copy (c), execute (e) or quit (q)? &quot;</span> <span class="va">action</span></span>
+<span id="cb10-90"><a href="#cb10-90"></a></span>
+<span id="cb10-91"><a href="#cb10-91"></a>  <span class="co"># Transform the input value to lowercase</span></span>
+<span id="cb10-92"><a href="#cb10-92"></a>  <span class="co"># for easier matching</span></span>
+<span id="cb10-93"><a href="#cb10-93"></a>  <span class="va">action</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$action</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="st">&quot;[:upper:]&quot;</span> <span class="st">&quot;[:lower:]&quot;</span><span class="va">)</span></span>
+<span id="cb10-94"><a href="#cb10-94"></a></span>
+<span id="cb10-95"><a href="#cb10-95"></a>  <span class="co"># If the selected action is to copy</span></span>
+<span id="cb10-96"><a href="#cb10-96"></a>  <span class="cf">if</span> <span class="kw">[[</span> <span class="st">&quot;</span><span class="va">$action</span><span class="st">&quot;</span> <span class="ot">==</span> c<span class="pp">*</span> <span class="kw">]];</span> <span class="cf">then</span></span>
+<span id="cb10-97"><a href="#cb10-97"></a>    <span class="co"># Get the operating system</span></span>
+<span id="cb10-98"><a href="#cb10-98"></a>    <span class="va">os</span><span class="op">=</span><span class="va">$(</span><span class="fu">uname</span> <span class="at">-s</span><span class="va">)</span></span>
+<span id="cb10-99"><a href="#cb10-99"></a></span>
+<span id="cb10-100"><a href="#cb10-100"></a>    <span class="cf">case</span> <span class="st">&quot;</span><span class="va">$os</span><span class="st">&quot;</span> <span class="kw">in</span></span>
+<span id="cb10-101"><a href="#cb10-101"></a>      <span class="co"># If OS is macOS</span></span>
+<span id="cb10-102"><a href="#cb10-102"></a>      <span class="ss">Darwin</span><span class="pp">*</span><span class="kw">)</span></span>
+<span id="cb10-103"><a href="#cb10-103"></a>        <span class="co"># Copy the selected command to clipboard</span></span>
+<span id="cb10-104"><a href="#cb10-104"></a>        <span class="bu">echo</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$cmd</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="ex">pbcopy</span></span>
+<span id="cb10-105"><a href="#cb10-105"></a>        <span class="cf">;;</span></span>
+<span id="cb10-106"><a href="#cb10-106"></a>      <span class="co"># If OS is Linux</span></span>
+<span id="cb10-107"><a href="#cb10-107"></a>      <span class="ss">Linux</span><span class="pp">*</span><span class="kw">)</span></span>
+<span id="cb10-108"><a href="#cb10-108"></a>        <span class="co"># Copy the selected command to clipboard</span></span>
+<span id="cb10-109"><a href="#cb10-109"></a>        <span class="bu">echo</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$cmd</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="ex">xclip</span> <span class="at">-selection</span> clipboard</span>
+<span id="cb10-110"><a href="#cb10-110"></a>        <span class="cf">;;</span></span>
+<span id="cb10-111"><a href="#cb10-111"></a>    <span class="cf">esac</span></span>
+<span id="cb10-112"><a href="#cb10-112"></a></span>
+<span id="cb10-113"><a href="#cb10-113"></a>    <span class="co"># Print a message that the selected command</span></span>
+<span id="cb10-114"><a href="#cb10-114"></a>    <span class="co"># has been copied</span></span>
+<span id="cb10-115"><a href="#cb10-115"></a>    <span class="bu">echo</span> <span class="st">&quot;Copied to clipboard: </span><span class="va">$cmd</span><span class="st">&quot;</span></span>
+<span id="cb10-116"><a href="#cb10-116"></a></span>
+<span id="cb10-117"><a href="#cb10-117"></a>    <span class="co"># Exit with the success code</span></span>
+<span id="cb10-118"><a href="#cb10-118"></a>    <span class="bu">exit</span> 0</span>
+<span id="cb10-119"><a href="#cb10-119"></a>  <span class="co"># If the selected action is to execute</span></span>
+<span id="cb10-120"><a href="#cb10-120"></a>  <span class="cf">elif</span> <span class="kw">[[</span> <span class="st">&quot;</span><span class="va">$action</span><span class="st">&quot;</span> <span class="ot">==</span> e<span class="pp">*</span> <span class="kw">]];</span> <span class="cf">then</span></span>
+<span id="cb10-121"><a href="#cb10-121"></a>    <span class="co"># Print a message that the selected command</span></span>
+<span id="cb10-122"><a href="#cb10-122"></a>    <span class="co"># is being executed</span></span>
+<span id="cb10-123"><a href="#cb10-123"></a>    <span class="bu">echo</span> <span class="st">&quot;Executing: </span><span class="va">$cmd</span><span class="st">&quot;</span></span>
+<span id="cb10-124"><a href="#cb10-124"></a></span>
+<span id="cb10-125"><a href="#cb10-125"></a>    <span class="co"># Execute the selected command</span></span>
+<span id="cb10-126"><a href="#cb10-126"></a>    <span class="bu">eval</span> <span class="st">&quot;</span><span class="va">$cmd</span><span class="st">&quot;</span></span>
+<span id="cb10-127"><a href="#cb10-127"></a></span>
+<span id="cb10-128"><a href="#cb10-128"></a>    <span class="co"># Exit with the success code</span></span>
+<span id="cb10-129"><a href="#cb10-129"></a>    <span class="bu">exit</span> 0</span>
+<span id="cb10-130"><a href="#cb10-130"></a>  <span class="co"># If the selected action is to quit</span></span>
+<span id="cb10-131"><a href="#cb10-131"></a>  <span class="cf">elif</span> <span class="kw">[[</span> <span class="st">&quot;</span><span class="va">$action</span><span class="st">&quot;</span> <span class="ot">==</span> q<span class="pp">*</span> <span class="kw">]];</span> <span class="cf">then</span></span>
+<span id="cb10-132"><a href="#cb10-132"></a>    <span class="co"># Exit with the success code</span></span>
+<span id="cb10-133"><a href="#cb10-133"></a>    <span class="bu">exit</span> 0</span>
+<span id="cb10-134"><a href="#cb10-134"></a>  <span class="cf">else</span></span>
+<span id="cb10-135"><a href="#cb10-135"></a>    <span class="co"># Print a warning message to enter a valid action</span></span>
+<span id="cb10-136"><a href="#cb10-136"></a>    <span class="bu">echo</span> <span class="st">&quot;Only copy (c), execute (e) or quit (q)?&quot;</span></span>
+<span id="cb10-137"><a href="#cb10-137"></a>  <span class="cf">fi</span></span>
+<span id="cb10-138"><a href="#cb10-138"></a><span class="cf">done</span></span></code></pre></div>
 </div>
       <p>Remember to run the below command to make <code>cmd</code> executable:</p>
 <div class="[ codeblock ] [ tab ]">

@@ -184,7 +184,13 @@ fi
 
 # Remove the "description: " prefix to get
 # the command from the selected command entry
-cmd=${cmd/#*: /}
+cmd=$(echo "$cmd" | cut -d ':' -f 2-)
+
+# Trim leading spaces
+cmd=${cmd/#[[:space:]]/}
+
+# Trim trailing spaces
+cmd=${cmd/%[[:space:]]/}
 
 # Print the selected command
 echo "Selected command: $cmd"
@@ -355,7 +361,13 @@ fi
 
 # Remove the "description: " prefix to get
 # the command from the selected command entry
-cmd=${cmd/#*: /}
+cmd=$(echo "$cmd" | cut -d ':' -f 2-)
+
+# Trim leading spaces
+cmd=${cmd/#[[:space:]]/}
+
+# Trim trailing spaces
+cmd=${cmd/%[[:space:]]/}
 
 # Print the selected command
 echo "Selected command: $cmd"
