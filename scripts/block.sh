@@ -13,30 +13,32 @@ if [[ ! -f "$block_path" ]]; then
   exit 1
 fi
 
+# nullglob prevents glob patterns from remaining unexpanded when they don't
+# match anything. If no files match, the pattern expands to nothing, and
+# the loop is skipped safely.
+shopt -s nullglob
+
 for target in "$SRC_PATH"/*.html "$SRC_PATH"/**/*.html "$SRC_PATH"/**/**/*.html; do
   if [[ "$target" == "$BLOCKS_PATH"* ]]; then
     continue
   fi
 
-  start_line_numbers=($(sed -n "/<!-- block-start: $block -->/=" $target | tr ' ' '\n'))
-  end_line_numbers=($(sed -n "/<!-- block-end: $block -->/=" $target | tr ' ' '\n'))
+  start_line_numbers=()
+  while IFS= read -r line; do
+    start_line_numbers+=("$line")
+  done < <(sed -n "/<!-- block-start: $block -->/=" "$target")
+
+  end_line_numbers=()
+  while IFS= read -r line; do
+    end_line_numbers+=("$line")
+  done < <(sed -n "/<!-- block-end: $block -->/=" "$target")
 
   if [[ "${#start_line_numbers[@]}" -ne "${#end_line_numbers[@]}" ]]; then
-    echo "$target: '$block' the number of start block tags is not the same as the one of end block tags"
+    echo "$target: '$block' mismatched number of start/end block tags"
     exit 1
   fi
 
-  indices=($(echo ${!start_line_numbers[@]} | tr ' ' '\n'))
-
-  for index in "${indices[@]}"; do
-    start_line_numbers=($(sed -n "/<!-- block-start: $block -->/=" $target | tr ' ' '\n'))
-    end_line_numbers=($(sed -n "/<!-- block-end: $block -->/=" $target | tr ' ' '\n'))
-
-    if [[ "${#start_line_numbers[@]}" -ne "${#end_line_numbers[@]}" ]]; then
-      echo "$target: '$block' the number of start block tags is not the same as the one of end block tags"
-      continue
-    fi
-
+  for index in "${!start_line_numbers[@]}"; do
     start_line_number="${start_line_numbers[index]}"
     end_line_number="${end_line_numbers[index]}"
 
@@ -45,18 +47,18 @@ for target in "$SRC_PATH"/*.html "$SRC_PATH"/**/*.html "$SRC_PATH"/**/**/*.html;
     fi
 
     if [[ "$start_line_number" -gt "$end_line_number" ]]; then
-      echo "$target: '$block' the line number of the start block tag ($start_line_number) is greater than the one of the end block tag ($end_line_number)"
+      echo "$target: '$block' start line ($start_line_number) after end line ($end_line_number)"
       continue
     fi
 
     if [[ "$start_line_number" -eq "$end_line_number" ]]; then
-      echo "$target: '$block' the start block tag and the end block tag on the same line $start_line_number"
+      echo "$target: '$block' start and end tags on same line ($start_line_number)"
       continue
     fi
 
     if [[ "$((start_line_number + 1))" -eq  "$end_line_number" ]]; then
       sed -i "" -e "${start_line_number}r $block_path" "$target"
-      echo "$target: '$block' updated at line $start_line_number"
+      echo "$target: '$block' inserted after line $start_line_number"
       continue
     fi
 
@@ -64,6 +66,6 @@ for target in "$SRC_PATH"/*.html "$SRC_PATH"/**/*.html "$SRC_PATH"/**/**/*.html;
       -e "$((start_line_number + 1)),$((end_line_number - 1))d" \
       -e "${start_line_number}r $block_path" \
       "$target"
-    echo "$target: '$block' updated at line $start_line_number"
+    echo "$target: '$block' updated between lines $start_line_number and $end_line_number"
   done
 done
