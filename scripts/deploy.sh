@@ -7,7 +7,7 @@ else
   git checkout gh-pages
 
   echo -e "\n==> Prepare files"
-  rsync -avh tmp/* ./ --delete
+  rsync -rPavh --delete --exclude .git tmp/ ./
   rm -rf tmp/
 
   if [[ -z "$(git status -s)" ]]; then

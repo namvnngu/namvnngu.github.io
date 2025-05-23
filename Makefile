@@ -30,7 +30,7 @@ deploy: tmp
 .PHONY: tmp
 tmp: blocks
 	@echo "\n==> Copy files in $(SRC_PATH) to $(TMP_PATH)"
-	@rsync -avh $(SRC_PATH)/* $(TMP_PATH) --delete --exclude $(BLOCKS_DIR)
+	@rsync -rPavh --delete --exclude $(BLOCKS_DIR) $(SRC_PATH)/ $(TMP_PATH)
 
 .PHONY: blocks
 blocks:
