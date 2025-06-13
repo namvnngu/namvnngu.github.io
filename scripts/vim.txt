@@ -3,4 +3,4 @@
 
 # Replace quote
 grep '’'
-%s/’/'/gc
+cfdo %s/’/'/gc | update
