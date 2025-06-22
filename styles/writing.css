@@ -34,7 +34,9 @@
 .writing h3 code,
 .writing li code {
   font-size: 0.85rem;
-  font-weight: var(--font-weight-bold);
+  padding: 0.125rem 0.25rem;
+  background-color: var(--color-mono-03);
+  border-radius: var(--radius-sm);
 }
 
 .writing p,
