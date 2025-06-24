@@ -21,6 +21,8 @@
   --color-fg: var(--color-mono-11);
   --color-bg: var(--color-mono-00);
 
+  --color-primary: #ff4500;
+
   --spacing: 0.25rem;
 
   --breakpoint-sm: 40rem;
@@ -181,10 +183,7 @@ body::before {
   inset: 0;
   z-index: -1;
   opacity: 0.5;
-  background-image: radial-gradient(
-    var(--color-mono-05) 0.5px,
-    transparent 0.5px
-  );
+  background-image: radial-gradient(var(--color-mono-05) 0.5px, transparent 0.5px);
   background-size: 20px 20px;
   background-repeat: repeat;
   background-position: 0 0;
@@ -295,6 +294,10 @@ footer {
 
 /* == UTILITY == */
 
+.color-primary {
+  color: var(--color-primary);
+}
+
 .color-mono-06 {
   color: var(--color-mono-06);
 }
@@ -395,14 +398,14 @@ footer {
   line-height: var(--text-sm--line-height);
   color: var(--color-mono-08);
   border: 1px solid var(--color-mono-04);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-xs);
   padding: var(--spacing) calc(var(--spacing) * 1.5);
 }
 
 .tab {
   --tab-border-width: 1px;
   --tab-border: var(--tab-border-width) solid var(--color-mono-04);
-  --tab-border-radius: var(--radius-lg);
+  --tab-border-radius: var(--radius-sm);
   --tab-top-spacing: 0px;
   --tab-color: var(--color-fg);
   --tab-background-color: var(--light, var(--color-mono-01)) var(--dark, var(--color-mono-02));
@@ -448,6 +451,13 @@ footer {
   border-right: none;
   padding: var(--tab-name-block-padding) var(--tab-name-inline-padding);
 }
+.tab > .tab__name:first-of-type {
+  border-top-left-radius: var(--tab-border-radius);
+}
+.tab > .tab__name:last-of-type {
+  border-top-right-radius: var(--tab-border-radius);
+  border-right: var(--tab-border);
+}
 .tab > .tab__panel {
   overflow: var(--tab-panel-overflow);
   font-size: var(--tab-panel-font-size);
@@ -458,13 +468,6 @@ footer {
   padding: var(--tab-panel-block-padding) var(--tab-panel-inline-padding);
   border: var(--tab-border);
   border-radius: var(--tab-border-radius);
-}
-.tab > .tab__name:first-of-type {
-  border-top-left-radius: var(--tab-border-radius);
-}
-.tab > .tab__name:last-of-type {
-  border-top-right-radius: var(--tab-border-radius);
-  border-right: var(--tab-border);
 }
 .tab > .tab__name + .tab__panel {
   border-top-left-radius: 0;
