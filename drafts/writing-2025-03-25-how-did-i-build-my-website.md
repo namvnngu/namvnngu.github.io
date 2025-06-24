@@ -3,14 +3,13 @@ title: How Did I Build My Website?
 lang: en
 ...
 
-Published on March 25, 2025. Last updated on June 23, 2025.
+Published on March 25, 2025. Last updated on June 24, 2025.
 
 ## Motivation
 
 In the past, I built some portfolios to mainly showcase my small projects
 when I was learning programming and job hunting. These portfolios were unnecessarily
 complex, as they were built with [React.js](https://react.dev) or [Next.js](https://nextjs.org).
-The most recent one can be visited at [vnngu.vercel.app](https://vnngu.vercel.app).
 After landing my first programming job, I neglected the portfolio, neither
 updating it nor writing any blog posts. At the beginning of 2025, I decided to
 make a "fresh start" by rebuilding my website with a simpler UI and without
@@ -50,7 +49,7 @@ There are many CSS methodologies to architect, manage and maintain a website's
 styling, such as BEM, OOCSS, SMACSS, Atomic CSS, ITCSS or CUBE CSS. Eventually,
 I chose [CUBE CSS](https://cube.fyi). CUBE stands for Composition Utility Block
 Exception, and obviously, CSS stands for Cascading Style Sheets. I knew this
-methodology thanks to Kevin Powell amazing video called
+methodology thanks to Kevin Powell amazing video,
 [A look at the CUBE CSS methodology in action](https://youtu.be/NanhQvnvbR8).
 
 The reason why I chose CUBE CSS is because its website mentions:
