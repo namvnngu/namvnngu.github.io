@@ -96,6 +96,8 @@
 }
 
 html {
+  /* Enable the browser's inflation algorithm */
+  -webkit-text-size-adjust: 100%;
   /* Prevent unwanted layout shifting caused by scrollbar */
   scrollbar-gutter: stable;
 }
@@ -402,18 +404,26 @@ footer {
   --tab-border: var(--tab-border-width) solid var(--color-mono-04);
   --tab-border-radius: var(--radius-lg);
   --tab-top-spacing: 0px;
+  --tab-color: var(--color-fg);
+  --tab-background-color: var(--light, var(--color-mono-01)) var(--dark, var(--color-mono-02));
 
   --tab-name-font-size: var(--text-sm);
   --tab-name-line-height: var(--text-sm--line-height);
   --tab-name-font-family: var(--font-sans);
   --tab-name-block-padding: calc(var(--spacing) * 1.5);
   --tab-name-inline-padding: calc(var(--spacing) * 2);
-  --tab-name-background-color: var(--color-mono-01);
+  --tab-name-color: var(--tab-color);
+  --tab-name-background-color: var(--tab-background-color);
   --tab-name-active-background-color: var(--color-mono-03);
 
-  --tab-panel-background-color: var(--color-mono-01);
+  --tab-panel-font-size: var(--text-base);
+  --tab-panel-line-height: var(--text-base--line-height);
+  --tab-panel-font-family: var(--font-sans);
   --tab-panel-block-padding: calc(var(--spacing) * 3);
-  --tab-panel-inline-padding: calc(var(--spacing) * 2);
+  --tab-panel-inline-padding: calc(var(--spacing) * 3);
+  --tab-panel-color: var(--tab-color);
+  --tab-panel-background-color: var(--tab-background-color);
+  --tab-panel-overflow: visible;
 
   position: relative;
   margin-top: calc(
@@ -431,6 +441,7 @@ footer {
   font-size: var(--tab-name-font-size);
   line-height: var(--tab-name-line-height);
   font-family: var(--tab-name-font-family);
+  color: var(--tab-name-color);
   background-color: var(--tab-name-background-color);
   border: var(--tab-border);
   border-bottom: none;
@@ -438,6 +449,11 @@ footer {
   padding: var(--tab-name-block-padding) var(--tab-name-inline-padding);
 }
 .tab > .tab__panel {
+  overflow: var(--tab-panel-overflow);
+  font-size: var(--tab-panel-font-size);
+  line-height: var(--tab-panel-line-height);
+  font-family: var(--tab-panel-font-family);
+  color: var(--tab-panel-color);
   background-color: var(--tab-panel-background-color);
   padding: var(--tab-panel-block-padding) var(--tab-panel-inline-padding);
   border: var(--tab-border);
@@ -468,64 +484,4 @@ footer {
 }
 .tab > input[name="tab-name"] + .tab__name {
   cursor: pointer;
-}
-
-.writing h2 {
-  margin-top: calc(var(--spacing) * 6);
-}
-.writing h3 {
-  margin-top: calc(var(--spacing) * 4);
-}
-.writing h2 a,
-.writing h3 a {
-  text-decoration: none;
-}
-.writing h2 a::before,
-.writing h3 a::before {
-  content: "#";
-  position: absolute;
-  opacity: 0;
-  transform: translate3d(calc(-100% - var(--spacing) * 1), 0, 0);
-  color: var(--color-mono-05);
-  transition-property: opacity;
-  transition-timing-function: ease;
-  transition-duration: var(--transition-duration-sm);
-}
-.writing h2:hover a::before,
-.writing h3:hover a::before {
-  opacity: 1;
-}
-.writing p code,
-.writing h2 code,
-.writing h3 code,
-.writing li code {
-  font-size: 0.85rem;
-  padding: 0.125rem 0.25rem;
-  background-color: var(--color-mono-03);
-  border-radius: var(--radius-sm);
-}
-.writing p,
-.writing ul,
-.writing ol,
-.writing .codeblock {
-  margin-bottom: calc(var(--spacing) * 4);
-}
-.writing ul ul,
-.writing ol ol,
-.writing ul ol,
-.writing ol ul {
-  margin-bottom: 0;
-}
-.writing ul,
-.writing ol {
-  padding-left: calc(var(--spacing) * 6);
-}
-.writing ul.toc {
-  padding-left: 0;
-}
-.writing ul.toc li {
-  list-style: none;
-}
-.writing ul.toc a:not(:hover) {
-  text-decoration-color: transparent;
 }

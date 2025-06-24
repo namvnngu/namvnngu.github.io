@@ -3,7 +3,7 @@ title: How Do I Save Terminal Commands?
 lang: en
 ...
 
-Published on April 30, 2025. Last updated on May 14, 2025.
+Published on April 30, 2025. Last updated on June 24, 2025.
 
 ## Motivation
 
@@ -61,8 +61,8 @@ prompting until one action is chosen.
 
 ### Project structure
 
-Files
-``` {.numberLines}
+files
+```
 .
 ├── cmd
 ├── cmd-find
@@ -76,7 +76,8 @@ will be explained in detail below.
 
 Remember to run the below command to make `cmd` executable:
 
-``` bash {.numberLines}
+shell
+```
 chmod +x ./cmd
 ```
 
@@ -85,7 +86,7 @@ chmod +x ./cmd
 In a command file, each line is one command entry. The format is
 
 format
-``` {.numberLines}
+```
 description: command
 ```
 
@@ -96,7 +97,7 @@ contain `<placeholder>`s.
 The content of the `cmd-git` file looks like this:
 
 cmd-git
-``` {.numberLines}
+```
 git log oneline in graph: git log --oneline --graph
 git rename current branch: git branch -m <new-name>
 git go back n commit(s) from HEAD: git reset --<mode> HEAD~<n>
@@ -118,7 +119,7 @@ Let's break down the `cmd-git` file above:
 Then, let's add one command entry to the `cmd-find` file:
 
 cmd-find
-``` {.numberLines}
+```
 find and delete empty directories: find <target-path> -type d -empty -delete
 ```
 
@@ -130,14 +131,15 @@ options are, you can run the `man` command with a command name to read its
 manual. For example, if I want to read `grep` manual, I can run the below
 command:
 
-``` bash {.numberLines}
+shell
+```
 man grep
 ```
 
 ### Find command with `fzf`
 
 cmd
-``` bash {.numberLines}
+```
 #!/usr/bin/env bash
 
 # The optional category passed as an argument
@@ -199,7 +201,7 @@ echo "Selected command: $cmd"
 ### Detect placeholders and fill in values
 
 cmd
-``` bash {.numberLines}
+```
 #!/usr/bin/env bash
 
 ...
@@ -240,7 +242,7 @@ fi
 ### Perform action on command
 
 cmd
-``` bash {.numberLines}
+```
 #!/usr/bin/env bash
 
 ...
@@ -314,7 +316,7 @@ done
 ### Full implementation
 
 cmd
-``` bash {.numberLines}
+```
 #!/usr/bin/env bash
 
 # The optional category passed as an argument
@@ -457,19 +459,22 @@ done
 
 Remember to run the below command to make `cmd` executable:
 
-``` bash {.numberLines}
+shell
+```
 chmod +x ./cmd
 ```
 
 Now run it with all categories:
 
-``` bash {.numberLines}
+shell
+```
 ./cmd
 ```
 
 Or, run it with the `git` category:
 
-``` bash {.numberLines}
+shell
+```
 ./cmd git
 ```
 
@@ -477,7 +482,7 @@ To make the `cmd` command accessible from anywhere, you can either add the path
 to the directory containing it to your `$PATH` environment variable,
 
 .zshrc/.bashrc
-``` bash {.numberLines}
+```
 export PATH="$PATH:path-to-directory-containing-cmd"
 ```
 

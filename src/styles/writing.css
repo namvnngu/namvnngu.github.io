@@ -1,0 +1,90 @@
+.writing h2 {
+  margin-top: calc(var(--spacing) * 6);
+}
+.writing h3 {
+  margin-top: calc(var(--spacing) * 4);
+}
+
+.writing h2 a,
+.writing h3 a {
+  text-decoration: none;
+}
+.writing h2 a::before,
+.writing h3 a::before {
+  content: "#";
+  position: absolute;
+  opacity: 0;
+  transform: translate3d(calc(-100% - var(--spacing) * 1), 0, 0);
+  color: var(--color-mono-05);
+  transition-property: opacity;
+  transition-timing-function: ease;
+  transition-duration: var(--transition-duration-sm);
+}
+.writing h2:hover a::before,
+.writing h3:hover a::before {
+  opacity: 1;
+}
+
+.writing code {
+  color: var(--light, #1f1c1b) var(--dark, #cfcfc2)
+}
+
+.writing p code,
+.writing h2 code,
+.writing h3 code,
+.writing li code {
+  font-size: 0.85rem;
+  padding: 0.125rem 0.25rem;
+  background-color: var(--color-mono-03);
+  border-radius: var(--radius-sm);
+}
+
+.writing p,
+.writing ul,
+.writing ol,
+.writing .codeblock {
+  margin-bottom: calc(var(--spacing) * 4);
+}
+
+.writing ul ul,
+.writing ol ol,
+.writing ul ol,
+.writing ol ul {
+  margin-bottom: 0;
+}
+.writing ul,
+.writing ol {
+  padding-left: calc(var(--spacing) * 6);
+}
+
+.writing ul.toc {
+  padding-left: 0;
+}
+.writing ul.toc li {
+  list-style: none;
+}
+.writing ul.toc a:not(:hover) {
+  text-decoration-color: transparent;
+}
+
+.writing .codeblock {
+  --tab-name-font-size: var(--text-xs);
+  --tab-name-line-height: var(--text-xs--line-height);
+  --tab-name-font-family: var(--font-mono);
+
+  --tab-panel-font-size: var(--text-sm);
+  --tab-panel-line-height: var(--text-sm--line-height);
+  --tab-panel-font-family: var(--font-mono);
+  --tab-panel-overflow: auto;
+}
+.writing * + .codeblock {
+  --tab-top-spacing: calc(var(--spacing) * 4);
+}
+.writing .codeblock code {
+  white-space: pre;
+}
+@media print {
+  .writing .codeblock code {
+    white-space: pre-wrap;
+  }
+}

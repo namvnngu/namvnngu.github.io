@@ -2,5 +2,5 @@
 %s/class="\([a-z0-9- ]*\)"/class="[ \1 ]"/gc
 
 # Replace quote
-grep '’'
+grep '’' -g '!vim.txt'
 cfdo %s/’/'/gc | update
