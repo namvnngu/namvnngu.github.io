@@ -24,13 +24,13 @@ for target in "$SRC_PATH"/*.html "$SRC_PATH"/**/*.html "$SRC_PATH"/**/**/*.html;
   fi
 
   start_line_numbers=()
-  while IFS= read -r line; do
-    start_line_numbers+=("$line")
+  while read -r line_number; do
+    start_line_numbers+=("$line_number")
   done < <(sed -n "/<!-- block-start: $block -->/=" "$target")
 
   end_line_numbers=()
-  while IFS= read -r line; do
-    end_line_numbers+=("$line")
+  while read -r line_number; do
+    end_line_numbers+=("$line_number")
   done < <(sed -n "/<!-- block-end: $block -->/=" "$target")
 
   if [[ "${#start_line_numbers[@]}" -ne "${#end_line_numbers[@]}" ]]; then
