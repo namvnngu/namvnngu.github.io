@@ -55,5 +55,11 @@ gen:
 	@echo "Generated $(DRAFTS_PATH)/$(DRAFT).html!"
 
 .PHONY: clean
+bookmarks:
+	@echo "Generating bookmarks..."
+	@./scripts/bookmarks.sh
+	@echo "Generated bookmarks..."
+
+.PHONY: clean
 clean:
 	rm -rf $(TMP_PATH)
