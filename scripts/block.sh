@@ -18,11 +18,7 @@ fi
 # the loop is skipped safely.
 shopt -s nullglob
 
-for target in "$SRC_PATH"/*.html "$SRC_PATH"/**/*.html "$SRC_PATH"/**/**/*.html; do
-  if [[ "$target" == "$BLOCKS_PATH"* ]]; then
-    continue
-  fi
-
+for target in "$SRC_PATH"/*.html "$SRC_PATH"/*/*.html "$SRC_PATH"/*/*/*.html; do
   start_line_numbers=()
   while read -r line_number; do
     start_line_numbers+=("$line_number")
@@ -39,6 +35,21 @@ for target in "$SRC_PATH"/*.html "$SRC_PATH"/**/*.html "$SRC_PATH"/**/**/*.html;
   fi
 
   for index in "${!start_line_numbers[@]}"; do
+    start_line_numbers=()
+    while read -r line_number; do
+      start_line_numbers+=("$line_number")
+    done < <(sed -n "/<!-- block-start: $block -->/=" "$target")
+
+    end_line_numbers=()
+    while read -r line_number; do
+      end_line_numbers+=("$line_number")
+    done < <(sed -n "/<!-- block-end: $block -->/=" "$target")
+
+    if [[ "${#start_line_numbers[@]}" -ne "${#end_line_numbers[@]}" ]]; then
+      echo "$target: '$block' mismatched number of start/end block tags"
+      exit 1
+    fi
+
     start_line_number="${start_line_numbers[index]}"
     end_line_number="${end_line_numbers[index]}"
 

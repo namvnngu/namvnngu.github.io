@@ -255,6 +255,9 @@ a[href^="http"]::after {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+a[href^="http"][data-anchor="none"]::after {
+  display: none;
+}
 
 code {
   font-family: var(--font-mono);
@@ -273,10 +276,12 @@ footer {
 /* == COMPOSITION == */
 
 .flow-x > :not(:first-child) {
+  --flow-x-space: calc(var(--spacing) * 2);
   margin-left: var(--flow-x-space);
 }
 
 .flow-y > :not(:first-child) {
+  --flow-y-space: calc(var(--spacing) * 2);
   margin-top: var(--flow-y-space);
 }
 
@@ -310,6 +315,9 @@ footer {
   line-height: var(--text-lg--line-height);
 }
 
+.mt-2 {
+  margin-top: calc(var(--spacing) * 2);
+}
 .-mt-4 {
   margin-top: calc(var(--spacing) * -4);
 }

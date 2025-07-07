@@ -54,10 +54,12 @@ gen:
 		--output=$(DRAFTS_PATH)/$(DRAFT).html
 	@echo "Generated $(DRAFTS_PATH)/$(DRAFT).html!"
 
-.PHONY: clean
+.PHONY: bookmarks
 bookmarks:
 	@echo "Generating bookmarks..."
 	@./scripts/bookmarks.sh
+	@./scripts/block.sh "back-to-top" # TODO: run on bookmark.html only
+	@./scripts/block.sh "bookmarks"
 	@echo "Generated bookmarks..."
 
 .PHONY: clean
