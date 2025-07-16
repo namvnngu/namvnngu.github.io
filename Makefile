@@ -55,7 +55,7 @@ gen:
 	@echo "Generated $(DRAFTS_PATH)/$(DRAFT).html!"
 
 .PHONY: bookmarks
-bookmarks:
+bm:
 	@echo "Generating bookmarks..."
 	@./scripts/bookmarks.sh
 	@./scripts/block.sh "back-to-top" # TODO: run on bookmark.html only
