@@ -10,7 +10,7 @@ while IFS="|" read -r __category __title __url; do
   title="${__title:-${__url}}"
   url="${__url}"
   id=$(tr '[:upper:]' '[:lower:]' <<< "${category}")
-  id=${id//[ :]/-}
+  id=${id//[ :\/]/-}
 
   if [[ -z "${url}" ]]; then
     continue
