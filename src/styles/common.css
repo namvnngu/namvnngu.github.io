@@ -52,7 +52,7 @@
 
   --font-sans: system-ui, sans-serif;
   --font-serif: "Times New Roman", Times, serif;
-  --font-mono: Menlo, Monaco, Consolas, "Lucida Console", monospace;
+  --font-mono: monospace;
 
   --font-weight-extralight: 200;
   --font-weight-light: 300;
