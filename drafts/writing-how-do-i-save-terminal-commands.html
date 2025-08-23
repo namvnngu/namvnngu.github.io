@@ -324,7 +324,7 @@ if [[ $# -eq 0 ]]; then
 # If the command file exists based on the category
 elif [[ -e &quot;$cmd_file&quot; ]]; then
   # Find a command entry within the command file
-  cmd=$(cat &quot;$cmd_file&quot; | fzf)
+  cmd=$(fzf < &quot;$cmd_file&quot;)
 # If the command file is not found based on the category
 else
   # Print the not found error message
@@ -343,7 +343,7 @@ fi
 
 # Remove the &quot;description: &quot; prefix to get
 # the command from the selected command entry
-cmd=$(echo &quot;$cmd&quot; | cut -d &#39;:&#39; -f 2-)
+cmd=${cmd/#*: /}
 
 # Trim leading spaces
 cmd=${cmd/#[[:space:]]/}
@@ -367,8 +367,8 @@ cmd=&quot;&quot;
 
 # === Detect placeholders and fill in values ===
 
-# Get all placeholders in the selected command
-placeholders=$(echo &quot;$cmd&quot; | grep -oE &quot;&lt;(\w|-)+&gt;&quot;)
+# Get all unique placeholders in the selected command
+placeholders=$(echo &quot;$cmd&quot; | grep -oE &quot;&lt;(\w|-)+&gt;&quot; | uniq)
 
 # If the &quot;placeholders&quot; variable is not empty,
 # i.e. there is at least one placeholder
@@ -489,7 +489,7 @@ if [[ $# -eq 0 ]]; then
 # If the command file exists based on the category
 elif [[ -e &quot;$cmd_file&quot; ]]; then
   # Find a command entry within the command file
-  cmd=$(cat &quot;$cmd_file&quot; | fzf)
+  cmd=$(fzf < &quot;$cmd_file&quot;)
 # If the command file is not found based on the category
 else
   # Print the not found error message
@@ -508,7 +508,7 @@ fi
 
 # Remove the &quot;description: &quot; prefix to get
 # the command from the selected command entry
-cmd=$(echo &quot;$cmd&quot; | cut -d &#39;:&#39; -f 2-)
+cmd=${cmd/#*: /}
 
 # Trim leading spaces
 cmd=${cmd/#[[:space:]]/}
@@ -521,8 +521,8 @@ echo &quot;Selected command: $cmd&quot;
 
 # === Detect placeholders and fill in values ===
 
-# Get all placeholders in the selected command
-placeholders=$(echo &quot;$cmd&quot; | grep -oE &quot;&lt;(\w|-)+&gt;&quot;)
+# Get all unique placeholders in the selected command
+placeholders=$(echo &quot;$cmd&quot; | grep -oE &quot;&lt;(\w|-)+&gt;&quot; | uniq)
 
 # If the &quot;placeholders&quot; variable is not empty,
 # i.e. there is at least one placeholder

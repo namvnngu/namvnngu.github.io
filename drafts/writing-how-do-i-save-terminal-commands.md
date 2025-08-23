@@ -167,7 +167,7 @@ if [[ $# -eq 0 ]]; then
 # If the command file exists based on the category
 elif [[ -e "$cmd_file" ]]; then
   # Find a command entry within the command file
-  cmd=$(cat "$cmd_file" | fzf)
+  cmd=$(fzf < "$cmd_file")
 # If the command file is not found based on the category
 else
   # Print the not found error message
@@ -186,7 +186,7 @@ fi
 
 # Remove the "description: " prefix to get
 # the command from the selected command entry
-cmd=$(echo "$cmd" | cut -d ':' -f 2-)
+cmd=${cmd/#*: /}
 
 # Trim leading spaces
 cmd=${cmd/#[[:space:]]/}
@@ -214,8 +214,8 @@ cmd=""
 
 # === Detect placeholders and fill in values ===
 
-# Get all placeholders in the selected command
-placeholders=$(echo "$cmd" | grep -oE "<(\w|-)+>")
+# Get all unique placeholders in the selected command
+placeholders=$(echo "$cmd" | grep -oE "<(\w|-)+>" | uniq)
 
 # If the "placeholders" variable is not empty,
 # i.e. there is at least one placeholder
@@ -344,7 +344,7 @@ if [[ $# -eq 0 ]]; then
 # If the command file exists based on the category
 elif [[ -e "$cmd_file" ]]; then
   # Find a command entry within the command file
-  cmd=$(cat "$cmd_file" | fzf)
+  cmd=$(fzf < "$cmd_file")
 # If the command file is not found based on the category
 else
   # Print the not found error message
@@ -363,7 +363,7 @@ fi
 
 # Remove the "description: " prefix to get
 # the command from the selected command entry
-cmd=$(echo "$cmd" | cut -d ':' -f 2-)
+cmd=${cmd/#*: /}
 
 # Trim leading spaces
 cmd=${cmd/#[[:space:]]/}
@@ -376,8 +376,8 @@ echo "Selected command: $cmd"
 
 # === Detect placeholders and fill in values ===
 
-# Get all placeholders in the selected command
-placeholders=$(echo "$cmd" | grep -oE "<(\w|-)+>")
+# Get all unique placeholders in the selected command
+placeholders=$(echo "$cmd" | grep -oE "<(\w|-)+>" | uniq)
 
 # If the "placeholders" variable is not empty,
 # i.e. there is at least one placeholder
