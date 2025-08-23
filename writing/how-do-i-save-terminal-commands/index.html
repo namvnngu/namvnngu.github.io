@@ -309,8 +309,8 @@ cmd=&quot;&quot;
 
 # === Detect placeholders and fill in values ===
 
-# Get all placeholders in the selected command
-placeholders=$(echo &quot;$cmd&quot; | grep -oE &quot;&lt;(\w|-)+&gt;&quot;)
+# Get all unique placeholders in the selected command
+placeholders=$(echo &quot;$cmd&quot; | grep -oE &quot;&lt;(\w|-)+&gt;&quot; | uniq)
 
 # If the &quot;placeholders&quot; variable is not empty,
 # i.e. there is at least one placeholder
@@ -479,8 +479,8 @@ echo &quot;Selected command: $cmd&quot;
 
 # === Detect placeholders and fill in values ===
 
-# Get all placeholders in the selected command
-placeholders=$(echo &quot;$cmd&quot; | grep -oE &quot;&lt;(\w|-)+&gt;&quot;)
+# Get all unique placeholders in the selected command
+placeholders=$(echo &quot;$cmd&quot; | grep -oE &quot;&lt;(\w|-)+&gt;&quot; | uniq)
 
 # If the &quot;placeholders&quot; variable is not empty,
 # i.e. there is at least one placeholder
