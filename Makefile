@@ -21,7 +21,7 @@ DEV_PORT := 8080
 
 .PHONY: dev
 dev:
-	@cd $(SRC_PATH) && npx serve && echo "Command not found: npx"
+	@cd $(SRC_PATH) && pnpx serve && echo "Command not found: pnpx"
 
 .PHONY: deploy
 deploy: tmp
