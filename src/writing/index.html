@@ -22,43 +22,6 @@
   <meta property="og:image" content="https://namvnngu.github.io/images/writing-og.png">
   <meta property="og:url" content="https://namvnngu.github.io/writing" />
   <link rel="canonical" href="https://namvnngu.github.io/writing" />
-
-  <style>
-    .list {
-      --flow-y-space: calc(var(--spacing) * 3);
-      list-style-type: none;
-      padding-left: 0;
-    }
-
-    .list-item {
-      cursor: pointer;
-      font-size: var(--text-lg);
-      line-height: var(--text-lg--line-height);
-    }
-
-    .list-item__title {
-      text-decoration-line: underline;
-      text-decoration-color: var(--color-mono-04);
-    }
-
-    @media (hover: hover) {
-      .list-item__title {
-        transition-property: text-decoration-color;
-        transition-duration: var(--transition-duration-sm);
-        transition-timing-function: ease;
-      }
-
-      .list-item:hover .list-item__title {
-        text-decoration-color: var(--color-fg);
-      }
-    }
-
-    .list-item__time {
-      color: var(--color-mono-06);
-      font-size: var(--text-sm);
-      line-height: var(--text-sm--line-height);
-    }
-  </style>
 </head>
 
 <body>
@@ -86,26 +49,18 @@
     <p class="[ -mt-4 color-mono-06 ]">My thoughts on my interests.</p>
 
     <section>
-      <h2>2025</h2>
-
-      <ul class="[ list ] [ flow-y ]">
-        <li class="[ list-item ]">
-          <a href="/writing/bookmarks" data-line="none">
-            <p class="[ list-item__title ]">Bookmarks</p>
-            <time class="[ list-item__time ]" datetime="2025-07-17">July 17</time>
-          </a>
+      <ul class="[ flow-y ] [ pl-3 ]">
+        <li>
+          <a class="[ text-lg ]" href="/writing/bookmarks">Bookmarks</a>
+          <time class="[ color-mono-06 ] [ pl-2 ]" datetime="2025-07-17">July 17, 2025</time>
         </li>
-        <li class="[ list-item ]">
-          <a href="/writing/how-do-i-save-terminal-commands" data-line="none">
-            <p class="[ list-item__title ]">How Do I Save Terminal Commands?</p>
-            <time class="[ list-item__time ]" datetime="2025-04-30">April 30</time>
-          </a>
+        <li>
+          <a class="[ text-lg ]" href="/writing/how-do-i-save-terminal-commands">How Do I Save Terminal Commands?</a>
+          <time class="[ color-mono-06 ] [ pl-2 ]" datetime="2025-04-30">April 30, 2025</time>
         </li>
-        <li class="[ list-item ]">
-          <a href="/writing/how-did-i-build-my-website" data-line="none">
-            <p class="[ list-item__title ]">How Did I Build My Website?</p>
-            <time class="[ list-item__time ]" datetime="2025-03-25">March 25</time>
-          </a>
+        <li>
+          <a class="[ text-lg ]" href="/writing/how-did-i-build-my-website">How Did I Build My Website?</a>
+          <time class="[ color-mono-06 ] [ pl-2 ]" datetime="2025-03-25">March 25, 2025</time>
         </li>
       </ul>
     </section>
