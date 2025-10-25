@@ -53,8 +53,8 @@
   --text-4xl--line-height: calc(2.5 / 2.25);
 
   --font-sans: system-ui, sans-serif;
-  --font-serif: "Times New Roman", Times, serif;
-  --font-mono: monospace;
+  --font-serif: Georgia, "Times New Roman", Times, serif;
+  --font-mono: "Andale Mono", "Courier New", Courier, monospace;
 
   --font-weight-extralight: 200;
   --font-weight-light: 300;
@@ -164,7 +164,7 @@ h6 {
 }
 
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
   font-size: var(--text-base);
   line-height: var(--text-base--line-height);
   color: var(--color-fg);

@@ -3,7 +3,7 @@ title: How Did I Build My Website?
 lang: en
 ...
 
-Published on March 25, 2025. Last updated on June 24, 2025.
+Published on March 25, 2025. Last updated on October 25, 2025.
 
 ## Motivation
 
@@ -159,7 +159,7 @@ src/blocks/header.html
     </header>
 ```
 
-3. Define the Home page with `header`'s **start and end block tag**.
+3. Define the Home page with `header`'s start and end block tag.
 
 src/home.html
 ```
@@ -175,7 +175,7 @@ src/home.html
 </html>
 ```
 
-4. Define the Projects page with `header`'s **start and end block tag**.
+4. Define the Projects page with `header`'s start and end block tag.
 
 src/projects.html
 ```
