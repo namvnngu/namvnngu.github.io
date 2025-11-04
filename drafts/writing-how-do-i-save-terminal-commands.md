@@ -3,7 +3,7 @@ title: How Do I Save Terminal Commands?
 lang: en
 ...
 
-Published on April 30, 2025. Last updated on June 24, 2025.
+Published on April 30, 2025. Last updated on November 05, 2025.
 
 ## Motivation
 
@@ -186,7 +186,7 @@ fi
 
 # Remove the "description: " prefix to get
 # the command from the selected command entry
-cmd=${cmd/#*: /}
+cmd=${cmd#*: }
 
 # Trim leading spaces
 cmd=${cmd/#[[:space:]]/}
@@ -363,7 +363,7 @@ fi
 
 # Remove the "description: " prefix to get
 # the command from the selected command entry
-cmd=${cmd/#*: /}
+cmd=${cmd#*: }
 
 # Trim leading spaces
 cmd=${cmd/#[[:space:]]/}
