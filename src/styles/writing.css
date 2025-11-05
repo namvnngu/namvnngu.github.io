@@ -70,6 +70,7 @@
 }
 .writing .codeblock code {
   color: var(--tab-color);
+  font-weight: var(--font-weight-normal);
   white-space: pre;
 }
 @media print {
