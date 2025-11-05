@@ -25,19 +25,6 @@
   opacity: 1;
 }
 
-.writing code {
-  color: var(--light, #1f1c1b) var(--dark, #cfcfc2)
-}
-
-.writing p code,
-.writing h2 code,
-.writing h3 code,
-.writing li code,
-.writing blockquote code {
-  font-size: 0.85rem;
-  font-weight: var(--font-weight-bold);
-}
-
 .writing p,
 .writing ul,
 .writing ol,
@@ -67,6 +54,8 @@
 }
 
 .writing .codeblock {
+  --tab-color: var(--light, #1f1c1b) var(--dark, #cfcfc2);
+
   --tab-name-font-size: var(--text-xs);
   --tab-name-line-height: var(--text-xs--line-height);
   --tab-name-font-family: var(--font-mono);
@@ -80,6 +69,7 @@
   --tab-top-spacing: calc(var(--spacing) * 4);
 }
 .writing .codeblock code {
+  color: var(--tab-color);
   white-space: pre;
 }
 @media print {
