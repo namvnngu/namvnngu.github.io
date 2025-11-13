@@ -15,4 +15,4 @@ deploying the website, and cleaning up.
 
 The previous version of my website can be visited [here](https://vnngu.vercel.app).
 
-The repository is under [UNLICENSE](https://unlicense.org).
+The repository is under [MIT License](./LICENSE).
