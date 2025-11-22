@@ -7,7 +7,7 @@
   --light: var(--ON);
   --dark: var(--OFF);
 
-  --color-x: var(--light, rebeccapurple) var(--dark, #c182ff);
+  --color-x: var(--light, #7f00ff) var(--dark, #c182ff);
 
   --color-mono-00: var(--light, #ffffff) var(--dark, #111111);
   --color-mono-01: var(--light, #fafafa) var(--dark, #141414);
@@ -219,23 +219,22 @@ h3 {
 }
 
 a {
-  color: inherit;
+  color: var(--color-x);
   -webkit-text-decoration: inherit;
   text-decoration: inherit;
   text-decoration-line: underline;
   text-decoration-color: var(--color-x);
+  text-decoration-style: dotted;
   text-decoration-thickness: calc(var(--spacing) * 0.35);
   text-underline-offset: var(--spacing);
 }
 @media (hover: hover) {
-  a {
-    transition-property: text-decoration-color;
-    transition-duration: var(--transition-duration-sm);
-    transition-timing-function: ease;
-  }
   a:hover {
-    text-decoration-color: var(--color-fg);
+    text-decoration-style: solid;
   }
+}
+h1 a, h2 a, h3 a {
+  color: var(--color-fg);
 }
 a[data-line="none"] {
   -webkit-text-decoration: none;
@@ -395,6 +394,9 @@ footer {
 .navbar__logo {
   display: inline-block;
   vertical-align: middle;
+}
+.navbar__link {
+  text-shadow: var(--light, 0 0 20px #8300ff) var(--dark, 0 0 20px #ffffff);
 }
 
 .brief-list {
