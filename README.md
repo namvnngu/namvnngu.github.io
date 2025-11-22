@@ -1,3 +1,5 @@
+# My Website
+
 The major technologies I have used to build [my website](https://namvnngu.github.io):
 
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) defines the website's
@@ -15,4 +17,6 @@ deploying the website, and cleaning up.
 
 The previous version of my website can be visited [here](https://vnngu.vercel.app).
 
-The repository is under [MIT License](./LICENSE).
+## License
+
+[MIT](./LICENSE) License
