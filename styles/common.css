@@ -392,6 +392,8 @@ footer {
   --flow-x-space: calc(var(--spacing) * 4);
 }
 .navbar__logo {
+  --self-drawing-stroke-color: var(--color-x);
+
   display: inline-block;
   vertical-align: middle;
 }
