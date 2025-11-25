@@ -3,7 +3,7 @@ title: How Do I Save Terminal Commands?
 lang: en
 ...
 
-Published on April 30, 2025. Last updated on November 05, 2025.
+Published on April 30, 2025. Last updated on November 26, 2025.
 
 ## Motivation
 
@@ -45,8 +45,8 @@ only.
 Before we jump into building the command, it is helpful to define the list of
 features first:
 
-- Save commands in `cmd-*` categories files, where `*` is a category, e.g.
-`cmd-git` where `git` is a category.
+- Save commands in `cmd-*.txt` categories files, where `*` is a category, e.g.
+`cmd-git.txt` where `git` is a category.
 - Accept either zero or one argument; if provided, the argument should be a
 category.
 - If no argument is given, list all saved commands across all category files.
@@ -65,14 +65,14 @@ files
 ```
 .
 ├── cmd
-├── cmd-find
-└── cmd-git
+├── cmd-find.txt
+└── cmd-git.txt
 ```
 
 - `cmd` is the command manager written in `bash`.
-- `cmd-*` (e.g. `cmd-find` and `cmd-git`) files consist of saved commands along
-with brief descriptions, where `*` is a category. The content of these files
-will be explained in detail below.
+- `cmd-*.txt` (e.g. `cmd-find.txt` and `cmd-git.txt`) files consist of saved
+  commands along with brief descriptions, where `*` is a category. The content
+  of these files will be explained in detail below.
 
 Remember to run the below command to make `cmd` executable:
 
@@ -94,16 +94,16 @@ description: command
 - `command` is a command which will be copied or executed. It may optionally
 contain `<placeholder>`s.
 
-The content of the `cmd-git` file looks like this:
+The content of the `cmd-git.txt` file looks like this:
 
-cmd-git
+cmd-git.txt
 ```
 git log oneline in graph: git log --oneline --graph
 git rename current branch: git branch -m <new-name>
 git go back n commit(s) from HEAD: git reset --<mode> HEAD~<n>
 ```
 
-Let's break down the `cmd-git` file above:
+Let's break down the `cmd-git.txt` file above:
 
 - The first entry: `git log oneline in graph: git log --oneline --graph`
   - `git log oneline in graph` is a description.
@@ -116,9 +116,9 @@ Let's break down the `cmd-git` file above:
   - `git reset --<mode> HEAD~<n>` is a command with two placeholders, `<mode>`
   and `<n>`.
 
-Then, let's add one command entry to the `cmd-find` file:
+Then, let's add one command entry to the `cmd-find.txt` file:
 
-cmd-find
+cmd-find.txt
 ```
 find and delete empty directories: find <target-path> -type d -empty -delete
 ```
@@ -149,7 +149,7 @@ category="$1"
 cmd_dir="."
 
 # The path to the command file based on the category
-cmd_file="$cmd_dir/cmd-$category"
+cmd_file="$cmd_dir/cmd-$category.txt"
 
 # The selected command based on the category
 cmd=""
@@ -158,9 +158,9 @@ cmd=""
 
 # If no argument is provided, i.e. no category
 if [[ $# -eq 0 ]]; then
-  # Get commands in all command files whose name
-  # starts with "cmd-" in the "cmd_dir" directory
-  cmds=$(find "$cmd_dir" -maxdepth 1 -name "cmd-*" -exec cat {} '+')
+  # Get commands in all command files whose filename 
+  # pattern is "cmd-*.txt" in the "cmd_dir" directory
+  cmds=$(find "$cmd_dir" -maxdepth 1 -name "cmd-*.txt" -exec cat {} '+')
 
   # Find a command entry across all found command files
   cmd=$(echo "$cmds" | fzf)
@@ -326,7 +326,7 @@ category="$1"
 cmd_dir="."
 
 # The path to the command file based on the category
-cmd_file="$cmd_dir/cmd-$category"
+cmd_file="$cmd_dir/cmd-$category.txt"
 
 # The selected command based on the category
 cmd=""
@@ -335,9 +335,9 @@ cmd=""
 
 # If no argument is provided, i.e. no category
 if [[ $# -eq 0 ]]; then
-  # Get commands in all command files whose name
-  # starts with "cmd-" in the "cmd_dir" directory
-  cmds=$(find "$cmd_dir" -maxdepth 1 -name "cmd-*" -exec cat {} '+')
+  # Get commands in all command files whose filename 
+  # pattern is "cmd-*.txt" in the "cmd_dir" directory
+  cmds=$(find "$cmd_dir" -maxdepth 1 -name "cmd-*.txt" -exec cat {} '+')
 
   # Find a command entry across all found command files
   cmd=$(echo "$cmds" | fzf)
@@ -486,7 +486,7 @@ to the directory containing it to your `$PATH` environment variable,
 export PATH="$PATH:path-to-directory-containing-cmd"
 ```
 
-or move it along with the `cmd-*` files into a directory that is already
+or move it along with the `cmd-*.txt` files into a directory that is already
 included in your `$PATH`.
 
 ## Final words

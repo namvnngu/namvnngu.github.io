@@ -50,7 +50,7 @@ gen:
 		--toc \
 		--standalone \
 		--wrap=preserve \
-		--highlight-style=kate \
+		--syntax-highlighting=kate \
 		--output=$(DRAFTS_PATH)/$(DRAFT).html
 	@echo "Generated $(DRAFTS_PATH)/$(DRAFT).html!"
 

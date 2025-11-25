@@ -189,7 +189,7 @@
 <li><a href="#final-words" id="toc-final-words">Final words</a></li>
 </ul>
 </nav>
-<p>Published on April 30, 2025. Last updated on November 05, 2025.</p>
+<p>Published on April 30, 2025. Last updated on November 26, 2025.</p>
 <h2 id="motivation">Motivation</h2>
 <p>I often find myself in a situation where I want to remember a useful terminal
 command, but I have a poor memory and will forget it after a few days. I used
@@ -222,8 +222,8 @@ only.</p>
 <p>Before we jump into building the command, it is helpful to define the list of
 features first:</p>
 <ul>
-<li>Save commands in <code>cmd-*</code> categories files, where <code>*</code> is a category, e.g.
-<code>cmd-git</code> where <code>git</code> is a category.</li>
+<li>Save commands in <code>cmd-*.txt</code> categories files, where <code>*</code> is a category, e.g.
+<code>cmd-git.txt</code> where <code>git</code> is a category.</li>
 <li>Accept either zero or one argument; if provided, the argument should be a
 category.</li>
 <li>If no argument is given, list all saved commands across all category files.</li>
@@ -240,13 +240,13 @@ prompting until one action is chosen.</li>
 <p>files</p>
 <pre><code>.
 ├── cmd
-├── cmd-find
-└── cmd-git</code></pre>
+├── cmd-find.txt
+└── cmd-git.txt</code></pre>
 <ul>
 <li><code>cmd</code> is the command manager written in <code>bash</code>.</li>
-<li><code>cmd-*</code> (e.g. <code>cmd-find</code> and <code>cmd-git</code>) files consist of saved commands along
-with brief descriptions, where <code>*</code> is a category. The content of these files
-will be explained in detail below.</li>
+<li><code>cmd-*.txt</code> (e.g. <code>cmd-find.txt</code> and <code>cmd-git.txt</code>) files consist of saved
+commands along with brief descriptions, where <code>*</code> is a category. The content
+of these files will be explained in detail below.</li>
 </ul>
 <p>Remember to run the below command to make <code>cmd</code> executable:</p>
 <p>shell</p>
@@ -260,12 +260,12 @@ will be explained in detail below.</li>
 <li><code>command</code> is a command which will be copied or executed. It may optionally
 contain <code>&lt;placeholder&gt;</code>s.</li>
 </ul>
-<p>The content of the <code>cmd-git</code> file looks like this:</p>
-<p>cmd-git</p>
+<p>The content of the <code>cmd-git.txt</code> file looks like this:</p>
+<p>cmd-git.txt</p>
 <pre><code>git log oneline in graph: git log --oneline --graph
 git rename current branch: git branch -m &lt;new-name&gt;
 git go back n commit(s) from HEAD: git reset --&lt;mode&gt; HEAD~&lt;n&gt;</code></pre>
-<p>Let's break down the <code>cmd-git</code> file above:</p>
+<p>Let's break down the <code>cmd-git.txt</code> file above:</p>
 <ul>
 <li>The first entry: <code>git log oneline in graph: git log --oneline --graph</code>
 <ul>
@@ -284,8 +284,8 @@ git go back n commit(s) from HEAD: git reset --&lt;mode&gt; HEAD~&lt;n&gt;</code
 and <code>&lt;n&gt;</code>.</li>
 </ul></li>
 </ul>
-<p>Then, let's add one command entry to the <code>cmd-find</code> file:</p>
-<p>cmd-find</p>
+<p>Then, let's add one command entry to the <code>cmd-find.txt</code> file:</p>
+<p>cmd-find.txt</p>
 <pre><code>find and delete empty directories: find &lt;target-path&gt; -type d -empty -delete</code></pre>
 <p>Now, let's build the command manager in Bash in the below sections. I will use
 in-line comments to explain what each line is.</p>
@@ -306,7 +306,7 @@ category=&quot;$1&quot;
 cmd_dir=&quot;.&quot;
 
 # The path to the command file based on the category
-cmd_file=&quot;$cmd_dir/cmd-$category&quot;
+cmd_file=&quot;$cmd_dir/cmd-$category.txt&quot;
 
 # The selected command based on the category
 cmd=&quot;&quot;
@@ -315,16 +315,16 @@ cmd=&quot;&quot;
 
 # If no argument is provided, i.e. no category
 if [[ $# -eq 0 ]]; then
-  # Get commands in all command files whose name
-  # starts with &quot;cmd-&quot; in the &quot;cmd_dir&quot; directory
-  cmds=$(find &quot;$cmd_dir&quot; -maxdepth 1 -name &quot;cmd-*&quot; -exec cat {} &#39;+&#39;)
+  # Get commands in all command files whose filename 
+  # pattern is &quot;cmd-*.txt&quot; in the &quot;cmd_dir&quot; directory
+  cmds=$(find &quot;$cmd_dir&quot; -maxdepth 1 -name &quot;cmd-*.txt&quot; -exec cat {} &#39;+&#39;)
 
   # Find a command entry across all found command files
   cmd=$(echo &quot;$cmds&quot; | fzf)
 # If the command file exists based on the category
 elif [[ -e &quot;$cmd_file&quot; ]]; then
   # Find a command entry within the command file
-  cmd=$(fzf < &quot;$cmd_file&quot;)
+  cmd=$(fzf &lt; &quot;$cmd_file&quot;)
 # If the command file is not found based on the category
 else
   # Print the not found error message
@@ -471,7 +471,7 @@ category=&quot;$1&quot;
 cmd_dir=&quot;.&quot;
 
 # The path to the command file based on the category
-cmd_file=&quot;$cmd_dir/cmd-$category&quot;
+cmd_file=&quot;$cmd_dir/cmd-$category.txt&quot;
 
 # The selected command based on the category
 cmd=&quot;&quot;
@@ -480,16 +480,16 @@ cmd=&quot;&quot;
 
 # If no argument is provided, i.e. no category
 if [[ $# -eq 0 ]]; then
-  # Get commands in all command files whose name
-  # starts with &quot;cmd-&quot; in the &quot;cmd_dir&quot; directory
-  cmds=$(find &quot;$cmd_dir&quot; -maxdepth 1 -name &quot;cmd-*&quot; -exec cat {} &#39;+&#39;)
+  # Get commands in all command files whose filename 
+  # pattern is &quot;cmd-*.txt&quot; in the &quot;cmd_dir&quot; directory
+  cmds=$(find &quot;$cmd_dir&quot; -maxdepth 1 -name &quot;cmd-*.txt&quot; -exec cat {} &#39;+&#39;)
 
   # Find a command entry across all found command files
   cmd=$(echo &quot;$cmds&quot; | fzf)
 # If the command file exists based on the category
 elif [[ -e &quot;$cmd_file&quot; ]]; then
   # Find a command entry within the command file
-  cmd=$(fzf < &quot;$cmd_file&quot;)
+  cmd=$(fzf &lt; &quot;$cmd_file&quot;)
 # If the command file is not found based on the category
 else
   # Print the not found error message
@@ -613,7 +613,7 @@ done</code></pre>
 to the directory containing it to your <code>$PATH</code> environment variable,</p>
 <p>.zshrc/.bashrc</p>
 <pre><code>export PATH=&quot;$PATH:path-to-directory-containing-cmd&quot;</code></pre>
-<p>or move it along with the <code>cmd-*</code> files into a directory that is already
+<p>or move it along with the <code>cmd-*.txt</code> files into a directory that is already
 included in your <code>$PATH</code>.</p>
 <h2 id="final-words">Final words</h2>
 <p>I hope you enjoy the process of building and learn something along the way. I
