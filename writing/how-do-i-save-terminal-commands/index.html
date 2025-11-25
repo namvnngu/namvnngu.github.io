@@ -50,7 +50,7 @@
 
   <main class="[ writing ]">
     <h1 class="title">How Do I Save Terminal Commands?</h1>
-    <p class="[ -mt-4 color-mono-06 ]">Published on April 30, 2025. Last updated on November 05, 2025.</p>
+    <p class="[ -mt-4 color-mono-06 ]">Published on April 30, 2025. Last updated on November 26, 2025.</p>
 
     <ul id="toc" class="[ toc ]">
       <li><a href="#motivation" id="toc-motivation">Motivation</a></li>
@@ -122,8 +122,8 @@
       <p>Before we jump into building the command, it is helpful to define the list of
       features first:</p>
       <ul>
-        <li>Save commands in <code>cmd-*</code> categories files, where <code>*</code> is a category, e.g.
-          <code>cmd-git</code> where <code>git</code> is a category.</li>
+        <li>Save commands in <code>cmd-*.txt</code> categories files, where <code>*</code> is a category, e.g.
+          <code>cmd-git.txt</code> where <code>git</code> is a category.</li>
         <li>Accept either zero or one argument; if provided, the argument should be a
           category.</li>
         <li>If no argument is given, list all saved commands across all category files.</li>
@@ -147,14 +147,14 @@
 <label class="[ tab__name ]">files</label>
 <pre class="[ tab__panel ]"><code>.
 ├── cmd
-├── cmd-find
-└── cmd-git</code></pre>
+├── cmd-find.txt
+└── cmd-git.txt</code></pre>
 </div>
       <ul>
         <li><code>cmd</code> is the command manager written in <code>bash</code>.</li>
-        <li><code>cmd-*</code> (e.g. <code>cmd-find</code> and <code>cmd-git</code>) files consist of saved commands along
-          with brief descriptions, where <code>*</code> is a category. The content of these files
-          will be explained in detail below.</li>
+        <li><code>cmd-*.txt</code> (e.g. <code>cmd-find.txt</code> and <code>cmd-git.txt</code>) files consist of saved
+        commands along with brief descriptions, where <code>*</code> is a category. The content
+        of these files will be explained in detail below.</li>
       </ul>
       <p>Remember to run the below command to make <code>cmd</code> executable:</p>
 <div class="[ codeblock ] [ tab ]">
@@ -178,14 +178,14 @@
         <li><code>command</code> is a command which will be copied or executed. It may optionally
           contain <code>&lt;placeholder&gt;</code>s.</li>
       </ul>
-      <p>The content of the <code>cmd-git</code> file looks like this:</p>
+      <p>The content of the <code>cmd-git.txt</code> file looks like this:</p>
 <div class="[ codeblock ] [ tab ]">
-<label class="[ tab__name ]">cmd-git</label>
+<label class="[ tab__name ]">cmd-git.txt</label>
 <pre class="[ tab__panel ]"><code>git log oneline in graph: git log --oneline --graph
 git rename current branch: git branch -m &lt;new-name&gt;
 git go back n commit(s) from HEAD: git reset --&lt;mode&gt; HEAD~&lt;n&gt;</code></pre>
 </div>
-      <p>Let's break down the <code>cmd-git</code> file above:</p>
+      <p>Let's break down the <code>cmd-git.txt</code> file above:</p>
       <ul>
         <li>The first entry: <code>git log oneline in graph: git log --oneline --graph</code>
           <ul>
@@ -207,9 +207,9 @@ git go back n commit(s) from HEAD: git reset --&lt;mode&gt; HEAD~&lt;n&gt;</code
           </ul>
         </li>
       </ul>
-      <p>Then, let's add one command entry to the <code>cmd-find</code> file:</p>
+      <p>Then, let's add one command entry to the <code>cmd-find.txt</code> file:</p>
 <div class="[ codeblock ] [ tab ]">
-<label class="[ tab__name ]">cmd-find</label>
+<label class="[ tab__name ]">cmd-find.txt</label>
 <pre class="[ tab__panel ]"><code>find and delete empty directories: find &lt;target-path&gt; -type d -empty -delete</code></pre>
 </div>
       <p>Now, let's build the command manager in Bash in the below sections. I will use
@@ -240,7 +240,7 @@ category=&quot;$1&quot;
 cmd_dir=&quot;.&quot;
 
 # The path to the command file based on the category
-cmd_file=&quot;$cmd_dir/cmd-$category&quot;
+cmd_file=&quot;$cmd_dir/cmd-$category.txt&quot;
 
 # The selected command based on the category
 cmd=&quot;&quot;
@@ -249,16 +249,16 @@ cmd=&quot;&quot;
 
 # If no argument is provided, i.e. no category
 if [[ $# -eq 0 ]]; then
-  # Get commands in all command files whose name
-  # starts with &quot;cmd-&quot; in the &quot;cmd_dir&quot; directory
-  cmds=$(find &quot;$cmd_dir&quot; -maxdepth 1 -name &quot;cmd-*&quot; -exec cat {} &#39;+&#39;)
+  # Get commands in all command files whose filename 
+  # pattern is &quot;cmd-*.txt&quot; in the &quot;cmd_dir&quot; directory
+  cmds=$(find &quot;$cmd_dir&quot; -maxdepth 1 -name &quot;cmd-*.txt&quot; -exec cat {} &#39;+&#39;)
 
   # Find a command entry across all found command files
   cmd=$(echo &quot;$cmds&quot; | fzf)
 # If the command file exists based on the category
 elif [[ -e &quot;$cmd_file&quot; ]]; then
   # Find a command entry within the command file
-  cmd=$(fzf < &quot;$cmd_file&quot;)
+  cmd=$(fzf &lt; &quot;$cmd_file&quot;)
 # If the command file is not found based on the category
 else
   # Print the not found error message
@@ -429,7 +429,7 @@ category=&quot;$1&quot;
 cmd_dir=&quot;.&quot;
 
 # The path to the command file based on the category
-cmd_file=&quot;$cmd_dir/cmd-$category&quot;
+cmd_file=&quot;$cmd_dir/cmd-$category.txt&quot;
 
 # The selected command based on the category
 cmd=&quot;&quot;
@@ -438,16 +438,16 @@ cmd=&quot;&quot;
 
 # If no argument is provided, i.e. no category
 if [[ $# -eq 0 ]]; then
-  # Get commands in all command files whose name
-  # starts with &quot;cmd-&quot; in the &quot;cmd_dir&quot; directory
-  cmds=$(find &quot;$cmd_dir&quot; -maxdepth 1 -name &quot;cmd-*&quot; -exec cat {} &#39;+&#39;)
+  # Get commands in all command files whose filename 
+  # pattern is &quot;cmd-*.txt&quot; in the &quot;cmd_dir&quot; directory
+  cmds=$(find &quot;$cmd_dir&quot; -maxdepth 1 -name &quot;cmd-*.txt&quot; -exec cat {} &#39;+&#39;)
 
   # Find a command entry across all found command files
   cmd=$(echo &quot;$cmds&quot; | fzf)
 # If the command file exists based on the category
 elif [[ -e &quot;$cmd_file&quot; ]]; then
   # Find a command entry within the command file
-  cmd=$(fzf < &quot;$cmd_file&quot;)
+  cmd=$(fzf &lt; &quot;$cmd_file&quot;)
 # If the command file is not found based on the category
 else
   # Print the not found error message
@@ -580,7 +580,7 @@ done</code></pre>
 <label class="[ tab__name ]">.zshrc/.bashrc</label>
 <pre class="[ tab__panel ]"><code>export PATH=&quot;$PATH:path-to-directory-containing-cmd&quot;</code></pre>
 </div>
-      <p>or move it along with the <code>cmd-*</code> files into a directory that is already
+      <p>or move it along with the <code>cmd-*.txt</code> files into a directory that is already
       included in your <code>$PATH</code>.</p>
       <!-- block-start: back-to-top -->
       <p class="[ color-mono-07 ]"><a href="#back-to-top">&#8593; Back to top</a></p>
