@@ -400,7 +400,7 @@ footer {
   vertical-align: middle;
 }
 .navbar__link {
-  text-shadow: var(--light, 0 0 20px #8300ff) var(--dark, 0 0 20px #ffffff);
+  text-shadow: var(--light, 0 0 20px #ffffff) var(--dark, 0 0 20px #ffffff);
 }
 
 .brief-list {
