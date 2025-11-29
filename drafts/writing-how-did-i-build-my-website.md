@@ -20,7 +20,7 @@ understanding how technologies work under the hood and sharing my thoughts on
 topics that intrigue me. This new website will become a space for exploration,
 experiment and writing.
 
-The source code of my new website can be found at [namvnngu/namvnngu.github.io](https://github.com/namvnngu/namvnngu.github.io).
+The source code of my new website can be found at [namvnn/namvnn.github.io](https://github.com/namvnn/namvnn.github.io).
 
 ## Tech stack
 
@@ -192,7 +192,7 @@ src/projects.html
 ```
 
 5. Run `scripts/block.sh` with the block name (i.e. `header`). The script can
-be found in [scripts/block.sh](https://github.com/namvnngu/namvnngu.github.io/blob/main/scripts/block.sh).
+be found in [scripts/block.sh](https://github.com/namvnn/namvnn.github.io/blob/main/scripts/block.sh).
 
 shell
 ```

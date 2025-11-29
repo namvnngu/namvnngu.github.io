@@ -21,7 +21,7 @@ else
     echo -e "\n==> Trigger deployment"
     git push
 
-    echo -e "\n==> Check out deployment at https://github.com/namvnngu/namvnngu.github.io/deployments"
+    echo -e "\n==> Check out deployment at https://github.com/namvnn/namvnn.github.io/deployments"
   fi
 
   echo -e "\n==> Switch to branch 'main'"
