@@ -15,8 +15,6 @@ deploying the website, and cleaning up.
 - [Pandoc](https://pandoc.org) converts Markdown to HTML.
 - [GitHub Pages](https://pages.github.com) hosts the website.
 
-The previous version of my website can be visited [here](https://vnngu.vercel.app).
-
 ## License
 
 [MIT](./LICENSE) License
