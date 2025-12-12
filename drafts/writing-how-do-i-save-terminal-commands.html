@@ -189,7 +189,7 @@
 <li><a href="#final-words" id="toc-final-words">Final words</a></li>
 </ul>
 </nav>
-<p>Published on April 30, 2025. Last updated on November 26, 2025.</p>
+<p>Published on April 30, 2025. Last updated on December 12, 2025.</p>
 <h2 id="motivation">Motivation</h2>
 <p>I often find myself in a situation where I want to remember a useful terminal
 command, but I have a poor memory and will forget it after a few days. I used
@@ -368,7 +368,7 @@ cmd=&quot;&quot;
 # === Detect placeholders and fill in values ===
 
 # Get all unique placeholders in the selected command
-placeholders=$(echo &quot;$cmd&quot; | grep -oE &quot;&lt;(\w|-)+&gt;&quot; | uniq)
+placeholders=$(echo &quot;$cmd&quot; | grep -oE &quot;&lt;(\w|-)+&gt;&quot; | sort -u)
 
 # If the &quot;placeholders&quot; variable is not empty,
 # i.e. there is at least one placeholder

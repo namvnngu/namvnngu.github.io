@@ -3,7 +3,7 @@ title: How Do I Save Terminal Commands?
 lang: en
 ...
 
-Published on April 30, 2025. Last updated on November 26, 2025.
+Published on April 30, 2025. Last updated on December 12, 2025.
 
 ## Motivation
 
@@ -215,7 +215,7 @@ cmd=""
 # === Detect placeholders and fill in values ===
 
 # Get all unique placeholders in the selected command
-placeholders=$(echo "$cmd" | grep -oE "<(\w|-)+>" | uniq)
+placeholders=$(echo "$cmd" | grep -oE "<(\w|-)+>" | sort -u)
 
 # If the "placeholders" variable is not empty,
 # i.e. there is at least one placeholder
