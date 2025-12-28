@@ -3,7 +3,7 @@ title: How Do I Save Terminal Commands?
 lang: en
 ...
 
-Published on April 30, 2025. Last updated on December 12, 2025.
+Published on April 30, 2025. Last updated on December 28, 2025.
 
 ## Motivation
 
@@ -77,7 +77,7 @@ files
 Remember to run the below command to make `cmd` executable:
 
 shell
-```
+```sh
 chmod +x ./cmd
 ```
 
@@ -132,14 +132,14 @@ manual. For example, if I want to read `grep` manual, I can run the below
 command:
 
 shell
-```
+```sh
 man grep
 ```
 
 ### Find command with `fzf`
 
 cmd
-```
+```bash
 #!/usr/bin/env bash
 
 # The optional category passed as an argument
@@ -201,7 +201,7 @@ echo "Selected command: $cmd"
 ### Detect placeholders and fill in values
 
 cmd
-```
+```bash
 #!/usr/bin/env bash
 
 ...
@@ -242,7 +242,7 @@ fi
 ### Perform action on command
 
 cmd
-```
+```bash
 #!/usr/bin/env bash
 
 ...
@@ -316,7 +316,7 @@ done
 ### Full implementation
 
 cmd
-```
+```bash
 #!/usr/bin/env bash
 
 # The optional category passed as an argument
@@ -460,21 +460,21 @@ done
 Remember to run the below command to make `cmd` executable:
 
 shell
-```
+```sh
 chmod +x ./cmd
 ```
 
 Now run it with all categories:
 
 shell
-```
+```sh
 ./cmd
 ```
 
 Or, run it with the `git` category:
 
 shell
-```
+```sh
 ./cmd git
 ```
 
@@ -482,7 +482,7 @@ To make the `cmd` command accessible from anywhere, you can either add the path
 to the directory containing it to your `$PATH` environment variable,
 
 .zshrc/.bashrc
-```
+```sh
 export PATH="$PATH:path-to-directory-containing-cmd"
 ```
 
