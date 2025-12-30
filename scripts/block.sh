@@ -13,12 +13,17 @@ if [[ ! -f "$block_path" ]]; then
   exit 1
 fi
 
-# nullglob prevents glob patterns from remaining unexpanded when they don't
-# match anything. If no files match, the pattern expands to nothing, and
-# the loop is skipped safely.
-shopt -s nullglob
+shift
+targets=( "$@" )
 
-for target in "$SRC_PATH"/*.html "$SRC_PATH"/*/*.html "$SRC_PATH"/*/*/*.html; do
+if (( ${#targets[@]} == 0 )); then
+  targets=()
+  while read -r file; do
+    targets+=( "$file" )
+  done < <(find "$SRC_PATH" -type f -name '*.html')
+fi
+
+for target in "${targets[@]}"; do
   start_line_numbers=()
   while read -r line_number; do
     start_line_numbers+=("$line_number")

@@ -58,7 +58,7 @@ gen:
 bm:
 	@echo "Generating bookmarks..."
 	@./scripts/bookmarks.sh
-	@./scripts/block.sh "back-to-top" # TODO: run on bookmark.html only
+	@./scripts/block.sh "back-to-top" "$(SRC_PATH)/$(BLOCKS_DIR)/bookmarks.html"
 	@./scripts/block.sh "bookmarks"
 	@echo "Generated bookmarks..."
 
