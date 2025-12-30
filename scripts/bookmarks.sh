@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-_toc_out="    <ul id=\"toc\" class=\"[ toc ]\">\n"
-_bm_out="    <article>\n"
-_last_category=""
-_blocks_path="./src/blocks"
+toc_out="    <ul id=\"toc\" class=\"[ toc ]\">\n"
+bm_out="    <article>\n"
+last_category=""
+blocks_path="./src/blocks"
 
 while IFS="|" read -r __category __title __url; do
   category="${__category:-Unknown}"
@@ -16,29 +16,29 @@ while IFS="|" read -r __category __title __url; do
     continue
   fi
 
-  if [[ "${category}" != "${_last_category}" ]]; then
-    if [[ -n "${_last_category}" ]]; then
-      _bm_out="${_bm_out}      </ul>\n"
-      _bm_out="${_bm_out}      <!-- block-start: back-to-top -->\n"
-      _bm_out="${_bm_out}      <!-- block-end: back-to-top -->\n"
+  if [[ "${category}" != "${last_category}" ]]; then
+    if [[ -n "${last_category}" ]]; then
+      bm_out="${bm_out}      </ul>\n"
+      bm_out="${bm_out}      <!-- block-start: back-to-top -->\n"
+      bm_out="${bm_out}      <!-- block-end: back-to-top -->\n"
     fi
 
-    _toc_out="${_toc_out}      <li><a href=\"#${id}\" id=\"toc-${id}\">${category}</a></li>\n"
+    toc_out="${toc_out}      <li><a href=\"#${id}\" id=\"toc-${id}\">${category}</a></li>\n"
 
-    _bm_out="${_bm_out}      <h2 id=\"${id}\"><a href=\"#${id}\">${category}</a></h2>\n"
-    _bm_out="${_bm_out}      <ul>\n"
+    bm_out="${bm_out}      <h2 id=\"${id}\"><a href=\"#${id}\">${category}</a></h2>\n"
+    bm_out="${bm_out}      <ul>\n"
 
-    _last_category="${category}"
+    last_category="${category}"
   fi
 
-  _bm_out="${_bm_out}        <li><a href=\"${url}\" target=\"_blank\" data-anchor=\"none\">${title}</a></li>\n"
+  bm_out="${bm_out}        <li><a href=\"${url}\" target=\"_blank\" data-anchor=\"none\">${title}</a></li>\n"
 done < <(bm view)
 
-_toc_out="${_toc_out}    </ul>\n"
+toc_out="${toc_out}    </ul>\n"
 
-_bm_out="${_bm_out}      </ul>\n"
-_bm_out="${_bm_out}      <!-- block-start: back-to-top -->\n"
-_bm_out="${_bm_out}      <!-- block-end: back-to-top -->\n"
-_bm_out="${_bm_out}    </article>\n"
+bm_out="${bm_out}      </ul>\n"
+bm_out="${bm_out}      <!-- block-start: back-to-top -->\n"
+bm_out="${bm_out}      <!-- block-end: back-to-top -->\n"
+bm_out="${bm_out}    </article>\n"
 
-printf "%b" "${_toc_out}\n${_bm_out}" > "${_blocks_path}/bookmarks.html"
+printf "%b" "${toc_out}\n${bm_out}" > "${blocks_path}/bookmarks.html"
