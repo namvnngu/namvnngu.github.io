@@ -1,5 +1,3 @@
-@import url("./inter-4.1/inter.css");
-
 /* CLASS ORDER: [ BLOCK ] [ COMPOSITION ] [ UTILITY ] */
 
 :root {
@@ -56,9 +54,9 @@
   --text-4xl: 2.25rem;
   --text-4xl--line-height: calc(2.5 / 2.25);
 
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-sans: system-ui, sans-serif;
   --font-serif: Georgia, "Times New Roman", Times, serif;
-  --font-mono: "Andale Mono", "Courier New", Courier, monospace;
+  --font-mono: monospace;
 
   --font-weight-extralight: 200;
   --font-weight-light: 300;
